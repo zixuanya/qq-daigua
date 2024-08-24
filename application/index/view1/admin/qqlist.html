@@ -1,0 +1,50 @@
+{extend name="common/common" /}
+{block name="title"}QQ列表{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h5 class="panel-title">搜索QQ</h5>
+        </div>
+        <div class="panel-body">
+          <form class="form-inline" method="get" action="{:url('',['do'=>'search'])}">
+            <div class="form-group">
+              <input class="form-control" placeholder="QQ号或者QID" type="text" name="query" >
+            </div>
+            <button type="submit" class="btn btn-primary">搜索</button>
+          </form>
+        </div><!-- panel-body -->
+</div>
+<div class="row">
+<div class="col-md-12">
+          <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>QQ账号</th>
+                <th>Cookie状态</th>
+                <th>所属用户Uid</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {volist name="qqlist" id="arr" empty="没有QQ" }
+              <tr>
+                <td>{$arr.qid}</td>
+                <td>{$arr.qq}</td>
+                <td>{:cookieZt($arr.cookiezt)}</td>
+                <td>{$arr.uid}</td>
+                <td><a href="{:url('qqlist',array('do'=>'del','uin'=>$arr.qq))}" onClick="if(!confirm('确认删除？')){return false;}"><span class="label label-info">删除</span></a>
+              </tr>
+              {/volist}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+          {$pagelist->showPage()}
+</div>
+</div>
+{/block}

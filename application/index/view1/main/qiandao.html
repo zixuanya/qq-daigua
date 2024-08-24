@@ -1,0 +1,73 @@
+{extend name="common/layout" /} 
+{block name="title"}每日签到{/block} 
+{block name="main"}
+<div class="col-sm-6">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<div class="panel-btns">
+				<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+			</div>
+			<!-- panel-btns -->
+			<h3 class="panel-title">签到规则</h3>
+		</div>
+		<div class="panel-body">
+			<div class="alert alert-info text-center">
+				每日前{$num}名签到的人至少可以获得{$rule[1]}元奖励！
+			</div>
+			<div class="alert alert-warning text-center">
+				签到的时候，我们会在你选择的签到QQ的空间里发布一条本站的广告[不包含不良信息].<br/>
+				如果你发现有不良消息，请联系总站长{:config('zz_qq')}解决！
+			</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-info" role="progressbar"
+					aria-valuenow="{$day}" aria-valuemin="0" aria-valuemax="100" style="width: {$day}%">
+				</div>
+			</div>
+			<pre>已经连续签到{$day}天</pre>
+			<div>
+				<form method="post" class="text-center nopadding">
+					<select class="form-control" name="qid">
+	                  <option value="0">选择签到的QQ</option>
+	                  {volist name="qqlist" id="arr"}
+	                  	<option value="{$arr.qid}">{$arr.qq}</option>
+	                  {/volist}
+	                </select>
+	                <p></p>
+					{if condition="$isQd"} <span class="btn btn-warning btn-block">今天已签到</span>
+					{else}
+					<button class="btn btn-primary btn-block">签到</button>
+					{/if}
+				</form>
+			</div>
+
+		</div>
+	</div>
+	<!-- panel -->
+</div>
+
+<div class="col-md-6">
+	<div class="table-responsive">
+		<table class="table table-info mb30">
+			<thead>
+				<tr>
+					<th class="text-center">UID</th>
+					<th class="text-center">用户名</th>
+					<th class="text-center">连续天数</th>
+					<th class="text-center">签到时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				{volist name="$qdList" id="qd"}
+				<tr>
+					<td class="text-center">{$qd.uid}</td>
+					<td class="text-center">{$qd.user}</td>
+					<td class="text-center">{$qd.num}</td>
+					<td class="text-center">{$qd.qdtime}</td>
+				</tr>
+				{/volist}
+			</tbody>
+		</table>
+	</div>
+	<!-- table-responsive -->
+</div>
+{/block}

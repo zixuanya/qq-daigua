@@ -1,0 +1,43 @@
+{extend name="common/common" /}
+{block name="title"}分站列表{/block}
+{block name="main"}
+<div class="row">
+<div class="col-md-12">
+          <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>ZID</th>
+                <th>站长ID</th>
+				<th>名称</th>
+                <th>客服QQ</th>
+                <th>域名</th>
+                <th>到期时间</th>
+                <th>挂机配额</th>
+                <th>分站配额</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {volist name="weblist" id="arr" empty="没有分站" }
+              <tr>
+                <td>{$arr.zid}</td>
+                <td>{$arr.uid}</td>
+                <td>{$arr.webname}</td>
+                <td>{$arr.kfqq}</td>
+                <td>{$arr.domain}</td>
+                <td>{$arr.enddate}</td>
+                <td>{:count(db('qqs')->where(['zid'=>$arr.zid])->select())}/{$arr.peie}</td>
+                <td>{:count(db('weblist')->where(['upzid'=>$arr.zid])->select())}/{$arr.fzpeie}</td>
+                <td>{$arr.stop ? "封禁" : "正常"}</td>
+                <td><a href="{:url('web',array('do'=>'edit','id'=>$arr.zid))}" ><span class="label label-info">编辑</span></a>&nbsp;<a href="{:url('weblist',array('do'=>'del','id'=>$arr.zid))}" onClick="if(!confirm('确认删除？')){return false;}"><span class="label label-info">删除</span></a></td>
+              </tr>
+              {/volist}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+          {$pagelist->showPage()}
+</div>
+</div>
+{/block}

@@ -1,0 +1,85 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                <form method="post">
+					<input type="hidden" name="action" value="search">
+					<div class="input-group xs-mb-15">
+						<input type="text" placeholder="请输入要搜索的获奖者UID" name="s"
+							class="form-control text-center" required>
+                            <span class="input-group-btn">
+							<button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+							<tr>
+								<th>申请者ID</th>
+								<th>站点ID</th>
+								<th>奖品名称</th>
+								<th>申请时间</th>
+								<th>状态</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							{volist name="$pList" id="res"}
+
+							<tr>
+								<td>{$res['uid']}</td>
+								<td>{$res['azid']}</td>
+								<td>{$res['name']}</td>
+								<td>{$res['addtime']}</td>
+								<td>{if condition="$res.zt eq 0"}待审核{else/}已发放{/if}</td>
+								<td><a href="{:url('',['act'=>'change','id'=>$res.aid,'zt'=>$res.zt])}" class="btn-xs btn-info" onclick="return confirm('确认更改状态为{if condition=" $res.zt eq 1"}待审核{else/}已发放{/if}？');">更改状态</a>&nbsp;
+<a href="{:url('',['act'=>'del','id'=>$res.aid])}" class="btn-xs btn-warning" onclick="return confirm('确认删除？');">删除</a></td>
+
+							</tr>
+							{/volist}
+							<tr class="text-center">
+							<td colspan="7">{$pageList->showPage()}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+
+{/block}

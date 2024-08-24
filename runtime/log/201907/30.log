@@ -1,0 +1,210 @@
+[ 2019-07-30T07:54:06+08:00 ] ::1 ::1 GET /index/Panel/index.html
+[ log ] localhost/index/Panel/index.html [运行时间：0.117006s][吞吐率：8.55req/s] [内存消耗：2,205.88kb] [文件加载：49]
+[ error ] [8]未定义变量: power
+
+---------------------------------------------------------------
+[ 2019-07-30T07:55:53+08:00 ] ::1 ::1 GET /index/admin/index.html
+[ log ] localhost/index/admin/index.html [运行时间：0.089006s][吞吐率：11.24req/s] [内存消耗：1,991.35kb] [文件加载：49]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T07:56:00+08:00 ] ::1 ::1 GET /index/panel/index.html
+[ log ] localhost/index/panel/index.html [运行时间：0.066003s][吞吐率：15.15req/s] [内存消耗：2,012.46kb] [文件加载：47]
+[ error ] [8]未定义变量: power
+
+---------------------------------------------------------------
+[ 2019-07-30T08:16:26+08:00 ] ::1 ::1 GET /index/panel/index.html
+[ log ] localhost/index/panel/index.html [运行时间：0.061004s][吞吐率：16.39req/s] [内存消耗：2,012.41kb] [文件加载：47]
+[ error ] [8]未定义变量: power
+
+---------------------------------------------------------------
+[ 2019-07-30T08:18:11+08:00 ] ::1 ::1 GET /index/panel/index.html
+[ log ] localhost/index/panel/index.html [运行时间：0.089005s][吞吐率：11.24req/s] [内存消耗：1,915.51kb] [文件加载：45]
+[ error ] [1]Call to a member function fetch() on a non-object
+
+---------------------------------------------------------------
+[ 2019-07-30T08:18:14+08:00 ] ::1 ::1 GET /
+[ log ] localhost/ [运行时间：0.125007s][吞吐率：8.00req/s] [内存消耗：1,456.13kb] [文件加载：45]
+[ error ] [1]Call to a member function fetch() on a non-object
+
+---------------------------------------------------------------
+[ 2019-07-30T08:45:17+08:00 ] ::1 ::1 GET /index/Panel/index.html
+[ log ] localhost/index/Panel/index.html [运行时间：0.110007s][吞吐率：9.09req/s] [内存消耗：2,012.43kb] [文件加载：47]
+[ error ] [8]未定义变量: power
+
+---------------------------------------------------------------
+[ 2019-07-30T08:45:22+08:00 ] ::1 ::1 GET /index/admin/index.html
+[ log ] localhost/index/admin/index.html [运行时间：0.079004s][吞吐率：12.66req/s] [内存消耗：1,798.63kb] [文件加载：47]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:46:22+08:00 ] ::1 ::1 GET /index/admin
+[ log ] localhost/index/admin [运行时间：0.057003s][吞吐率：17.54req/s] [内存消耗：1,798.55kb] [文件加载：47]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:46:26+08:00 ] ::1 ::1 GET /index/admin/mainset.html
+[ log ] localhost/index/admin/mainset.html [运行时间：0.085005s][吞吐率：11.76req/s] [内存消耗：2,036.47kb] [文件加载：49]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:46:36+08:00 ] ::1 ::1 POST /index/admin/mainset.html
+[ log ] localhost/index/admin/mainset.html [运行时间：0.079004s][吞吐率：12.66req/s] [内存消耗：1,810.76kb] [文件加载：47]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:46:38+08:00 ] ::1 ::1 GET /index/admin/mainset.html
+[ log ] localhost/index/admin/mainset.html [运行时间：0.069004s][吞吐率：14.49req/s] [内存消耗：1,807.62kb] [文件加载：47]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:46:41+08:00 ] ::1 ::1 GET /index/admin/selectmb.html
+[ log ] localhost/index/admin/selectmb.html [运行时间：0.079005s][吞吐率：12.66req/s] [内存消耗：1,976.01kb] [文件加载：49]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:46:46+08:00 ] ::1 ::1 GET /index/admin/priceset.html
+[ log ] localhost/index/admin/priceset.html [运行时间：0.066003s][吞吐率：15.15req/s] [内存消耗：2,025.68kb] [文件加载：49]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:47:23+08:00 ] ::1 ::1 GET /index/admin/webset.html
+[ log ] localhost/index/admin/webset.html [运行时间：0.094005s][吞吐率：10.64req/s] [内存消耗：2,009.69kb] [文件加载：49]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:47:44+08:00 ] ::1 ::1 GET /index/admin/userlist.html
+[ log ] localhost/index/admin/userlist.html [运行时间：0.084005s][吞吐率：11.90req/s] [内存消耗：2,003.55kb] [文件加载：50]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:53:20+08:00 ] ::1 ::1 GET /index/admin/userlist.html
+[ log ] localhost/index/admin/userlist.html [运行时间：0.096005s][吞吐率：10.42req/s] [内存消耗：2,003.48kb] [文件加载：50]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T08:59:56+08:00 ] ::1 ::1 GET /index/admin/userlist.html
+[ log ] localhost/index/admin/userlist.html [运行时间：0.089005s][吞吐率：11.24req/s] [内存消耗：2,003.66kb] [文件加载：50]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T09:00:03+08:00 ] ::1 ::1 GET /index/panel/index.html
+[ log ] localhost/index/panel/index.html [运行时间：0.103006s][吞吐率：9.71req/s] [内存消耗：2,014.62kb] [文件加载：47]
+[ error ] [8]未定义变量: power
+
+---------------------------------------------------------------
+[ 2019-07-30T09:01:21+08:00 ] ::1 ::1 GET /index/Panel/qqInfo/qid/1000.html
+[ log ] localhost/index/Panel/qqInfo/qid/1000.html [运行时间：0.238013s][吞吐率：4.20req/s] [内存消耗：2,207.48kb] [文件加载：49]
+[ error ] [8]未定义变量: orderlist
+
+---------------------------------------------------------------
+[ 2019-07-30T09:03:19+08:00 ] ::1 ::1 GET /index/Panel/qqInfo/qid/1000.html
+[ log ] localhost/index/Panel/qqInfo/qid/1000.html [运行时间：0.182011s][吞吐率：5.49req/s] [内存消耗：2,207.18kb] [文件加载：49]
+[ error ] [8]未定义变量: orderlist
+
+---------------------------------------------------------------
+[ 2019-07-30T09:03:59+08:00 ] ::1 ::1 GET /index/panel/qqlist.html
+[ log ] localhost/index/panel/qqlist.html [运行时间：0.100006s][吞吐率：10.00req/s] [内存消耗：2,194.12kb] [文件加载：49]
+[ error ] [8]未定义变量: info
+[ error ] [8]未定义变量: info
+
+---------------------------------------------------------------
+[ 2019-07-30T09:04:13+08:00 ] ::1 ::1 GET /index/panel/qqinfo/qid/1000.html
+[ log ] localhost/index/panel/qqinfo/qid/1000.html [运行时间：0.198012s][吞吐率：5.05req/s] [内存消耗：2,022.23kb] [文件加载：47]
+[ error ] [8]未定义变量: orderlist
+
+---------------------------------------------------------------
+[ 2019-07-30T09:04:42+08:00 ] ::1 ::1 GET /index/panel/qqinfo/qid/1000.html
+[ log ] localhost/index/panel/qqinfo/qid/1000.html [运行时间：0.151009s][吞吐率：6.62req/s] [内存消耗：2,022.20kb] [文件加载：47]
+[ error ] [8]未定义变量: orderlist
+
+---------------------------------------------------------------
+[ 2019-07-30T09:50:12+08:00 ] ::1 ::1 GET /index/panel/index.html
+[ log ] localhost/index/panel/index.html [运行时间：0.084004s][吞吐率：11.90req/s] [内存消耗：2,014.55kb] [文件加载：47]
+[ error ] [8]未定义变量: power
+
+---------------------------------------------------------------
+[ 2019-07-30T09:52:35+08:00 ] ::1 ::1 GET /index/panel/index.html
+[ log ] localhost/index/panel/index.html [运行时间：0.116007s][吞吐率：8.62req/s] [内存消耗：2,014.55kb] [文件加载：47]
+[ error ] [8]未定义变量: power
+
+---------------------------------------------------------------
+[ 2019-07-30T09:52:45+08:00 ] ::1 ::1 GET /index/panel/qqlist.html
+[ log ] localhost/index/panel/qqlist.html [运行时间：0.078004s][吞吐率：12.82req/s] [内存消耗：2,010.51kb] [文件加载：47]
+[ error ] [8]未定义变量: info
+[ error ] [8]未定义变量: info
+
+---------------------------------------------------------------
+[ 2019-07-30T09:52:50+08:00 ] ::1 ::1 GET /index/panel/qqinfo/qid/1000.html
+[ log ] localhost/index/panel/qqinfo/qid/1000.html [运行时间：0.248014s][吞吐率：4.03req/s] [内存消耗：2,022.20kb] [文件加载：47]
+[ error ] [8]未定义变量: orderlist
+
+---------------------------------------------------------------
+[ 2019-07-30T09:53:00+08:00 ] ::1 ::1 GET /index/panel/qqlist.html
+[ log ] localhost/index/panel/qqlist.html [运行时间：0.070004s][吞吐率：14.28req/s] [内存消耗：2,010.51kb] [文件加载：47]
+[ error ] [8]未定义变量: info
+[ error ] [8]未定义变量: info
+
+---------------------------------------------------------------
+[ 2019-07-30T09:53:08+08:00 ] ::1 ::1 GET /index/panel/qqinfo/qid/1000.html
+[ log ] localhost/index/panel/qqinfo/qid/1000.html [运行时间：0.167009s][吞吐率：5.99req/s] [内存消耗：2,027.13kb] [文件加载：47]
+[ error ] [8]未定义变量: orderlist
+
+---------------------------------------------------------------
+[ 2019-07-30T09:53:20+08:00 ] ::1 ::1 GET /index/panel/qqinfo/qid/1000.html?action=off&tid=11
+[ log ] localhost/index/panel/qqinfo/qid/1000.html?action=off&tid=11 [运行时间：0.193011s][吞吐率：5.18req/s] [内存消耗：2,027.39kb] [文件加载：47]
+[ error ] [8]未定义变量: orderlist
+
+---------------------------------------------------------------
+[ 2019-07-30T09:53:22+08:00 ] ::1 ::1 GET /index/panel/qqinfo/qid/1000.html?action=off&tid=9
+[ log ] localhost/index/panel/qqinfo/qid/1000.html?action=off&tid=9 [运行时间：0.187011s][吞吐率：5.35req/s] [内存消耗：2,027.43kb] [文件加载：47]
+[ error ] [8]未定义变量: orderlist
+
+---------------------------------------------------------------
+[ 2019-07-30T09:53:25+08:00 ] ::1 ::1 GET /index/admin/index.html
+[ log ] localhost/index/admin/index.html [运行时间：0.098006s][吞吐率：10.20req/s] [内存消耗：2,003.90kb] [文件加载：49]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T09:53:30+08:00 ] ::1 ::1 GET /index/admin/export/tid/11.html
+[ log ] localhost/index/admin/export/tid/11.html [运行时间：0.088005s][吞吐率：11.36req/s] [内存消耗：1,978.13kb] [文件加载：49]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------
+[ 2019-07-30T09:53:47+08:00 ] ::1 ::1 GET /index/panel/index.html
+[ log ] localhost/index/panel/index.html [运行时间：0.068004s][吞吐率：14.70req/s] [内存消耗：2,014.62kb] [文件加载：47]
+[ error ] [8]未定义变量: power
+
+---------------------------------------------------------------
+[ 2019-07-30T09:55:09+08:00 ] ::1 ::1 GET /index/panel/qqlist.html
+[ log ] localhost/index/panel/qqlist.html [运行时间：0.070004s][吞吐率：14.28req/s] [内存消耗：2,010.51kb] [文件加载：47]
+[ error ] [8]未定义变量: info
+[ error ] [8]未定义变量: info
+
+---------------------------------------------------------------
+[ 2019-07-30T10:00:43+08:00 ] ::1 ::1 GET /index/panel/qqlist.html
+[ log ] localhost/index/panel/qqlist.html [运行时间：0.108006s][吞吐率：9.26req/s] [内存消耗：2,010.51kb] [文件加载：47]
+[ error ] [8]未定义变量: info
+[ error ] [8]未定义变量: info
+
+---------------------------------------------------------------
+[ 2019-07-30T10:02:12+08:00 ] ::1 ::1 GET /index/admin/index.html
+[ log ] localhost/index/admin/index.html [运行时间：0.074004s][吞吐率：13.51req/s] [内存消耗：1,800.85kb] [文件加载：47]
+[ error ] [8]未定义变量: webSqs
+[ error ] [8]未定义变量: webSqs
+
+---------------------------------------------------------------

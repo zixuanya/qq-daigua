@@ -1,0 +1,111 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle}-{:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+                        <li><a href="{:url('qqadd')}" >添加代挂</a></li>
+                        <li>{$webTitle}-</li>
+                    </ul>
+                </div>
+                
+                <div class="wrapper">
+                                        
+                    
+<div class="col-md-12">
+<div class="panel panel-info">
+<div class="panel-heading font-bold text-left">QQ管理列表</div>
+                            <div class="row wrapper">
+                                <div class="col-sm-12">
+                                    <div class="btn-group dropdown m-l-xs" style="float:left;">
+                                      <button type="button" class="btn btn-info" data-toggle="dropdown" data-toggle="dropdown">
+                                        QQ数量                                        <span class=""></span>
+                                      </button>
+                                    
+                                    </div>
+                                    <button class="btn btn-primary m-l-xs">{:count($qqList)}</button>
+                                    <a href="{:url('qqAdd')}" class="btn btn-sm btn-dark m-l-xs" ><i class="fa fa-plus"></i> 添加代挂</a>
+<div class="panel-body">
+                                    <form method="get">
+                    <input type="hidden" name="action" value="search">
+                            <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的QQ" name="uin" 
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+                                </div>
+                            </div>
+       <div class="col-lg-3 col-md-4 col-sm-6 m-b-xs">
+            <div class="panel panel-success">
+                <div class="panel-body text-center">
+                    <div class="m-b-sm">
+                        <img alt="image" class="img-circle" src="//q4.qlogo.cn/headimg_dl?dst_uin=10000&amp;spec=100"
+                             width="100" height="100">
+                    </div>
+                    <h2 class="text-success">虚拟占位</h2>
+                    <h3 class="text-warning">点击按钮添加QQ</h3>
+                    <hr>
+                    <div style="width:100%; height:3px;"></div>
+                    <div class="text-center m-b-sm">
+                        <a class="btn btn-w-m btn-info btn-dialog" href="/index.php/index/panel/qqAdd.html" title="添加QQ">添加QQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+
+
+		
+		
+		{volist name="qqList" id="qq"}
+                <div class="col-lg-3 col-md-4 col-sm-6 m-b-xs">
+            <div class="panel panel-info">
+                <div class="panel-body text-center">
+                    <div class="m-b-sm">
+                        <img alt="image" class="img-circle" src="//q4.qlogo.cn/headimg_dl?dst_uin={$qq.uin}&amp;spec=100" width="100" height="100">
+                    </div>
+                    <h2 class="text-success"># {$qq.uin}</h2>
+                    <h3 class="text-warning">状态：<font color="green">{:getQqzt($qq.zt)}</font></h3>
+                    <hr>
+                    <div style="width:100%; height:3px;"></div>
+                    <div class="text-center m-b-sm">
+                        <a class="btn btn-outline btn-success btn-dialog" href="{:url('qqAdd')}?qid={$qq.qid}}" title="更新密码">更新密码</a>
+                        <a class="btn btn-outline btn-warning" href="{:url('qqInfo',['qid'=>$qq.qid])}">设置</a>
+						<a class="btn btn-danger" href="{:url('qqList')}?qid={$qq.qid}&action=del" onclick="if(!confirm('确认删除QQ:{$qq.uin}吗?')){return false;}" title="删除QQ:{$qq.uin}"}>删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 {/volist}
+                            <footer class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">                
+                                        <div class="btn-group">
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                        
+                    </div>                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">get_list("/other/qqlist/count/0.html");</script>
+        </section>
+
+{/block}
+

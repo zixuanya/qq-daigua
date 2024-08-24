@@ -1,0 +1,85 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal" method="post">
+				
+				 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">奖品名称</span>
+                                       <input type="text"
+							class="form-control" name="name" value="" />
+                                    </div>
+                                </div>
+				
+				 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">中奖概率</span>
+                                        <input
+							type="number" min="0" class="form-control" name="p" value="" />
+                                    </div>
+                                </div>
+				
+				 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">奖品类型</span>
+                                        <select
+							name="type" class="form-control">
+							<option value="0">无奖励</option>
+							<option value="1">代挂卡密[直充]</option>
+							<option value="2">余额[直充]</option>
+							<option value="3">需审核</option>
+						</select>
+                                    </div>
+                                </div>
+				
+				 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">面值&月数</span>
+                                       <input
+							type="text" class="form-control" name="value" value="" />
+                                    </div>
+                                </div>
+                   <div class="alert alert-info">提示：如果是其他的奖品，天了也是被天填了也是白填
+                    </div>
+					
+ <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认添加</button>
+                                </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}

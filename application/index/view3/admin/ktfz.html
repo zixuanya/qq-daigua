@@ -1,0 +1,127 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                    <form method="post" class="form-horizontal" onsubmit="return checkinput()">
+						{if condition="ZID eq 1 || config('web_super') >= 2"}
+						 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">分站类型</span>
+                                        <select name="type" class="form-control">
+								<option value="0">普通分站</option>
+								<option value="1">二级主站</option>
+								{if condition="ZID eq 1|| config('web_super') >=3"}<option value="2">超级主站</option>{/if}
+								{if condition="ZID eq 1|| config('web_super') eq 4"}<option value="3">合作伙伴</option>{/if}
+								{if condition="ZID eq 1"}<option value="5">至尊分销</option>{/if}
+							</select>
+                                    </div>
+                                </div>
+						{/if}
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">用户UID</span>
+                                        <input type="number" name="uid" class="form-control" placeholder="输入用户UID" required>
+                                    </div>
+                                </div>
+								
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">域名前缀</span>
+                                        <input type="text" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" name="qz" class="form-control" required data-parsley-length="[2,8]" placeholder="输入你想要的二级前缀">
+										 <div class="input-group-addon"><select name="domain">
+                                    {volist name="domains" id="domain"}
+                                    <option value="{:trim($domain)}">{:trim($domain)}</option>
+                                    {/volist}
+                                </select></div>
+                                    </div>
+                                </div>
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">站点名称</span>
+                                          <input type="text" name="name" class="form-control" required>
+                                    </div>
+                                </div>
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">站点QQ</span>
+                                           <input type="number" name="qq" class="form-control" required>
+                                    </div>
+                                </div>
+								
+                       
+                       
+                        <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                    </form>
+					<div class="alert alert-info">提示：分销代理无限开通合作伙伴及以下;合作伙伴无限开通超级主站及以下;超级主站无限开通二级主站及以下;二级主站无限开通普通分站.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("input[name='qz']").blur(function(){
+        var qz = $(this).val();
+        var domain = $("select[name='domain']").val();
+        if(qz){
+            $.get("?action=check", { 'qz' : qz , 'domain' : domain},function(data){
+                    if( data == 1 ){
+                        alert('你所填写的域名已被使用，请更换一个！');
+						$("input[name='qz']").focus();
+                    }
+            });
+        }
+    });
+	function checkinput(){
+		var qz = $("input[name='qz']").val();
+		var name = $("input[name='name']").val();
+		var qq = $("input[name='qq']").val();
+		if(qz.length<2){
+			alert('域名前缀太短！');
+			return false;
+		}else if(qz.length>10){
+			alert('域名前缀太长！');
+			return false;
+		}else if(name.length<2){
+			alert('网站名称太短！');
+			return false;
+		}else if(qq.length<5){
+			alert('QQ格式不正确！');
+			return false;
+		}
+		return true;
+	}
+</script>
+{/block}

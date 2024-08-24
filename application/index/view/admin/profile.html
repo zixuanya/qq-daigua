@@ -1,0 +1,100 @@
+{extend name="panel/layout" /}
+{block name="main"}
+	<div id="content" class="app-content" role="main">
+	<div id="Loading" style="display:none">
+		<div ui-butterbar="" class="butterbar active"><span class="bar"></span></div>
+	</div>
+<div class="app-content-body">	<section id="container">
+<div class="bg-light lter b-b wrapper-md hidden-print">
+<h1 class="m-n font-thin h3">个人资料</h1>
+</div><div class="wrapper-md ng-scope">    <div class="wrapper-md control"><!-- /breadcrumb-->
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">个人资料</h3>
+        </div><!-- /page-title -->
+    </div>
+    <div class="padding-md">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        我的信息
+                    </div>
+                    <div class="panel-body">
+                        <form method="post" class="form-horizontal">
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">UID</span>
+                                         <input type="text" class="form-control" value="{$userInfo.uid}" disabled>
+                                </div>
+                                </div>
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">用户名</span>
+                                         <input type="text" class="form-control" value="{$userInfo.user}" disabled>
+                                </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">余额</span>
+                                         <input type="text" class="form-control" value="{$userInfo.point}元" disabled>
+                                </div>
+                                </div>
+						
+						
+                           
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">余额</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" value="{$userInfo.point}元" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">配额</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" value="{$userInfo.peie}元" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">绑定QQ</label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="qq" class="form-control" value="{$userInfo.qq}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">修改密码</label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="pwd" class="form-control" placeholder="不修改则留空">
+                                </div>
+                            </div>
+
+							{if condition="$userInfo.power eq 9"}
+							<div class="form-group">
+                                <label class="col-lg-3 control-label">提现支付宝账号</label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="pay_account" class="form-control" value="{$userInfo.pay_account}">
+									<pre>如果填错将无法结算到账！</pre>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="col-lg-3 control-label">提现支付宝姓名</label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="pay_name" class="form-control" value="{$userInfo.pay_name}">
+                                </div>
+                            </div>
+							{/if}
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-8">
+                                    <button class="btn btn-primary" type="submit">保存修改</button>
+                                    <button class="btn btn-default-outline" type="reset">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

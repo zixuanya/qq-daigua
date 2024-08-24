@@ -1,0 +1,124 @@
+{extend name="common/layout" /} 
+{block name="title"}秒赞检测{/block} 
+{block name="main"}
+<div class="row">
+	<div class="col-md-12">
+		<div class="tab-content">
+			<form action="{:url('mzjc')}">
+				<div class="tab-pane active">
+					<select class="form-control mb12" name="qid"> 
+					{volist name="qqlist" id="arr" empty="<option value='0'>没有添加QQ哦</option>"}
+						<option value="{$arr.qid}">{$arr.qq}</option> {/volist}
+					</select>
+					</div>
+					<button class="btn btn-primary btn-block mt10" type="submit">查询</button>
+					
+			</form>
+		</div>
+	</div>
+	</div>
+	{php} if(input('get.qid')) { {/php}
+	
+		<script>
+		var efar={
+				  postData: function(url, parameter, callback, dataType, ajaxType) {
+					  if(!dataType) dataType='JSON';
+					  $.ajax({
+						  type: "POST",
+						  url: url,
+						  async: true,
+						  dataType: dataType,
+						  json: "callback",
+						  data: parameter,
+						  success: function(data) {
+							  if (callback == null) {
+								  return;
+							  } 
+							  callback(data);
+						  },
+						  error: function(error) {
+							  alert('创建连接失败');
+						  }
+					  });
+				  }
+			  }
+			$(document).ready(function() {
+				$('.fenzu').click(function(){
+					var self=$(this);
+					if (self.attr("data-lock") === "true") return;
+						else self.attr("data-lock", "true");
+					self.html('移动中<img src="/assets/Main/images/loaders/loader6.gif" height=25>');
+					var fenzu=$("#gpname").val();
+					var num=0;
+					$(".ismove").each(function(){
+						var checkself=$(this),
+							touin=checkself.attr('uin');
+						var url="/api/fenzu.php";
+						checkself.html("<img src='/assets/Main/images/loaders/loader6.gif' height=25>");
+						efar.postData(url,'uin={$qqrow['qq']}&skey={$info_arr['skey']}&p_skey={$info_arr['pskey']}&touin='+touin+'&gpid='+fenzu, function(d) {
+							if(d.code==0){
+								num++;
+								checkself.html('<font color="green">成功</font>');
+								checkself.removeClass('ismove');
+								self.html('QQ：'+touin+'移动完成');
+							}else if(d.code==-1){
+								checkself.html('<font color="red">失败</font>');
+								alert('SKEY已过期，请更新SKEY！');
+								return false;
+							}else{
+								checkself.html('<font color="red">失败</font>');
+							}
+						});
+					});
+					if(num<1) self.html('没有待移动的QQ！');
+					else self.html('移动成功！');
+					self.attr("data-lock", "false");
+				});
+			});
+			
+		</script>
+<div class="row">
+	<div class="col-md-12">
+	<div class="table-responsive">
+		<table class="table table-bordered mb30">
+			<thead>
+				<tr>
+					<th>QQ</th>
+					<th>备注</th>
+					<th>结果</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="3" align="center">
+						 总共{:count($lists['friend'])}个好友,可能秒赞好友<span id="dxcount">{$lists['mzcount']}</span>个！
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><button class="btn btn-large btn-block fenzu">移动所有秒赞好友到</button></td>
+					<td align="center"><select id="gpname">
+							{foreach name="fenzulist" item="row"}
+							<option value="{$row['gpid']}">{$row['gpname']}</option>
+							{/foreach}
+					</select></td>
+				</tr>
+				{foreach name="lists['friend']" item="list"}
+				<tr>
+					<td uin="{$list.uin}">{$list.uin}</td>
+					<td>{$list.remark}</td>
+					<td class="{$list.mz != 0 ? 'ismove' : NULL }" uin="{$list.uin}" style="background: rgba(205, 133, 0, {$list['mz']/5});">{:round(($list['mz']/5)*100)}%</td>
+				</tr>
+				{/foreach}
+
+
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<!-- table-responsive -->
+	</div>
+	{php} } {/php}
+{/block}
+
+
+

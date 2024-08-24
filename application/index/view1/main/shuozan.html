@@ -1,0 +1,119 @@
+{extend name="common/layout" /} {block name="title"}刷说说赞{/block} {block
+name="headjs"} {if condition="$qqrow"}
+<script>
+	function showlist(id, content) {
+		$('#szcontrol')
+				.html(
+						'<center><i class="fa fa-spinner fa-pulse"></i>正在加载...</center>');
+		$.get("{:url('Tool/zan')}?shuoid=" + id + "&content="
+				+ encodeURIComponent(content) + "&qq={$qqrow.qq}", "html",
+				function(data) {
+					$('#szcontrol').html(data);
+				});
+	}
+	$(document).ready(function() {
+		$('#startcheck').click(function() {
+			$('#load').html('检测中');
+			var self = $(this);
+			var shuoid = $("#shuoid").val();
+			if (shuoid == '') {
+				alert('说说ID不能为空，请先选择一条说说');
+				return false;
+			}
+			showlist(shuoid);
+		});
+		$('.cbx').click(function() {
+			var shuoid = $(this).val();
+			$('#shuoid').val(shuoid);
+		});
+	});
+</script>
+{/if} {/block} {block name="main"}
+<div class="row">
+	<div class="col-md-12">
+		<div class="tab-content">
+			<form action="{:url('shuozan')}">
+				<div class="tab-pane active">
+					<select class="form-control mb12" name="qid"> {volist
+						name="qqlist" id="arr" empty="
+						<option value='0'>没有添加QQ哦</option>"}
+						<option value="{$arr.qid}">{$arr.qq}</option> {/volist}
+					</select>
+				</div>
+				<button class="btn btn-primary btn-block mt10" type="submit">确认</button>
+			</form>
+		</div>
+	</div>
+</div>
+{if condition="$qqrow"}
+<div class="row">
+	<div class="col-sm-6">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<div class="panel-btns">
+					<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+				</div>
+				<!-- panel-btns -->
+				<h3 class="panel-title">使用说明</h3>
+			</div>
+			<div class="panel-body">
+				<ul class="list-group">
+					<li class="list-group-item">1.选择要刷的说说，然后点击开始刷赞即可。</li>
+					<li class="list-group-item">2.刷之前请先设置你的QQ空间为所有人可访问。</li>
+					<li class="list-group-item">3.每次随机取出30个QQ，刷新本页面可以更换一批QQ。</li>
+					<li class="list-group-item">4.<font color="blue">本站只列出前五条说说，如果想刷其他说说请自行获取其说说ID。</font></li>
+				</ul>
+			</div>
+		</div>
+		<!-- panel -->
+	</div>
+	<div class="col-sm-6">
+		<div class="panel panel-dark panel-alt widget-todo">
+			<div class="panel-heading">
+				<div class="panel-btns">
+					<a href="" class="tooltips" data-toggle="tooltip" title=""
+						data-original-title="Settings"><i
+						class="glyphicon glyphicon-cog"></i></a> <a href="" id="addnewtodo"
+						class="tooltips" data-toggle="tooltip" title=""
+						data-original-title="Add New"><i
+						class="glyphicon glyphicon-plus"></i></a>
+				</div>
+				<!-- panel-btns -->
+				<h3 class="panel-title">说说列表</h3>
+			</div>
+			<div class="panel-body nopadding">
+				<ul class="todo-list">
+					{volist name="shuolist" id="arr"}
+					<li>
+						<div>
+							<input type='radio' class="cbx" id="radioWarning" name="cbx"
+								value="{$arr.tid}"> <label for="washcar">{:mb_substr($arr.content,0,32,'utf-8')}</label>
+						</div>
+					</li> {/volist}
+				</ul>
+			</div>
+			<!-- panel-body -->
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-primary panel-alt widget-newsletter">
+			<div class="panel-heading">
+				<div class="panel-btns">
+					<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+				</div>
+				<!-- panel-btns -->
+				<h3 class="panel-title">刷说说队形配置</h3>
+			</div>
+			<div class="panel-body">
+				<small>说说ID</small> <input type="text" name="shuoid"
+					class="form-control mt10 mb10" id="shuoid">
+				<button class="btn btn-default btn-block" id="startcheck">开刷</button>
+			</div>
+			<!-- panel-body -->
+			<div id='szcontrol'></div>
+		</div>
+	</div>
+</div>
+{/if} {/block}

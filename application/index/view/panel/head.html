@@ -1,0 +1,43 @@
+<div id="top-nav" class="fixed skin-3">
+    <a href="#" class="brand">
+        <span>{:config('web_name')}</span>
+    </a><!-- /brand -->
+    <button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <button type="button" class="navbar-toggle pull-left hide-menu" id="menuToggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <ul class="nav-notification clearfix">
+
+        <li class="profile dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <strong>{$userInfo.user}</strong>
+                <span><i class="fa fa-chevron-down"></i></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="clearfix" href="#">
+                        <img src="http://q1.qlogo.cn/g?b=qq&amp;nk={$userInfo.qq}&amp;s=160" alt="User Avatar">
+                        <div class="detail">
+                            <strong>{$userInfo.user}</strong>
+                            <p class="grey">QQ:{$userInfo.qq}</p>
+                        </div>
+                    </a>
+                </li>
+                <li><a tabindex="-1" href="profile.html" class="main-link"><i class="fa fa-edit fa-lg"></i>修改资料</a></li>
+                {if condition="$userInfo.power eq 9"}
+                <li><a href="{:url('index/Admin/index')}" class="theme-setting">
+                    <i class="fa fa-edit fa-lg"></i>管理后台</a>
+                </li>
+                {/if}
+                <li class="divider"></li>
+                <li><a class="main-link" href="{:url('index/Index/logout')}" onclick="return confirm('确认退出登录？');"><i class="fa fa-lock fa-lg"></i>安全退出</a></li>
+            </ul>
+        </li>
+    </ul>
+</div><!-- /top-nav-->

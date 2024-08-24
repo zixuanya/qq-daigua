@@ -1,0 +1,303 @@
+{extend name="common/layout" /}
+{block name="title"}{:input('uin')}功能配置{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">使用说明</h4>
+        </div>
+        <div class="panel-body  panel-body-nopadding">
+        	<div class="list-group-item"><span>所有功能的内容可以使用以下标签</span></div>
+
+			<div class="list-group-item"><span>[表情]&nbsp;&nbsp;随机表情<br>[语录]&nbsp;&nbsp;随机语录<br>[时间]&nbsp;&nbsp;当前时间</span></div>
+        </div>
+        
+</div>
+<div class="panel panel-default {if condition="input('name') neq 'zan'"}hide{/if}">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">秒赞功能配置</h4>
+        </div>
+        <div class="panel-body  panel-body-nopadding">
+          <form class="form-horizontal form-bordered" method="post" action="{:url('qqfunset',['uin'=>input('uin'),'name'=>'zan'])}">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">协议</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="zan">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="$qqInfo.zan eq 1"}selected{/if}>1_PE</option>
+                  <option value="2" {if condition="$qqInfo.zan eq 2"}selected{/if}>2_PC</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">服务器</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="zannet">
+                  {for start="1" end="config('zz_server_num')+1"}
+                  	<option value="{$i}" {if condition="$qqInfo.zannet eq $i"}selected{/if}>{$i}号服务器({if condition="$num=get_net_count('zan',$i) and $num egt config('zz_server_end_num')"}已满{else/}{$num}个{/if})</option>
+                  {/for}
+                </select>
+              </div>
+            </div>
+            
+            </div>
+            <div class="panel-footer">
+			 <div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+				  <button class="btn btn-primary" type="submit">保存更改</button>
+				</div>
+			 </div>
+		  </div>
+          </form>
+        
+</div>
+<div class="panel panel-default {if condition="input('name') neq 'shuo' AND input('name') neq 'upload'"}hide{elseif condition="config('zz_cronapi')"/}hide{/if}">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">说说功能配置</h4>
+        </div>
+        <div class="panel-body  panel-body-nopadding">
+          <form class="form-horizontal form-bordered" enctype="multipart/form-data" method="post" action="{:url('qqfunset',['uin'=>input('uin'),'name'=>'shuo','name'=>'upload'])}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">图片</label>
+              <div class="col-sm-5">
+				<input type="file" name="image" class="form-control"/>
+              </div>
+            </div>
+            
+            </div>
+            <div class="panel-footer">
+			 <div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+				  <button class="btn btn-primary" type="submit">上传</button>
+				</div>
+			 </div>
+		  </div>
+          </form>
+          
+        
+</div>
+
+<div class="panel panel-default {if condition="input('name') neq 'shuo' AND input('name') neq 'upload'"}hide{/if}">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">说说功能配置</h4>
+        </div>
+        <div class="panel-body  panel-body-nopadding">
+          <form class="form-horizontal form-bordered" method="post" action="{:url('qqfunset',['uin'=>input('uin'),'name'=>'shuo'])}">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">协议</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="shuo">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="$qqInfo.shuo eq 1"}selected{/if}>1_PE</option>
+                  <option value="2" {if condition="$qqInfo.shuo eq 2"}selected{/if}>2_PC</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">说说内容</label>
+              <div class="col-sm-5">
+                <textarea class="form-control" rows="5" name="con">{$qqInfo.shuocon}</textarea>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">艾特好友</label>
+              <div class="col-sm-5">
+                <textarea class="form-control" rows="5" name="shuoaite" placeholder="多个好友QQ请用|分割">{$qqInfo.shuoaite}</textarea>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">图片[输入1便是随机]</label>
+              <div class="col-sm-5">
+				<input type="text" name="img" class="form-control" placeholder="请输入完整的图片URL" value="{$qqInfo.shuoimg}"/>
+              </div>
+            </div>
+            
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">频率[单位:分]</label>
+              <div class="col-sm-5">
+				<input type="number" name="rate" class="form-control" value="{$qqInfo.shuorate}"/>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">服务器</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="shuonet">
+                  {for start="1" end="config('zz_server_num')+1"}
+                  	<option value="{$i}" {if condition="$qqInfo.shuonet eq $i"}selected{/if}>{$i}号服务器({if condition="$num=get_net_count('shuo',$i) and $num egt config('zz_server_end_num')"}已满{else/}{$num}个{/if})</option>
+                  {/for}
+                </select>
+              </div>
+            </div>
+            
+            </div>
+            <div class="panel-footer">
+			 <div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+				  <button class="btn btn-primary" type="submit">保存更改</button>
+				</div>
+			 </div>
+		  </div>
+          </form>
+          
+        
+</div>
+<div class="panel panel-default {if condition="input('name') neq 'reply'"}hide{/if}">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">评论功能配置</h4>
+        </div>
+        <div class="panel-body  panel-body-nopadding">
+          <form class="form-horizontal form-bordered" method="post" action="{:url('qqfunset',['uin'=>input('uin'),'name'=>'reply'])}">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">协议</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="reply">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="$qqInfo.reply eq 1"}selected{/if}>1_PE</option>
+                  <option value="2" {if condition="$qqInfo.reply eq 2"}selected{/if}>2_PC</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">评论内容</label>
+              <div class="col-sm-5">
+                <textarea class="form-control" rows="5" name="con">{$qqInfo.replycon}</textarea>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">艾特好友</label>
+              <div class="col-sm-5">
+                <textarea class="form-control" rows="5" name="replyaite" placeholder="多个好友QQ请用|分割">{$qqInfo.replyaite}</textarea>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">图片[输入1便是随机]</label>
+              <div class="col-sm-5">
+				<input type="text" name="img" class="form-control" placeholder="请输入完整的图片URL" value="{$qqInfo.replyimg}"/>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">频率[单位:分]</label>
+              <div class="col-sm-5">
+				<input type="number" name="rate" class="form-control" value="{$qqInfo.replyrate}"/>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">服务器</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="replynet">
+                  {for start="1" end="config('zz_server_num')+1"}
+                  	<option value="{$i}" {if condition="$qqInfo.replynet eq $i"}selected{/if}>{$i}号服务器({if condition="$num=get_net_count('reply',$i) and $num egt config('zz_server_end_num')"}已满{else/}{$num}个{/if})</option>
+                  {/for}
+                </select>
+              </div>
+            </div>
+            
+            </div>
+            <div class="panel-footer">
+			 <div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+				  <button class="btn btn-primary" type="submit">保存更改</button>
+				</div>
+			 </div>
+		  </div>
+          </form>
+          
+        
+</div>
+<div class="panel panel-default {if condition="input('name') neq 'zf'"}hide{/if}">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">转发说说功能配置</h4>
+        </div>
+        <div class="panel-body  panel-body-nopadding">
+          <form class="form-horizontal form-bordered" method="post" action="{:url('qqfunset',['uin'=>input('uin'),'name'=>'zf'])}">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">协议</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="zf">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="$qqInfo.zf eq 1"}selected{/if}>1_PE</option>
+                  <option value="2" {if condition="$qqInfo.zf eq 2"}selected{/if}>2_PC</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">转发内容</label>
+              <div class="col-sm-5">
+                <textarea class="form-control" rows="5" name="con">{$qqInfo.zfcon}</textarea>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">被转发的好友QQ</label>
+              <div class="col-sm-5">
+                <textarea class="form-control" rows="5" name="zfqqs" placeholder="多个好友QQ请用|分割">{$qqInfo.zfqqs}</textarea>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">艾特好友</label>
+              <div class="col-sm-5">
+                <textarea class="form-control" rows="5" name="zfaite" placeholder="多个好友QQ请用|分割">{$qqInfo.zfaite}</textarea>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">服务器</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="zfnet">
+                  {for start="1" end="config('zz_server_num')+1"}
+                  	<option value="{$i}" {if condition="$qqInfo.zfnet eq $i"}selected{/if}>{$i}号服务器({if condition="$num=get_net_count('zf',$i) and $num egt config('zz_server_end_num')"}已满{else/}{$num}个{/if})</option>
+                  {/for}
+                </select>
+              </div>
+            </div>
+            
+            </div>
+            <div class="panel-footer">
+			 <div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+				  <button class="btn btn-primary" type="submit">保存更改</button>
+				</div>
+			 </div>
+		  </div>
+          </form>
+          
+        
+</div>
+{/block}

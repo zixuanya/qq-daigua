@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+//                       .::::.
+//                     .::::::::.
+//                    :::::::::::
+//                 ..:::::::::::'
+//              '::::::::::::'
+//                .::::::::::
+//           '::::::::::::::..
+//                ..::::::::::::.
+//              ``::::::::::::::::
+//               ::::``:::::::::'        .:::.
+//              ::::'   ':::::'       .::::::::.
+//            .::::'      ::::     .:::::::'::::.
+//           .:::'       :::::  .:::::::::' ':::::.
+//          .::'        :::::.:::::::::'      ':::::.
+//         .::'         ::::::::::::::'         ``::::.
+//     ...:::           ::::::::::::'              ``::.
+//    ```` ':.          ':::::::::'                  ::::..
+//                       '.:::::'                    ':'````..
+//          美女镇码，永无BUG！！！
+//
+//      ┏┛ ┻━━━━━┛ ┻┓
+//      ┃　　　　　　 ┃
+//      ┃　　　━　　　┃
+//      ┃　┳┛　  ┗┳　┃
+//      ┃　　　　　　 ┃
+//      ┃　　　┻　　　┃
+//      ┃　　　　　　 ┃
+//      ┗━┓　　　┏━━━┛
+//            ┃　　　┃   神兽保佑
+//            ┃　　　┃   代挂无BUG！
+//            ┃　　　┗━━━━━━━━━┓
+//            ┃　　　　　　　    ┣┓
+//            ┃　　　　         ┏┛
+//            ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
+//              ┃ ┫ ┫   ┃ ┫ ┫
+//              ┗━┻━┛   ┗━┻━┛
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>{$webTitle}-{:config('web_name')}</title>
+<meta name="description" content="{:config('web_description')}" />
+<meta name="keywords" content="{:config('web_keywords')}" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="/dg/assets/img/favicon.ico" />
+<link rel="stylesheet" href="/dg/assets/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/dg/assets/css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/dg/assets/css/app.css" type="text/css" />
+<link rel="stylesheet" href="/dg/assets/css/simple-line-icons.css" type="text/css" />
+</head>
+<body>
+<div class="app-content" role="main">
+<div class="app-content-body" style="padding-top:30px;">
+<div class="col-lg-8 col-md-12 col-lg-offset-2">
+<div class="panel b-a" draggable="true">
+<div class="panel-heading bg-info dk no-border wrapper-lg"></div>
+<div class="text-center m-b clearfix">
+<div class="thumb-lg avatar m-t-n-xl">
+<img alt="image" class="b b-3x b-white" src="//q4.qlogo.cn/headimg_dl?dst_uin={$info.uin}&spec=100">
+</div>
+<div class="h4 font-thin m-t-sm">{$info.qname}</div>
+<span class="text-success">{$info.uin}</span>
+</div>
+<div class="hbox text-center b-t b-light">
+<div class="col padder-v text-muted">
+<div class="h4 text-dark m-b-sm">
+<b>代挂状态：<span class="text-success">{:getQqZt($info.zt)}</span></b>&nbsp;&nbsp;<b>cookies状态：{if condition="$info.cookiezt eq 0"}<span class="text-success"><font color="green">正常</font></span>{else}<span class="text-warning"><font color="red">失效</font></span>{/if}</b>
+</div>
+<span class="text-muted text-xs block"><font color="red">温馨提示：cookies状态失效不会影响实际代挂效果</font></span>
+</div>
+</div>
+<table class="table table-striped b-t b-light">
+<tbody>					
+{volist name="$orderList" id="order"}
+<tr>
+<td class="text-center">
+{if condition="$order.name eq 电脑在线"}<span style="font-size:20px;" class="text-info" data-icon="&#xe011;"></span>{/if}
+{if condition="$order.name eq 手机在线"}<span style="font-size:20px;" class="text-info" data-icon="&#xe00f;"></span>{/if}
+{if condition="$order.name eq 电脑管家"}<span style="font-size:20px;" class="text-info" data-icon="&#xe00e;"></span>{/if}
+{if condition="$order.name eq 音乐加速"}<span style="font-size:20px;" class="text-info" data-icon="&#xe062;"></span>{/if}
+{if condition="$order.name eq 手游加速"}<span style="font-size:20px;" class="text-info" data-icon="&#xe01b;"></span>{/if}
+{if condition="$order.name eq 勋章加速"}<span style="font-size:20px;" class="text-info" data-icon="&#xe021;"></span>{/if}
+{if condition="$order.name eq 钱包签到"}<span style="font-size:20px;" class="text-info" data-icon="&#xe02a;"></span>{/if}
+{if condition="$order.name eq 会员成长"}<span style="font-size:20px;" class="text-info" data-icon="&#xe043;"></span>{/if}
+{if condition="$order.name eq 访客加速"}<span style="font-size:20px;" class="text-info" data-icon="&#xe003;"></span>{/if}
+{if condition="$order.name eq 微视加速"}<span style="font-size:20px;" class="text-info" data-icon="&#xe008;"></span>{/if}
+&nbsp;&nbsp;&nbsp;{$order.name}</td>
+<td class="text-center">{$order.endtime}</td>
+<td class="text-center">
+{if condition="$order.zt eq 0"}
+<font color="green">加速中</font>
+{elseif condition="$order.zt eq 1"}
+<font color="#d2691e">补挂中</font>
+{elseif condition="$order.zt eq 2"}
+<font color="red">已关闭</font>
+{else}
+<font color="red">未知异常</font>
+{/if}
+</td>
+</tr>
+{/volist}			  						
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>

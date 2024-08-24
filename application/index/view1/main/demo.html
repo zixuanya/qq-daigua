@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/assets/Main/images/favicon.png" type="image/png">
+
+
+<title>{:config('web_webname')} | {block name="title"}{/block}</title>
+{block name="headjs"}{/block}
+  <script src="/assets/Main/js/jquery-1.11.1.min.js"></script>
+  
+  <link href="/assets/Main/css/style.default.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+	href="/assets/sweetalert/sweetalert.css" />
+	<link rel="stylesheet" href="/assets/Main/css/bootstrap-wysihtml5.css" />
+<script src="/assets/sweetalert/sweetalert.min.js"></script>
+
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="/assets/Main/js/html5shiv.js"></script>
+  <script src="/assets/Main/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+
+<section>
+
+  <div class="leftpanel">
+
+    <div class="logopanel">
+        <h1><span>[</span> {:config('web_webname')} <span>]</span></h1>
+    </div><!-- logopanel -->
+
+    <div class="leftpanelinner">
+
+        <!-- This is only visible to small devices -->
+        <div class="visible-xs hidden-sm hidden-md hidden-lg">
+            <div class="media userlogged">
+                <img alt="" src="/assets/Main/images/photos/loggeduser.png" class="media-object">
+                <div class="media-body">
+                    <h4>{$userinfo.user}</h4>
+                    <span>"欢迎回来"</span>
+                </div>
+            </div>
+
+            <h5 class="sidebartitle actitle">操作</h5>
+            <ul class="nav nav-pills nav-stacked nav-bracket mb30">
+              <li><a href="{:url('main/myinfo')}"><i class="fa fa-user"></i> <span>个人资料</span></a></li>
+              <li><a href="{:url('main/uppwd')}"><i class="fa fa-cog"></i> <span>修改密码</span></a></li>
+              <!--li><a href=""><i class="fa fa-question-circle"></i> <span>Help</span></a></li-->
+              <li><a href="{:url('main/logout')}"><i class="fa fa-sign-out"></i> <span>注销登录</span></a></li>
+            </ul>
+        </div>
+
+      <h5 class="sidebartitle">导航条</h5>
+      <ul class="nav nav-pills nav-stacked nav-bracket">
+        <li><a href="{:url('main/index')}"><i class="fa fa-home"></i> <span>控制面板</span></a></li>
+        <li><a href="{:url('qqlist')}"><i class="fa fa-qq"></i> <span>QQ列表</span></a></li>
+		<li><a href="{:url('ulist')}"><i class="fa fa-th-list"></i> <span>用户列表</span></a></li>
+		<li><a href="{:url('kmlist')}"><i class="fa fa-list"></i> <span>卡密列表</span></a></li>
+		<li><a href="{:url('paylist')}"><i class="fa fa-list-alt"></i> <span>订单列表</span></a></li>
+		<li><a href="{:url('orderlist')}"><i class="fa fa-bars"></i> <span>交易记录</span></a></li>
+		<li class="nav-parent"><a href="#"><i class="glyphicon glyphicon-envelope"></i> <span>会员消息</span></a>
+            <ul class="children" style="display: none;">
+                <li><a href="{:url('msglist')}"><i class="fa fa-caret-right"></i>消息列表</a></li>
+                <li><a href="{:url('addmsg')}"><i class="fa fa-caret-right"></i>发布消息</a></li>
+                {if condition="ZID eq 1"}<li><a href="{:url('msglist',['type'=>'all'])}"><i class="fa fa-caret-right"></i> 消息列表[全]</a></li>{/if}
+            </ul>
+        </li>
+		{if condition="ZID eq 1"}
+		<li><a href="{:url('cronlist')}"><i class="fa fa-tasks"></i> <span>监控说明</span></a></li>
+		<li><a href="{:url('zzset')}"><i class="fa fa-cog"></i> <span>主站配置</span></a></li>
+		<li><a href="{:url('update')}"><i class="fa fa-download"></i> <span>程序更新</span></a></li>
+		{/if}
+		<li class="nav-parent"><a href="#"><i class="fa fa-bookmark-o"></i> <span>公告操作</span></a>
+            <ul class="children" style="display: none;">
+                <li><a href="{:url('gglist')}"><i class="fa fa-caret-right"></i>公告列表</a></li>
+                <li><a href="{:url('addgg')}"><i class="fa fa-caret-right"></i>添加公告</a></li>
+                {if condition="ZID eq 1"}<li><a href="{:url('gglist',['type'=>'all'])}"><i class="fa fa-caret-right"></i> 公告列表[全]</a></li>{/if}
+            </ul>
+        </li>
+        <li class="nav-parent"><a href="#"><i class="fa fa-location-arrow"></i> <span>分站操作</span></a>
+            <ul class="children" style="display: none;">
+                <li><a href="{:url('weblist')}"> <i class="fa fa-caret-right"></i>分站列表</a></li>
+                {if condition="ZID EQ 1"}
+                <li><a href="{:url('adminlist')}"> <i class="fa fa-caret-right"></i>站长列表</a></li>
+                {/if}
+            </ul>
+        </li>
+        <li class="nav-parent"><a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span>在线支付配置</span></a>
+            <ul class="children" style="display: none;">
+                <li><a href="{:url('alipayset')}"> <i class="fa fa-caret-right"></i>支付宝配置</a></li>
+                <li><a href="{:url('epayset')}"> <i class="fa fa-caret-right"></i>彩虹易支付配置</a></li>
+            </ul>
+        </li>
+		<li><a href="{:url('webset')}"><i class="fa fa-cogs"></i> <span>站点信息配置</span></a></li>
+        <li><a href="{:url('main/logout')}"><i class="fa fa-sign-out"></i> <span>安全退出</span></a></li>
+      </ul>
+
+    </div><!-- leftpanelinner -->
+  </div><!-- leftpanel -->
+
+  <div class="mainpanel">
+
+    <div class="headerbar">
+
+      <a class="menutoggle"><i class="fa fa-bars"></i></a>
+
+      <form class="searchform" action="index.html" method="post">
+        <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+      </form>
+
+      <div class="header-right">
+        <ul class="headermenu">
+
+
+          <li>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <img src="/assets/Main/images/photos/loggeduser.png" alt="">
+                {$userinfo.user}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                <li><a href="{:url('main/myinfo')}"><i class="glyphicon glyphicon-user"></i> 我的资料</a></li>
+                <li><a href="{:url('main/uppwd')}"><i class="glyphicon glyphicon-cog"></i> 修改密码</a></li>
+                <!--li><a href="#"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li-->
+                <li><a href="{:url('main/logout')}"><i class="glyphicon glyphicon-log-out"></i> 注销账号</a></li>
+              </ul>
+            </div>
+          </li>
+							<button id="chatview" class="btn btn-default tp-icon chat-icon">
+								<i class="glyphicon glyphicon-paperclip"></i>
+							</button>
+						</li>
+        </ul>
+      </div><!-- header-right -->
+
+    </div><!-- headerbar -->
+
+    <div class="pageheader">
+				<h2>
+					<i class="fa fa-home"></i> {block name="title"}{/block} <span>Subtitle
+						goes here...</span>
+				</h2>
+				<div class="breadcrumb-wrapper">
+					<span class="label">You are here:</span>
+					<ol class="breadcrumb">
+						<li><a href="/">{:config('web_webname')}</a></li>
+						<li class="active">{block name="title"}{/block}</li>
+					</ol>
+				</div>
+			</div>
+
+    <div class="contentpanel">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">&times;</a>
+            <a href="" class="minimize">&minus;</a>
+          </div>
+          <h4 class="panel-title">发送会员消息</h4>
+          <p>在这里，你可以编写消息内容</a></p>
+        </div>
+        <div class="panel-body">
+        <form action="" method="post">
+          <textarea id="wysiwyg" placeholder="Enter text here..." class="form-control" rows="10" name="abc"></textarea>
+          
+          <input type="submit" name="a" value="tj">
+          </form>
+        </div>
+      </div>
+      
+            
+
+
+      
+    </div><!-- contentpanel -->
+  </div><!-- mainpanel -->
+
+  <div class="rightpanel">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#rp-alluser" data-toggle="tab"><i class="fa fa-users"></i></a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="rp-alluser">
+            <h5 class="sidebartitle">客服列表</h5>
+            <ul class="chatuserlist">
+						{for start="0" end="count($kfqqs)"}
+						<li class="online">
+							<div class="media">
+								<a href="#" class="pull-left media-thumb"> <img
+									src="http://q1.qlogo.cn/g?b=qq&nk={$kfqqs[$i]}&s=100" alt=""
+									class="media-object" />
+								</a>
+								<div class="media-body">
+									<strong>QQ:{$kfqqs[$i]}</strong> <small>客服编号:{$i}</small>
+								</div>
+							</div>
+							<!-- media -->
+						</li> {/for}
+					</ul>
+            
+        </div>
+
+    </div><!-- tab-content -->
+  </div><!-- rightpanel -->
+
+
+</section>
+
+
+<script src="/assets/Main/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/assets/Main/js/jquery-ui-1.10.3.min.js"></script>
+<script src="/assets/Main/js/bootstrap.min.js"></script>
+<script src="/assets/Main/js/jquery.sparkline.min.js"></script>
+<script src="/assets/Main/js/toggles.min.js"></script>
+<script src="/assets/Main/js/retina.min.js"></script>
+<script src="/assets/Main/js/jquery.cookies.js"></script>
+
+<script src="/assets/Main/js/wysihtml5-0.3.0.min.js"></script>
+<script src="/assets/Main/js/bootstrap-wysihtml5.js"></script>
+
+<script src="/assets/Main/js/custom.js"></script>
+
+
+<script>
+jQuery(document).ready(function(){
+    
+    "use strict";
+    
+  // HTML5 WYSIWYG Editor
+  jQuery('#wysiwyg').wysihtml5({color: true,html:true});
+
+
+  window.onload = function() {
+  // Listen to the double click event.
+  if ( window.addEventListener )
+	document.body.addEventListener( 'dblclick', onDoubleClick, false );
+  else if ( window.attachEvent )
+	document.body.attachEvent( 'ondblclick', onDoubleClick );
+  };
+
+  function onDoubleClick( ev ) {
+	// Get the element which fired the event. This is not necessarily the
+	// element to which the event has been attached.
+	var element = ev.target || ev.srcElement;
+
+	// Find out the div that holds this element.
+	var name;
+
+	do {
+		element = element.parentNode;
+	}
+	while ( element && ( name = element.nodeName.toLowerCase() ) &&
+		( name != 'div' || element.className.indexOf( 'editable' ) == -1 ) && name != 'body' );
+
+	if ( name == 'div' && element.className.indexOf( 'editable' ) != -1 )
+		replaceDiv( element );
+	}
+
+	var editor;
+
+	function replaceDiv( div ) {
+		if ( editor )
+			editor.destroy();
+		editor = CKEDITOR.replace( div );
+	}
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/assets/Main/images/favicon.png" type="image/png">
+
+  <title>{:config('web_webname')} | 注册</title>
+
+  <link href="/assets/Main/css/style.default.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/assets/sweetalert/sweetalert.css"/>
+  <script src="/assets/sweetalert/sweetalert.min.js"></script>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="/assets/Main/js/html5shiv.js"></script>
+  <script src="/assets/Main/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="signin">
+
+
+
+
+
+<section>
+  
+    <div class="signinpanel">
+        
+        <div class="row">
+            
+            <div class="col-md-7">
+                
+                <div class="signin-info">
+                    <div class="logopanel">
+                        <h1><span>[</span> {:config('web_webname')} <span>]</span></h1>
+                    </div><!-- logopanel -->
+                
+                    <div class="mb20"></div>
+                
+                    <h5><strong>欢迎加入我们</strong></h5>
+                    <div class="mb20"></div>
+                    <strong>已有账号？ <a href="{:url('login')}">登录</a></strong>
+                </div><!-- signin0-info -->
+            
+            </div><!-- col-sm-7 -->
+            
+            <div class="col-md-5">
+                
+                <form method="post" action="{:url('reg')}">
+                    <h4 class="nomargin">注册</h4>
+                    <p class="mt5 mb20">添加您的登录许可证.</p>
+                
+                    <input type="text" class="form-control uname" name="user" placeholder="用户名" />
+                    <input type="password" class="form-control pword" name="pass" placeholder="密码" />
+                    <input type="text" class="form-control uname" name="qq" placeholder="QQ" />
+                    <input type="text" class="form-control uname" name="mail" placeholder="邮箱" />
+                    <input type="text" class="form-control" name="code" placeholder="验证码" />
+                    <img title="点击刷新" src="/other/code.php" onclick="this.src='/other/code.php?'+Math.random();" class="img-rounded" >
+                    <a href="{:url('findp')}"><small>忘记密码?</small></a>
+                    <button class="btn btn-success btn-block">注册</button>
+                    
+                </form>
+            </div><!-- col-sm-5 -->
+            
+        </div><!-- row -->
+        
+        <div class="signup-footer">
+            <div class="pull-left">
+                &copy; 2016. All Rights Reserved. {:config('web_webname')}
+            </div>
+            <div class="pull-right">
+                Created By: <a href="/" target="_blank">{:config('web_webname')}</a>
+            </div>
+        </div>
+        
+    </div><!-- signin -->
+  
+</section>
+
+
+<script src="/assets/Main/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/Main/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/assets/Main/js/bootstrap.min.js"></script>
+<script src="/assets/Main/js/modernizr.min.js"></script>
+<script src="/assets/Main/js/jquery.sparkline.min.js"></script>
+<script src="/assets/Main/js/jquery.cookies.js"></script>
+
+<script src="/assets/Main/js/toggles.min.js"></script>
+<script src="/assets/Main/js/retina.min.js"></script>
+
+<script src="/assets/Main/js/custom.js"></script>
+<script>
+    jQuery(document).ready(function(){
+        
+        // Please do not use the code below
+        // This is for demo purposes only
+        var c = jQuery.cookie('change-skin');
+        if (c && c == 'greyjoy') {
+            jQuery('.btn-success').addClass('btn-orange').removeClass('btn-success');
+        } else if(c && c == 'dodgerblue') {
+            jQuery('.btn-success').addClass('btn-primary').removeClass('btn-success');
+        } else if (c && c == 'katniss') {
+            jQuery('.btn-success').addClass('btn-primary').removeClass('btn-success');
+        }
+    });
+</script>
+<script type="text/javascript">
+    {$alert}
+</script>
+</body>
+</html>

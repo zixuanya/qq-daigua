@@ -1,0 +1,80 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+<div class="wrapper">
+                    <div class="col-sm-12 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                                      <div class="clear"><i class="fa fa-warning text-lt fa m-r-sm"></i> 在线上传背景</div>
+                                </div>
+                                <div class="list-group-item">用于更改首页背景。</div>
+								<div class="list-group-item">必须jpg格式。</div>
+                        </div>
+                    </div>
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+                            <form role="form" class="form-horizontal" method="post">
+							
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">上传背景</span>
+                                        <input type="file" name="file" class="form-control">
+                                    </div>
+									
+                                </div>
+								
+							<div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认上传</button>
+                                </div>
+						
+								
+								
+							
+                                
+                                
+                               
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+var items = $("select[default]") || 0;
+for (i = 0; i < items.length; i++) {
+	$(items[i]).val($(items[i]).attr("default"));
+}
+
+</script>
+{/block}

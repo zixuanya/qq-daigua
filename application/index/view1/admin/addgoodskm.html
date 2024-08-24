@@ -1,0 +1,48 @@
+{extend name="common/common" /} {block name="title"}导入商品卡密{/block}
+{block name="main"}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="panel-btns">
+			<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+		</div>
+		<h4 class="panel-title">导入卡密[批量]</h4>
+	</div>
+	<div class="panel-body panel-body-nopadding">
+
+		<form class="form-horizontal form-bordered" method="post"
+			action="{:url()}">
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">选择商品</label>
+				<div class="col-sm-5">
+					<select name="gid"  class="form-control mb15">
+					{volist name="goodslist" id="arr"}
+						<option value="{$arr.id}">{$arr.name}</option>
+					{/volist}
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">卡密</label>
+				
+				<div class="col-sm-5">
+					<textarea rows="5" cols="3" name="text" class="form-control"></textarea>
+					<code>格式:卡号----卡密 卡密没有直接输入卡号[不带----].一行一个</code>
+				</div>
+			</div>
+
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-sm-9 col-sm-offset-3">
+						<button class="btn btn-primary">导入</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<!-- panel-body -->
+
+</div>
+{/block}

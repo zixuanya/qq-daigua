@@ -1,0 +1,89 @@
+{extend name="common/layout" /} {block name="title"}购买卡密[发卡]{/block}
+{block name="main"}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="panel-btns">
+			<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+		</div>
+		<h4 class="panel-title">购买卡密</h4>
+	</div>
+	<div class="panel-body panel-body-nopadding">
+
+		<form class="form-horizontal form-bordered" method="post"
+			action="{:url()}">
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">选择商品</label>
+				<div class="col-sm-5">
+					<select name="gid" class="form-control mb15"> {volist
+						name="goodslist" id="arr" empty="<option>本站没有商品可卖</option>"}
+						<option value="{$arr.id}">{$arr.name}--价格:{$arr.price}元--库存:{:db('goods_km')->alias('a')->join('goods
+							b','a.gid =
+							b.id')->where(['a.buyuid'=>0,'b.zid'=>ZID,'b.id'=>$arr.id])->count()}张</option>
+						{/volist}
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">购买数量</label>
+				<div class="col-sm-5">
+					<input type="number" min="1" value="1" name="num"
+						class="form-control">
+				</div>
+			</div>
+
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-sm-9 col-sm-offset-3">
+						<button class="btn btn-primary">购买</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<!-- panel-body -->
+
+</div>
+
+{if condition="$kmmsg"}
+<div class="panel panel-danger">
+	<div class="panel-heading">
+		<div class="panel-btns">
+			<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+		</div>
+		<!-- panel-btns -->
+		<h3 class="panel-title">购买的卡密</h3>
+	</div>
+	<div class="panel-body">{$kmmsg}</div>
+</div>
+<!-- panel -->
+{/if}
+<div class="table-responsive">
+	<table class="table table-success mb30">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>商品名称</th>
+				<th>卡号</th>
+				<th>卡密</th>
+				<th>购买时间</th>
+			</tr>
+		</thead>
+		<tbody>
+			{volist name="list" id="arr"}
+			<tr>
+				<td>{$arr.id}</td>
+				<td>{$arr.goods}</td>
+				<td>{$arr.km}</td>
+				<td>{$arr.pass}</td>
+				<td>{$arr.buytime}</td>
+			</tr>
+			{/volist}
+		</tbody>
+	</table>
+</div>
+<!-- table-responsive -->
+
+{$list->render()} {/block}

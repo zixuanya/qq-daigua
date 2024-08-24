@@ -1,0 +1,165 @@
+{extend name="panel/layout" /}
+{block name="main"}
+{if condition="config('zz_qttcoff') == 1"}
+<script type="text/javascript">
+window.alert("{:getHtmlCode(config('zz_qttc'),true)}");
+
+</script>
+{/if}
+
+
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+        <title>{$webTitle}-{:config('web_name')}</title>
+		<script>document.title="{$webTitle}-{:config('web_name')}";</script>
+        <div class="app-content-body animated fadeInUp">
+            <div class="hbox hbox-auto-xs hbox-auto-sm">
+                <div class="col">  
+                    <div class="bg-light lter b-b wrapper-sm ng-scope">
+                        <ul class="breadcrumb">
+                            <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+                            <li>用户中心</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="wrapper">
+                                                
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel b-a" draggable="true">
+                                <div class="panel-heading bg-info dk no-border wrapper-lg"></div>
+                                <div class="text-center m-b clearfix">
+                                    <div class="thumb-lg avatar m-t-n-xl">
+                                        <img alt="image" class="b b-3x b-white" src="//q4.qlogo.cn/headimg_dl?dst_uin={$userInfo.qq}&spec=100">
+                                    </div>
+                                    <div class="h4 font-thin m-t-sm">{$userInfo.user}</div>
+                                    <span class="text-muted text-xs block">{$power} UID:{$userInfo.uid}</span>
+                                </div>
+                                <ul class="list-group no-radius alt">
+                                  <a href="{:url('recharge')}" class="list-group-item" >
+                                    <span class="badge bg-info">{$userInfo.point}￥</span>
+                                    <i class="fa fa-jpy fa-fw text-muted"></i> 
+                                    您拥有帐号余额
+                                  </a>
+                                  <li class="list-group-item">
+                                    <span class="badge bg-info">{$userInfo.qq}</span>
+                                    <i class="fa fa-asterisk fa-fw text-muted"></i> 
+                                    您的绑定QQ
+                                  </li>
+                                  <a href="{:url('recharge')}" class="list-group-item" >
+                                    <span class="badge bg-info">{$userInfo.peie}个</span>
+                                    <i class="fa fa-check-square-o fa-fw text-muted"></i> 
+                                    您拥有账号配额
+                                  </a>
+                                  <!--<a class="list-group-item">
+                                    <span class="badge bg-info">16位</span>
+                                    <i class="fa fa-users fa-fw text-muted"></i> 
+                                    您累计邀请好友
+                                  </a>-->
+                                  <li class="list-group-item">
+                                    <span class="badge bg-info">{$userInfo.pay_account}</span>
+                                    <i class="fa fa-bar-chart-o fa-fw text-muted"></i> 
+                                    您的支付宝账号
+                                  </li>
+                                </ul>
+                                <div class="hbox text-center b-t b-light">          
+                                    <div class="col padder-v text-muted b-r b-light">
+                                        <div class="h3"><a href="{:url('index')}" class="text-info" >{$amount.jqq}个</a></div><span>今日增加QQ</span>
+                                    </div>
+                                    <div class="col padder-v text-muted">
+                                        <div class="h3"><a href="{:url('index')}" class="text-info xiaoxi2" >{$amount.juser}位</a></div><span>今日增加用户</span>
+                                    </div>
+                                </div>
+                                    
+                                <div class="btn-group btn-group-justified">
+                                    <a href="{:url('qqadd')}" class="btn btn-primary" >添加代挂</a>
+                                    <a href="{:url('qqlist')}" class="btn btn-info" >Q Q 列表</a>
+                                    <a href="{:url('recharge')}" class="btn btn-success" >账户充值</a>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                         
+						
+<div class="col-lg-4 col-md-6"> 
+<div class="panel panel-info">
+ <div class="panel-heading font-bold">平台公告</div>
+  <div class="list-group no-radius alt">
+    {:config('web_gg_panel')}
+  </div> 
+  </div> 
+  </div>
+						
+      <div class="col-lg-4 col-md-6">
+                            
+                            <div class="panel panel-info" draggable="true">
+                                <div class="panel-heading font-bold">总站大数据统计</div>
+                                <div class="panel-body text-center">
+                                    
+                                    <div class="col-sm-6">
+                                        <div class="block panel padder-v bg-primary item">
+                                            <span class="text-white font-thin h1 block">{$amount.zuser}</span>
+                                            <span class="text-muted text-xs">总会员数</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="block panel padder-v bg-info item">
+                                            <span class="text-white font-thin h1 block">{$amount.zorder}</span>
+                                            <span class="text-muted text-xs">总订单数</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="block panel padder-v bg-success item">
+                                            <span class="text-white font-thin h1 block">{$amount.zqq}</span>
+                                            <span class="text-muted text-xs">代挂QQ数</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="block panel padder-v bg-dark item">
+                                            <span class="text-white font-thin h1 block">{$amount.zweb}</span>
+                                            <span class="text-muted text-xs">代挂分站数</span>
+
+</div> </div> </div> </div> </div> 
+<div class="col-lg-12 col-md-12" style="overflow:hidden;">
+</div> 
+<div class="col-lg-4 col-md-12">
+<div class="panel panel-info">
+<div class="panel-heading font-bold text-center"> 任务列表 </div>
+
+<div class="list-group no-radius alt">
+<a class="list-group-item" href="/index/panel/qqlist.html" target="_blank"> 
+<i class="fa fa-share-alt-square fa-fw text-info"></i> 
+<b>[新人专区]第一次注册吧？快点来添加一个你的QQ吧！</b>
+</a>
+<a class="list-group-item" href="/index/panel/qiandao.html" target="_blank"> 
+<i class="fa fa-share-alt-square fa-fw text-info"></i> 
+<b>[每日必做] 今天还没有签到吗？快点签到领奖金啦！</b>
+</a>
+<a class="list-group-item" href="/index/panel/ktfz.html" target="_blank"> 
+<i class="fa fa-share-alt-square fa-fw text-info"></i> 
+<b>[新人进阶] 还没有分站？搭建个分站来网赚吧！</b>
+</a>
+<a class="list-group-item" href="http://{:config('web_domain')}" target="_blank"> 
+<i class="fa fa-share-alt-square fa-fw text-info"></i> 
+<b>[推荐] {:config('web_name')}，最好用最稳定的代挂平台</b>
+</a>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+  </div> </div> </div></div> </div> </div> </div> </div> </div> 
+
+
+
+  <div class="fakeloader"></div>
+<div id="fakeLoader"></div>
+        
+        <script type="text/javascript">
+		get_xiaoxi2();
+        </script>
+            </section>
+
+{/block}

@@ -1,0 +1,157 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+ <div class="wrapper">
+    {if isset($kms)}
+        
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+                </h4>
+            </header><!-- .widget-header -->
+            <hr class="widget-separator">
+            <div class="widget-body">
+                {$kms}
+            </div>
+        </div>
+    </div>
+    {/if}
+ <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">卡密生成
+							<span class="pull-right">
+							<label class="label-checkbox inline">
+                                剩余金额：{$userInfo.point}
+                            </label>
+						</span>
+							
+							</div>
+                            <div class="panel-body padder-v">
+
+							
+						</span>
+            </div>
+              <hr class="widget-separator">
+            <div class="widget-body">
+                <form class="form-horizontal group-border-dashed" method="post">
+                    <input type="hidden" name="action" value="add">
+				 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">生成卡密金额</span>
+                                        <input name="value" type="number" min="1" max="1000"
+                                   placeholder="输入要生成卡密的每张卡密金额！（最低1元，最高1000元每张卡）" class="form-control"
+                                   required>
+                                    </div>
+                                </div>
+					 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">生成卡密数量</span>
+                                       <input name="num" type="number" min="1" max="100"
+                                   placeholder="输入要生成多少张卡密！(最低1张，最高100张）"
+                                   class="form-control" required>
+                                    </div>
+                                </div>			
+								
+								
+								
+
+                      
+							<div class="line line-dashed b-b line-md"></div>
+                    <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认生成</button>
+                                </div>
+                </form>
+            </div>
+        </div>
+<div class="row">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">卡密列表</div>
+                            <div class="row wrapper">
+                                <div class="col-sm-12">
+                                    <div class="btn-group dropdown m-l-xs" style="float:left;">
+                                      <button type="button" class="btn btn-primary" data-toggle="dropdown" data-toggle="dropdown">
+                                        卡密总数                                        <span ></span>
+                                      </button>
+                                      
+                                    </div>
+                                    <div class="btn-group dropdown m-l-xs" style="float:left;">
+                                      <button type="button" class="btn btn-info" data-toggle="dropdown" data-toggle="dropdown">
+                                        {:count($kmList)}                                       
+                                      </button>
+                                    </div>
+                                    <a href="/index/panel/recharge" class="btn btn-sm btn-dark m-l-xs" ><i ></i> 充值余额</a>
+                                    <div class="form-inline ng-pristine ng-valid hidden-xs" style="float:right;">
+                                      <form method="post">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的用户名或者邮箱！" name="s"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                 <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>卡密</th>
+                        <th>状态</th>
+                        <th>金额</th>
+                        <th>生成时间</th>
+                        <th>使用时间</th>
+                        <th>使用者UID</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="$kmList" id="km"}
+                    <tr>
+                        <td>{$km.km}</td>
+                        <td>{if condition="$km.useid"}<font color="red">已使用</font>{else}未使用{/if}</td>
+                        <td>{$km.value}</td>
+                        <td>{$km.addtime}</td>
+                        <td>{$km.usetime}</td>
+                        <td>{$km.useid}</td>
+                        <td><a href="?action=del&kid={$km.kid}" class="btn-xs btn-warning">删除</a></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                            </div>
+                            <footer class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">                
+                                        <div class="btn-group">
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+
+</div>
+{/block}

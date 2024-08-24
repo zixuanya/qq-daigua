@@ -1,0 +1,289 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div id="content" class="app-content" role="main">
+	<div id="Loading" style="display:none">
+		<div ui-butterbar="" class="butterbar active"><span class="bar"></span></div>
+	</div>
+<div class="app-content-body">	<section id="container">
+<div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				<div class="wrapper-md ng-scope"> 
+				<div class="wrapper-md control">
+				
+				<div class="wrapper">
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                                      <div class="clear"><i class="fa fa-warning text-lt fa m-r-sm"></i> 在线充值！</div>
+                                </div>
+                                <div class="list-group-item">提供多种充值方式，安全稳定。</div>
+								<div class="list-group-item">充值无需等待，即时到账。</div>
+                        </div>
+                    </div>
+				
+				
+<div class="row">
+		<div class="modal inmodal fade" id="myModa4" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" onclick="clearInterval(interval1)"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+						</button>
+						<h4 class="modal-title">订单信息</h4>
+					</div>
+					<div class="modal-body" id="showInfo2">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-white" data-dismiss="modal" onclick="clearInterval(interval1)">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+  <div class="wrapper">
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2 text-center" role="main">
+                       
+		{if condition="config('zz_alipay_api') or config('zz_tenpay_api') or config('zz_wxpay_api') or config('zz_qqpay_api')"}
+       <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                在线充值
+            </div>
+			<div class="list-group-item"><b>我当前的账户余额：<span style="font-size:16px; color:#FF6133;">{$userInfo.point}</span> ￥</b></div>
+                            <div class="list-group-item">
+
+            <div class="panel-body">
+                <form action="#" class="form-horizontal">
+				<input type="hidden" name="uid" value="{$userInfo.uid}">
+				<input type="hidden" name="type" value="alipay">
+                    
+
+              				<div class="line line-dashed b-b line-md"></div>
+					  <div class="input-group">
+                        <span class="input-group-addon">充值</span>
+                        <div class="col-lg-12">
+                            <input type="text" name="value" placeholder="输入要充值的余额" class="form-control" required>
+                        </div>
+                    </div>
+								<div class="line line-dashed b-b line-md"></div>
+					  <div class="form-group">
+                       
+                        <div class="col-lg-8">
+							{if condition="config('zz_alipay_api')"}<label><input type="radio" name="paytype" value="alipay" checked>支付宝</label>{/if}{if condition="config('zz_tenpay_api')"}<label><input type="radio" name="paytype" value="tenpay">财付通</label>{/if}{if condition="config('zz_qqpay_api')"}<label><input type="radio" name="paytype" value="qqpay">QQ钱包</label>{/if}{if condition="config('zz_wxpay_api')"}<label><input type="radio" name="paytype" value="wxpay">微信支付</label>{/if}
+						</div>
+                    </div>
+			<div class="line line-dashed b-b line-md"></div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-8">
+							<button type="button" class="btn btn-primary" id="buyshop" >确认充值</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModa4" id="alink" style="visibility: hidden;"></button>
+							<button class="btn btn-default-outline" type="reset">重置</button>
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+		{/if}
+	 <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                充值卡充值
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+            				<div class="line line-dashed b-b line-md"></div>
+					  <div class="input-group">
+                        <span class="input-group-addon">余额</span>
+                        <div class="col-lg-11">
+                            <input type="text" class="form-control" value="{$userInfo.point}元" disabled>
+                        </div>
+                    </div>
+
+            				<div class="line line-dashed b-b line-md"></div>
+					  <div class="input-group">
+                        <span class="input-group-addon">卡密</span>
+                        <div class="col-lg-11">
+                            <input type="text" name="km" placeholder="输入充值卡卡密" class="form-control" required>
+                        </div>
+                    </div>
+			<div class="line line-dashed b-b line-md"></div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-8">
+									<div class="line line-dashed b-b line-md"></div>
+                          <button class="btn btn-primary" type="submit">确认充值</button>
+						   <button class="btn btn-default-outline" type="reset">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/layer/layer.min.js"></script>
+<script src="/assets/js/qrcode.min.js"></script>
+<script>
+function getcodeurl(codeurl) {
+  var qrcode = new QRCode("qrcode", {
+	  text: codeurl,
+	  width: 240,
+	  height: 240,
+	  colorDark: "#000000",
+	  colorLight: "#ffffff",
+	  correctLevel: QRCode.CorrectLevel.H
+  });
+}
+var interval1;
+function loadmsg(trade_no) {
+	$.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "{:url('ajax/getshop')}",
+		timeout: 10000, 
+		data: {trade_no: trade_no}, 
+		success: function (data, textStatus) {
+			if (data.code == 2) {
+				clearInterval(interval1);
+				if (confirm("您已支付完成，需要跳转到用户中心吗？")) {
+					window.location.href="{:url('recharge')}";
+				} else {}
+			}else if(data.code == -1) {
+				layer.alert(data.msg);
+				clearInterval(interval1);
+			}else if (data.code == 1) {
+			}
+		},
+		error: function (XMLHttpRequest, textStatus, errorThrown) {
+			if (textStatus == "timeout") {
+				//loadmsg();
+			} else {
+				alert('创建连接失败');
+			}
+		}
+	});
+}
+$(document).ready(function(){
+$("#buyshop").click(function(){
+	var value=$("input[name='value']").val();
+	var paytype=$("input:radio[name='paytype']:checked").val();
+	if(value=='' || value==0){
+		layer.alert("请填写充值金额");
+		return false;
+	}
+	layer.load(0,2);
+	ajax.get("/index.php/index/ajax/recharge.html?type="+paytype+"&value="+value, "json", function(d) {
+		if(d.code!=1){
+			setTimeout(function(){
+				layer.closeAll('loading');
+			}, 1);
+			layer.alert(d.msg);
+			return false;
+		}
+		tishi_2(paytype,d);
+	});
+});
+});
+function tishi_2(paytype,d){
+	if(d.epay==1){
+		var data = '<p>订单号：'+d.trade_no+'</p><p>订单金额：<b>'+d.money+'</b>元</p><p>订单名称：'+d.name+'</p>'+
+					'<p><b>付款后系统会自动为您充值到账，即时生效，无需卡密。</b></p>'+
+					'<a href="/other/submit.php?type=epay&type2='+paytype+'&orderid='+d.trade_no+'" class="btn btn-success btn-block" target="_blank">立即支付</a>'+
+					'</form>';
+	}else if(paytype=='alipay'){
+		var data = '<p>订单号：'+d.trade_no+'</p><p>订单金额：<b>'+d.money+'</b>元</p><p>订单名称：'+d.name+'</p>'+
+					'<p><b>支付宝付款后系统会自动为您充值到账，即时生效，无需卡密。</b></p>'+
+					'<a href="/other/submit.php?type=alipay&orderid='+d.trade_no+'" class="btn btn-success btn-block" target="_blank">立即支付</a>'+
+					'</form>';
+	}else if(paytype=='tenpay'){
+		var data = '<p>订单号：'+d.trade_no+'</p><p>订单金额：<b>'+d.money+'</b>元</p><p>订单名称：'+d.name+'</p>'+
+					'<p><b>财付通付款后系统会自动为您充值到账，即时生效，无需卡密。</b></p>'+
+					'<a href="/other/submit.php?type=tenpay&orderid='+d.trade_no+'" class="btn btn-success btn-block" target="_blank">立即支付</a>'+
+					'</form>';
+	}else if(paytype=='wxpay'){
+		var data = '<p style="text-align: center;"><b>￥'+d.money+'</b></p>'+
+		'<div style="text-align: center;" id="qrcode"></div>'+
+				'<p><br></p>'+
+				'<p style="text-align: center;">请使用微信扫一扫，扫描上方二维码完成支付。'+
+				'<p style="text-align: center;">手机用户可保存上方二维码到手机中，在微信扫一扫中选择“相册”即可</p>'+
+				'<p style="text-align: center;"><b>扫码付款后系统会自动为您充值，即时生效，无需卡密。</b></p>';
+	}else if(paytype=='qqpay'){
+		var data = '<p style="text-align: center;"><b>￥'+d.money+'</b></p>'+
+		'<div style="text-align: center;" id="qrcode"></div>'+
+				'<p><br></p>'+
+				'<p style="text-align: center;">请使用手机QQ扫一扫，扫描上方二维码完成支付。'+
+				'<p style="text-align: center;">手机用户可保存上方二维码到手机中，在手机QQ扫一扫中选择“相册”即可</p>'+
+				'<p style="text-align: center;"><b>扫码付款后系统会自动为您充值，即时生效，无需卡密。</b></p>';
+	}
+	interval1=setInterval("loadmsg('"+d.trade_no+"')", 3000);
+	var divshow = $("#showInfo2");
+	divshow.text("");
+	divshow.append(data);
+	setTimeout(function(){
+		layer.closeAll('loading');
+	}, 1);
+	$("#alink").click();
+	if(paytype=='wxpay'||paytype=='qqpay'){
+		getcodeurl(d.code_url);
+	}
+}
+var ajax={
+	get: function(url, dataType, callback) {
+		dataType = dataType || 'html';
+		$.ajax({
+			type: "GET",
+			url: url,
+			async: true,
+			dataType: dataType,
+			cache:false,
+			beforeSend:function(){
+				$(".colorful_loading_frame,.colorful_loading").css("display", "block");
+			},
+			complete:function(){
+				$(".colorful_loading_frame,.colorful_loading").css("display", "none");
+			},
+			success: function(data,status) {
+				if (callback == null) {
+					return;
+				}
+				callback(data);
+			},
+			error: function(error) {
+				alert('创建连接失败');
+			}
+		});
+	},
+	post: function(url, parameter, dataType, callback) {
+		dataType = dataType || 'html';
+		$.ajax({
+			type: "POST",
+			url: url,
+			async: true,
+			dataType: dataType,
+			data: parameter,
+			cache:false,
+			beforeSend:function(){
+				$(".colorful_loading_frame,.colorful_loading").css("display", "block");
+			},
+			complete:function(){
+				$(".colorful_loading_frame,.colorful_loading").css("display", "none");
+			},
+			success: function(data,status) {
+				if (callback == null) {
+					return;
+				}
+				callback(data);
+			},
+			error: function(error) {
+				alert('创建连接失败');
+			}
+		});
+	}
+}
+
+</script>
+
+{/block}

@@ -1,0 +1,53 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+	<div class="wrapper">
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                待发奖品列表
+            </div>
+            <hr class="widget-separator">
+            <div class="widget-body table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>奖品名称</th>
+								<th>申请时间</th>
+								<th>状态</th>
+								<th>操作</th>
+                     </tr>
+						</thead>
+						<tbody>
+							{volist name="$pList" id="res"}
+							<tr>
+								<td>{$res['name']}</td>
+								<td>{$res['addtime']}</td>
+								<td>{if condition="$res.zt eq 0"}待审核{else/}已发放{/if}</td>
+								<td><a href="{:url('',['act'=>'del','id'=>$res.aid])}" class="btn-xs btn-warning" onclick="return confirm('确认放弃？');">放弃</a></td>
+                                    
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div class="text-center">{$pageList->showPage()}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}

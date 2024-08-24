@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{:config('web_name')}-{:config('web_title')}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="云任务-秒赞助手-{:config('keywords')}">
+	<meta name="description" content="{:config('web_description')}">
+
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://cdn.god-team.cn/assets/css/animate.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/nivo-lightbox/1.1/nivo-lightbox.css">
+	<link rel="stylesheet" href="http://cdn.god-team.cn/assets/css/nivo_themes/default/default.css">
+	<link rel="stylesheet" href="http://cdn.god-team.cn/assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+<!-- navigation section -->
+<section class="navbar navbar-fixed-top custom-navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">MZ云助手</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#" class="smoothScroll">主页</a></li>
+				<li><a href="{:url('login')}" class="smoothScroll">登录</a></li>
+				<li><a href="{:url('reg')}" class="smoothScroll">注册</a></li>
+				<li><a href="{:url('findpwd')}" class="smoothScroll">找回密码</a></li>
+				<li><a href="http://wpa.qq.com/msgrd?v=3&uin={:config('web_qq')}&site=qq&menu=yes" class="smoothScroll">联系站长</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<!-- home section -->
+<section id="home">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<h1>{:config('web_name')}</h1>
+				<hr>
+				{if condition="isset($userInfo['uid'])"}
+				<a href="{:url('index/panel/index')}" class="smoothScroll btn btn-danger">用户中心</a>
+				{else}
+				<a href="{:url('login')}" class="smoothScroll btn btn-danger">登录</a>
+				<a href="{:url('reg')}" class="smoothScroll btn btn-default">注册</a>
+				{/if}
+			</div>
+		</div>
+	</div>		
+</section>
+<!-- work section -->
+<section id="work">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<div class="section-title">
+					<h1 class="heading bold">为什么选择我们</h1>
+					<hr>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
+				<i class="icon-cloud medium-icon"></i>
+					<h3>云端数据</h3>
+					<hr>
+					<p>采用阿里云RDS云数据库，数据加密储存，抵抗各种注入破解，保证每一位用户的账号数据安全！</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.9s">
+				<i class="icon-mobile medium-icon"></i>
+					<h3>分布服务</h3>
+					<hr>
+					<p>分布式服务器全天24H秒级全能挂机，执行所有任务，快速稳定，再也无需担心因为平台QQ增多而影响到效率。</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="1s">
+				<i class="icon-laptop medium-icon"></i>
+					<h3>功能强大</h3>
+					<hr>
+					<p>独家自动化技术，系统自动执行代挂秒赞等等云任务，无需手动更新QQ，享受稳定服务。</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- pricing section -->
+<section id="pricing">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 text-center">
+				<div class="section-title">
+					<h1 class="heading bold">我们的价格</h1>
+					<hr>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="plan plan-one wow bounceIn" data-wow-delay="0.3s">
+					<div class="plan_title">
+						<i class="icon-cloud medium-icon"></i>
+						<h3>一个月秒赞</h3>
+						<h2>￥0.5 <span>RMB</span></h2>
+					</div>
+					<ul>
+                    	<li>享受本站所有功能</li>
+						<li>可使用免费的秒赞服务</li>
+						<li>快速秒赞好友说说</li>
+                        <li>让你更有逼格</li>
+					</ul>
+					<button class="btn btn-warning">立即购买</button>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="plan plan-two wow bounceIn" data-wow-delay="0.3s">
+					<div class="plan_title">
+						<i class="icon-cloud medium-icon"></i>
+						<h3>一个季度秒赞</h3>
+						<h2>￥1.5 <span>RMB</span></h2>
+					</div>
+					<ul>
+						<li>享受本站所有功能</li>
+						<li>可使用免费的秒赞服务</li>
+						<li>快速秒赞好友说说</li>
+                        <li>让你更有逼格</li>
+					</ul>
+					<button class="btn btn-warning">立即购买</button>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="plan plan-three wow bounceIn" data-wow-delay="0.3s">
+					<div class="plan_title">
+						<i class="icon-cloud medium-icon"></i>
+						<h3>一年秒赞</h3>
+						<h2>￥6 <span>RMB</span></h2>
+					</div>
+					<ul>
+						<li>享受本站所有功能</li>
+						<li>可使用免费的秒赞服务</li>
+						<li>快速秒赞好友说说</li>
+                        <li>让你更有逼格</li>
+					</ul>
+					<button class="btn btn-warning">立即购买</button>
+				</div>
+			</div>
+		</div>
+	</div>		
+</section>
+
+<!-- footer section -->
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<p>
+				&copy; 2018 {:config('web_name')}. All Rights Reserved. <span>Designed with <i class="icon-heart"></i> by <a href="#/" target="_blank">God</a></span>
+			</p>
+				<hr>
+				<ul class="social-icon">
+					<li><a href="#" class="fa fa-facebook wow fadeIn" data-wow-delay="0.3s"></a></li>
+					<li><a href="#" class="fa fa-twitter wow fadeIn" data-wow-delay="0.6s"></a></li>
+					<li><a href="#" class="fa fa-dribbble wow fadeIn" data-wow-delay="0.9s"></a></li>
+					<li><a href="#" class="fa fa-behance wow fadeIn" data-wow-delay="0.9s"></a></li>
+					<li><a href="#" class="fa fa-tumblr wow fadeIn" data-wow-delay="0.9s"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://cdn.god-team.cn/assets/js/smoothscroll.js"></script>
+<script src="http://cdn.god-team.cn/assets/js/isotope.js"></script>
+<script src="http://cdn.god-team.cn/assets/js/imagesloaded.min.js"></script>
+<script src="https://cdn.bootcss.com/nivo-lightbox/1.0/nivo-lightbox.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+<script src="https://cdn.bootcss.com/wow/1.0.2/wow.min.js"></script>
+<script src="http://cdn.god-team.cn/assets/js/custom.js"></script>
+
+</body>
+</html>

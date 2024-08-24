@@ -1,0 +1,98 @@
+{extend name="panel/layout" /}
+{block name="main"}
+		<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				<div class="wrapper-md control">
+
+ <div class="wrapper">
+                                        
+                      
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2">
+                        <div class="panel panel-info" draggable="true">
+            <div class="list-group-item bg-dark m-b-sm" class="panel-heading">
+                {:getHtmlCode(config('web_gg_invite'))}
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="col-lg-8 col-md-12 col-lg-offset-2">
+                        <div class="panel panel-info" draggable="true">
+            <div class="list-group-item bg-dark m-b-sm" class="panel-heading">
+                <h3 class="panel-title text-center">邀请好友</h3>
+            </div>
+            <div class="panel-body">
+				{if condition="!$userInfo['upid']"}
+                <p class="bg-warning" style="padding: 10px">你还没填写邀请码，现在填写就能获取{:config('zz_point_invite1')}元奖励</p>
+                <form role="form" class="form-horizontal" method="post" style="margin: 15px;">
+                    <input type="hidden" name="action" value="invite">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">邀请码</div>
+                            <input type="text" name="invite" class="form-control" placeholder="输入邀请码">
+                            <div class="input-group-addon"><input type="submit" value="提交" class="btn-info">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+				{else}
+				<p class="bg-warning" style="padding: 10px">你已经填写邀请码，你的上级用户UID:{$userInfo.upid}</p>
+				{/if}
+                <p class="bg-info" style="padding: 10px">
+                    我的推广邀请码：{if condition="$userInfo['invite']"}
+					<span class="text-warning" style="font-size: 20px;">{$userInfo.invite}</span>{else}<a href="?action=getInvite" class="btn btn-info" >点击获取</a>{/if}
+                </p>
+				<p class="bg-success" style="padding: 10px">邀请用户之后，下级用户消费你将永久获得{:config('zz_invite_rate')}%的提成！</p>
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="col-lg-8 col-md-12 col-lg-offset-2">
+                        <div class="panel panel-info" draggable="true">
+            <div class="list-group-item bg-dark m-b-sm" class="panel-heading">
+                我的邀请记录
+                <span class="label label-danger pull-right"><a href="{:url('rank',['kind'=>'invite'])}"
+                                                               class="btn-xs btn-warning">查看排行榜</a></span>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th class="text-center">UID</th>
+                            <th class="text-center">用户名</th>
+                            <th class="text-center">完成邀请时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$invites" id="invite"}
+                        <tr>
+                            <td class="text-center">{$invite.uid}</td>
+                            <td class="text-center">{$invite.user}</td>
+                            <td class="text-center">{$invite.invitetime}</td>
+                        </tr>
+                        {/volist}
+                        <tr class="text-center">
+                            <td colspan="5">{$pageList->showPage()}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

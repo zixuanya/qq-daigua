@@ -1,0 +1,149 @@
+{extend name="common/layout" /}
+{block name="title"}控制面板{/block}
+{block name="main"}
+<div class="row">
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-success panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-user.png" alt=""-->
+                    <i class='fa fa-star-o'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">VIP到期时间[Uid:{$userinfo['uid']}]</small>
+                    <h1>{$my_vip_info.vip ? date("Y/m/d",strtotime($my_vip_info.vipenddate)) : "NO VIP"}</h1>
+                  </div>
+                </div><!-- row -->
+					
+
+
+                <div class="mb15"></div>
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-danger panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-document.png" alt=""-->
+                    <i class='fa fa-thumbs-up'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">挂机数量</small>
+                    <h1>{$web_qq_num}</h1>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-primary panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!--img src="/assets/Main/images/is-document.png" alt=""-->
+                    <i class='fa fa-qq'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">我的配额</small>
+                    <h1>{$my_qq_num}/{$userinfo.peie}</h1>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-dark panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-money.png" alt=""-->
+                    <i class='fa fa-money'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">我的余额</small>
+                    <h1>￥{$userinfo.money}</h1>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+<div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-btns">
+                <a href="" class="panel-close">×</a>
+                <a href="" class="minimize">−</a>
+              </div>
+              <h4 class="panel-title">网站公告</h4>
+             </div><!-- panel-heading -->
+            <div class="panel-body">
+              {:stripslashes(config('web_gg'))}
+            </div>
+          </div><!-- panel -->
+        </div>
+{php}
+$ggs = db('ggs')->where(['zid'=>ZID])->order("imp DESC")->select();
+if($ggs){
+	foreach($ggs as $row){
+		if($row['imp'] == 1){
+		 $imp = "<font color=red>必看</font>";
+		 $m =  '" >-';
+		 $s = 'block';
+		}
+		else{
+		 $imp = '';
+		 $m =  'maximize" >+';
+		 $s = 'none';
+		}
+		echo '<div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-btns">
+                <a href="" class="panel-close">×</a>
+                <a href="" class="minimize "'.$m.'</a>
+              </div>
+              <h4 class="panel-title">'.$row['name'].$imp.'&nbsp;&nbsp;'.$row['addtime'].'</h4>
+             </div><!-- panel-heading -->
+            <div class="panel-body " style="display: '.$s.';">
+              '.stripslashes($row['value']).'
+            </div>
+          </div><!-- panel -->
+        </div>';
+	}
+}
+{/php}
+</div>
+{/block}

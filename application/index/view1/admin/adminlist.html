@@ -1,0 +1,33 @@
+{extend name="common/common"/}
+{block name="title"}站长列表{/block}
+{block name="main"}
+<div class="row">
+<div class="col-md-12">
+          <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>用户名</th>
+                <th>注册时间</th>
+                <th>注册IP</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {volist name="list" id="arr" empty="没有用户" }
+              <tr>
+                <td>{$arr.uid}</td>
+                <td>{$arr.user}</td>
+                <td>{$arr.regtime}</td>
+                <td>{$arr.regip}</td>
+                <td><a href="{:url('uedit',array('do'=>'edit','uid'=>$arr.uid))}"><span class="label label-info">编辑</span></a>
+              </tr>
+              {/volist}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+          {$pagelist->showPage()}
+</div>
+</div>
+{/block}

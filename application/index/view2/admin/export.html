@@ -1,0 +1,71 @@
+{extend name="admin/layout" /}
+{block name="main"}
+
+			
+			
+			
+			
+			
+			
+			
+			<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{$tool.name}-数据导出</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$tool.name}-数据导出</div>
+            <div class="panel-body">
+            <div class="widget-body text-center">
+                <div class="spacer spacer-bottom">
+                    <h2 class="text-warning">
+                        目前总共有&nbsp;
+                        <font color=green>{$amount.all}</font>
+                        &nbsp;条订单，可导出&nbsp;
+                        <font color=green>{$amount.can}</font>
+                        &nbsp;条，其中有&nbsp;
+                        <font color=red>{$amount.bu}</font>
+                        &nbsp;条需要补挂！
+                    </h2>
+                    <br>
+                    <a href="{:url('xz',['tid'=>$tool.tid])}?type=all" target="_blank" type="button"
+                       class="btn btn-space btn-warning btn-rounded"
+                       onClick="return confirm('确认导出全部{$tool.name}订单')">
+                        导出全部订单
+                    </a>
+                    <a href="{:url('xz',['tid'=>$tool.tid])}" target="_blank" type="button"
+                       class="btn btn-space btn-info btn-rounded"
+                       onClick="return confirm('确认导出补挂{$tool.name}数据？')">
+                        导出补挂订单
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

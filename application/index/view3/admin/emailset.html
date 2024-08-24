@@ -1,0 +1,85 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                {if condition="isset($msg)"}<div class="alert alert-danger">{$msg}</div>{/if}
+                <form method="post" class="form-horizontal">
+                    
+                    <div class="list-group-item">
+                    <div class="input-group">
+                        <span class="input-group-addon">smtp配置</span>
+                          <input type="text" name="email_host" class="form-control"
+                                   value="{:config('zz_email_host')}">
+                        </div>
+                    </div>
+                   
+					<div class="list-group-item">
+                    <div class="input-group">
+                        <span class="input-group-addon">邮箱端口</span>
+                          <input type="text" name="email_port" class="form-control"
+                                   value="{:config('zz_email_port')}">
+                        </div>
+                    </div>
+					<div class="list-group-item">
+                    <div class="input-group">
+                        <span class="input-group-addon">邮箱账号</span>
+                          <input type="text" name="email_user" class="form-control"
+                                   value="{:config('zz_email_user')}">
+                        </div>
+                    </div>
+					   <div class="list-group-item">
+                    <div class="input-group">
+                        <span class="input-group-addon">邮箱密码</span>
+                            <input type="text" name="email_pwd" class="form-control"
+                                   value="{:config('zz_email_pwd')}">
+                        </div>
+                    </div>
+
+					
+					
+					
+                    <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                </form>
+            </div>
+        </div>
+		
+		
+		 
+        </div>
+		
+		
+    </div>
+</div>
+{/block}

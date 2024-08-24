@@ -1,0 +1,95 @@
+{extend name="common/common" /}
+{block name="title"}卡密列表{/block}
+{block name="main"}
+<div class="row">
+<div class="col-md-12 {if condition="$kmmsg eq NULL"}hide{/if}">
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">成功生成以下卡密</h4>
+          <p>这是您刚刚生成的卡密</p>
+        </div>
+        <div class="panel-body panel-body-nopadding">
+          <ul class="chatuserlist">
+			{$kmmsg}
+			<a href="{:url('kmlist')}"><button class="btn btn-primary btn-block">返回卡密列表</button></a>
+		  </ul>
+      </div><!-- panel-body -->
+</div>
+</div>
+<div class="col-md-12  {if condition="$kmmsg neq NULL"}hide{/if}">
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h5 class="panel-title">搜索卡密</h5>
+        </div>
+        <div class="panel-body">
+          <form class="form-inline" method="get" action="{:url('',['do'=>'search'])}">
+            <div class="form-group">
+              <input class="form-control" placeholder="卡密" type="text" name="query" >
+            </div>
+            <button type="submit" class="btn btn-primary">搜索</button>
+          </form>
+        </div><!-- panel-body -->
+</div>
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">卡密生成</h4>
+          <p>在这里，您可以生成卡密</p>
+        </div>
+        <div class="panel-body">
+          <form class="form-inline" action="{:url('kmlist',['do'=>'addkm','type'=>0])}" method="post">
+            <div class="form-group">
+              <label class="sr-only" >卡密个数</label>
+              <input type="number" class="form-control" min="1" name="num" placeholder="请输入要生成卡密的数量" >
+            </div>
+			<div class="form-group">
+              <label class="sr-only" >卡密面值</label>
+              <input type="number" class="form-control" min="1" name="val" placeholder="请输入要生成每张卡密的面值" >
+            </div>
+
+            <button type="submit" class="btn btn-primary">生成</button>
+            <a href="{:url('kmlist',['do'=>'cleanall','type'=>0])}" onClick="if(!confirm('确认清空？')){return false;}"><button type="button" class="btn btn-primary">清空已使用卡密</button></a>
+          </form>
+        </div><!-- panel-body -->
+      </div>
+          <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>卡密类型</th>
+                <th>卡密</th>
+                <th>面值</th>
+                <th>添加时间</th>
+                <th>使用时间/使用者</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {volist name="kmlist" id="arr" empty="没有卡密" }
+              <tr>
+                <td>余额卡密</td>
+                <td>{$arr.km}</td>
+                <td>{$arr.value}</td>
+                <td>{$arr.addtime}</td>
+                <td>{$arr.usetime ? $arr['usetime']."/ID:".$arr['useid'] : "未使用"}</td>
+                <td><a href="{:url('kmlist',array('do'=>'del','id'=>$arr.kid))}"><span class="label label-info">删除</span></a></td>
+              </tr>
+              {/volist}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+          {$pagelist->showPage()}
+</div>
+</div>
+{/block}

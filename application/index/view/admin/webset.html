@@ -1,0 +1,188 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+
+                        <form method="post" class="form-horizontal">
+						 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">ZID</span>
+                                         <input type="text" class="form-control" value="{$web.zid}" disabled>
+                                </div>
+                                </div>
+                            
+							 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">站点类型</span>
+                                         <select name="super" class="form-control" {if condition="$zid eq 0"}disabled{/if}>
+									<option value="0" {if condition="$web.super eq 0"}selected{/if}>普通分站</option>
+									<option value="1" {if condition="$web.super eq 1"}selected{/if}>二级主站</option>
+									<option value="2" {if condition="$web.super eq 2"}selected{/if}>超级主站</option>{/if}
+									<option value="3" {if condition="$web.super eq 3"}selected{/if}>合作伙伴</option>{/if}
+									{if condition="ZID eq 1 || $web.super eq 4"}<option value="4" {if condition="$web.super eq 4"}selected{/if}>至尊分销</option>{/if}
+									</select>
+		                        </div>
+                                </div>
+							 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">网站域名</span>
+                                         <input type="text" name="domain" class="form-control" value="{$web.domain}" {if condition="ZID neq 1"}disabled{/if}>
+		                        </div>
+                                </div>
+		                     <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">额外域名</span>
+                                         <input type="text" name="domain2" class="form-control" value="{$web.domain2}">
+									
+		                        </div>
+                                </div>
+							{if condition="ZID eq 1 || $zid neq 0"}
+							 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">站点到期</span>
+                                         <input type="datetime" name="endtime" class="form-control" value="{$web.endtime}">
+		                        </div>
+                                </div>
+							
+						
+		                    {/if}
+							<!--div class="form-group">
+								<label class="col-lg-3 control-label">全套代挂价格(成本{:config('zz_price_all')}元)</label>
+								<div class="col-lg-8">
+									<input type="text" name="price_all" class="form-control"
+										   value="{$web.price_all}">
+									<div class="alert alert-info">分别对应普通会员与VIP1～5等级，用|分隔，例如3|2|1.8|1.5|1|0.8
+		                            </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">单个项目代挂价格(成本{:config('zz_price_dx')}元)</label>
+								<div class="col-lg-8">
+									<input type="text" name="price_dx" class="form-control"
+										   value="{$web.price_dx}">
+									<div class="alert alert-info">分别对应普通会员与VIP1～5等级，用|分隔，例如0.8|0.6|0.5|0.4|0.3|0.1
+		                            </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">VIP会员开通价格</label>
+								<div class="col-lg-8">
+									<input type="text" name="price_vip" class="form-control"
+										   value="{$web.price_vip}">
+									<div class="alert alert-info">分别对应VIP1～5等级，用|分隔，例如3|5|10|15|22
+		                            </div>
+								</div>
+					
+							</div-->
+							{if condition="$web.super neq 0 || ZID eq 1"}
+							
+                                    <div class="input-group">
+                                  
+                                </div>
+							
+							{/if}
+							<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">站长QQ</span>
+                                         <input type="text" name="qq" class="form-control" value="{$web.qq}">
+                                </div>
+                                </div>
+                            <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">站点名称</span>
+                                         <input type="text" name="name" class="form-control" value="{$web.name}">
+                                </div>
+                                </div>
+                            <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">SEO标题</span>
+                                          <textarea name="title" rows="5"
+                                          class="form-control">{:getHtmlCode($web.title,true)}</textarea>
+                                </div>
+                                </div>
+                              <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">SEO关键词</span>
+                                           <textarea name="keywords" rows="5" class="form-control">{:getHtmlCode($web.keywords,true)}</textarea>
+                                </div>
+                                </div>
+                             <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">SEO标题</span>
+                                           <textarea name="description" rows="5" class="form-control">{:getHtmlCode($web.description,true)}</textarea>
+                                </div>
+                                </div>
+                              <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">用户面板公告</span>
+                                           <textarea name="gg_panel" rows="5" class="form-control">{:getHtmlCode($web.gg_panel,true)}</textarea>
+                                </div>
+                                </div>
+                            <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">QQ添加公告</span>
+                                           <textarea name="gg_qqadd" rows="5" class="form-control">{:getHtmlCode($web.gg_qqadd,true)}</textarea>
+                                </div>
+                                </div>
+                            <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">代挂下单公告</span>
+                                           <textarea name="gg_dgadd" rows="5" class="form-control">{:getHtmlCode($web.gg_dgadd,true)}</textarea>
+                                </div>
+                                </div>
+                            <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">邀请列表公告</span>
+                                           <textarea name="gg_invite" rows="5" class="form-control">{:getHtmlCode($web.gg_invite,true)}</textarea>
+                                </div>
+                                </div>
+                           
+							
+							
+							
+                            
+                            
+                          
+ <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                        </form>
+						<div class="alert alert-info">提示：所有价格单位均为RMB/元，可精确到小数点后两位；所有比例均为不大于100的正整数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

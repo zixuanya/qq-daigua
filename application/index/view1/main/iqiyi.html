@@ -1,0 +1,50 @@
+{extend name="common/layout" /} 
+{block name="title"}爱奇艺会员领取{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">爱奇艺会员领取</h4>
+          <p>在这里，您可以免费领取爱奇艺会员，每天5个!</p>
+        </div>
+        <div class="panel-body panel-body-nopadding">
+          <form method="post" class="form-horizontal form-bordered" action="{:url('iqiyi')}">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">验证码</label>
+              <div class="col-sm-6">
+
+                <div class="input-group mb15">
+                  <input type="text" class="form-control" name="code">
+                  <span class="input-group-btn nopadding">
+                    <img alt="验证码" src="/other/iqiyi_code.php" style="cursor:pointer;height:42px;" onclick="this.src=this.src+'?'" />
+                  </span>
+                </div>
+
+              </div>
+            </div>
+            {if condition="$iqiyi"}
+            <div class="form-group">
+              <label class="col-sm-3 control-label">你领取的爱奇艺会员信息：</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" value="{$iqiyi}" readonly>
+              </div>
+            </div>
+            {/if}
+			<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">获取</button>
+							</div>
+						</div>
+					</div>
+
+          </form>
+          
+        </div><!-- panel-body -->
+      </div>
+
+
+{/block}

@@ -1,0 +1,136 @@
+{extend name="admin/layout" /}
+{block name="main"}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <header class="widget-header">
+                <h4 class="widget-title">系统&API设置
+                </h4>
+            </header><!-- .widget-header -->
+            <hr class="widget-separator">
+            <div class="widget-body">
+                <form method="post" class="form-horizontal">
+                    <div class="form-group">
+                            
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">全局背景</label>
+                                <div class="col-lg-8">
+                                    <input type="test" size="11" name="common_bg" class="form-control" value="{:config('zz_common_bg')}">
+                                </div>
+
+                                  </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">内页背景音乐外链</label>
+                                <div class="col-lg-8">
+                                    <input type="test" size="11" name="nmusic" class="form-control" value="{:config('zz_nmusic')}">
+									 <pre>不填写不播放背景音乐!</pre>
+                                </div>
+                                    
+                                 
+                            </div>
+                            
+
+		                    <div class="form-group">
+		                        <label class="col-lg-3 control-label">首页绚丽彩虹播放器</label>
+		                        <div class="col-lg-8">
+		                            <select name="musicoff" class="form-control">
+		                            <option value="0" {if condition="config('zz_musicoff') eq 0"}selected{/if}>关闭</option>
+		                            <option value="1" {if condition="config('zz_musicoff') eq 1"}selected{/if}>开启</option>
+		                            </select>
+		                            <pre>关闭后关闭播放器,开启后刷新页面显示key设置!</pre>
+		                        </div>
+		                    </div>
+							{if condition="config('zz_musicoff') == 1"}
+							<div class="form-group">
+                                <label class="col-lg-3 control-label">绚丽彩虹key</label>
+                                <div class="col-lg-8">
+                                    <input type="test" size="11" name="musickey" class="form-control" value="{:config('zz_musickey')}">
+                                </div>
+                            </div>
+							{/if}
+							
+							 <div class="form-group">
+                                <label class="col-lg-3 control-label">QQ登录调用API地址</label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="login_api" class="form-control" value="{:config('zz_login_api')}">
+                                </div>
+                            </div>
+							<div class="form-group">
+		                        <label class="col-lg-3 control-label">圈圈赞API地址</label>
+		                        <div class="col-lg-8">
+		                            <input type="text" name="quan_api" class="form-control" value="{:config('zz_quan_api')}">
+		                        </div>
+		                    </div>
+							
+							
+							<div class="form-group">
+		                        <label class="col-lg-3 control-label">龙蛋API地址</label>
+		                        <div class="col-lg-8">
+		                            <input type="text" name="longdan_api" class="form-control" value="{:config('zz_longdan_api')}">
+		                        </div>
+		                    </div>
+							
+							<div class="form-group">
+		                        <label class="col-lg-3 control-label">球球API地址</label>
+		                        <div class="col-lg-8">
+		                            <input type="text" name="qiuqiu_api" class="form-control" value="{:config('zz_qiuqiu_api')}">
+		                        </div>
+		                    </div>
+							
+							
+                            <div class="form-group">
+		                        <label class="col-lg-3 control-label">添加QQ模式</label>
+		                        <div class="col-lg-8">
+									<select name="addqq_mode" class="form-control">
+									<option value="0" {if condition="config('zz_addqq_mode') eq 0"}selected{/if}>登录并验证QQ密码</option>
+									<option value="1" {if condition="config('zz_addqq_mode') eq 1"}selected{/if}>无需验证QQ密码</option>
+									</select>
+		                        </div>
+		                    </div>
+							<div class="form-group">
+		                        <label class="col-lg-3 control-label">监控密钥</label>
+		                        <div class="col-lg-8">
+		                            <input type="text" name="cronkey" class="form-control" value="{:config('zz_cronkey')}" placeholder="不可留空">
+									<pre>如需自动签到和打码，请监控
+http://{$_SERVER['HTTP_HOST']}/cron/qd.php?key={:config('zz_cronkey')}</pre>
+		                        </div>
+		                    </div>
+		                    <div class="form-group">
+		                        <label class="col-lg-3 control-label">代挂管家接口</label>
+		                        <div class="col-lg-8">
+		                            <select name="getway_api" class="form-control">
+		                            <option value="0" {if condition="config('zz_getway_api') eq 0"}selected{/if}>关闭</option>
+		                            <option value="1" {if condition="config('zz_getway_api') eq 1"}selected{/if}>开启</option>
+		                            </select>
+		                            <pre>此接口用于相关电脑软件直接获取代挂QQ列表，<a href="{:url('admin/syskey')}">查看接口密钥</a></pre>
+		                        </div>
+		                    </div>
+
+                            
+
+
+
+
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-8">
+                                    <button class="btn btn-primary" type="submit">保存配置</button>
+                                    <button class="btn btn-default-outline" type="reset">重置</button>
+                                </div>
+                            </div>
+                        </form>
+				<div class="alert alert-info">提示：所有价格单位均为RMB/元，可精确到小数点后两位；所有比例均为不大于100的正整数
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+var items = $("select[default]") || 0;
+for (i = 0; i < items.length; i++) {
+	$(items[i]).val($(items[i]).attr("default"));
+}
+
+</script>
+{/block}

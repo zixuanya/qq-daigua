@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--
+//                       .::::.
+//                     .::::::::.
+//                    :::::::::::
+//                 ..:::::::::::'
+//              '::::::::::::'
+//                .::::::::::
+//           '::::::::::::::..
+//                ..::::::::::::.
+//              ``::::::::::::::::
+//               ::::``:::::::::'        .:::.
+//              ::::'   ':::::'       .::::::::.
+//            .::::'      ::::     .:::::::'::::.
+//           .:::'       :::::  .:::::::::' ':::::.
+//          .::'        :::::.:::::::::'      ':::::.
+//         .::'         ::::::::::::::'         ``::::.
+//     ...:::           ::::::::::::'              ``::.
+//    ```` ':.          ':::::::::'                  ::::..
+//                       '.:::::'                    ':'````..
+//          美女镇码，永无BUG！！！
+//
+//      ┏┛ ┻━━━━━┛ ┻┓
+//      ┃　　　　　　 ┃
+//      ┃　　　━　　　┃
+//      ┃　┳┛　  ┗┳　┃
+//      ┃　　　　　　 ┃
+//      ┃　　　┻　　　┃
+//      ┃　　　　　　 ┃
+//      ┗━┓　　　┏━━━┛
+//            ┃　　　┃   神兽保佑
+//            ┃　　　┃   代挂无BUG！
+//            ┃　　　┗━━━━━━━━━┓
+//            ┃　　　　　　　    ┣┓
+//            ┃　　　　         ┏┛
+//            ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
+//              ┃ ┫ ┫   ┃ ┫ ┫
+//              ┗━┻━┛   ┗━┻━┛
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{:config('web_name')}-{:config('web_title')}</title>
+<meta name="description" content="{:config('web_description')}">
+<meta name="keywords" content="{:config('web_keywords')}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/assets/view3/xc/css/reset.css">
+<link rel="stylesheet" href="/assets/view3/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/assets/view3/xc/css/animate.css">
+<link rel="stylesheet" href="/assets/view3/xc/css/swiper.css">
+<link rel="stylesheet" href="/assets/view3/xc/css/flexslider.css">
+<link rel="stylesheet" href="/assets/view3/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/assets/view3/xc/css/app.css">
+</head>
+<body>
+<!-- Loading -->
+<div id="loading" class="loading-layer">
+<div class="adjust-block">
+<div class="load ">
+<span class="sharingan"></span>
+<span class="sharingan"></span>
+<span class="sharingan"></span></div>
+</div>
+</div>
+<!-- Site Header -->
+<header class="header">
+<div class="container">
+<div class="row">
+<div class="col-sm-2">
+<span class="mobile-menu-icon visible-xs">
+<a id="btn-nav" href="#">
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+</a>
+</span>
+</div>
+<div class="col-sm-10">
+<nav id="site-nav" class="nav-toggle">
+<ul class="menu">
+<li><a href="#">首页</a></li>
+<li><a href="{:url('login')}">登录</a></li>
+<li><a href="{:url('reg')}">注册</a></li>
+<li><a href="http://wpa.qq.com/msgrd?v=3&uin={:config('web_qq')}&site=qq&menu=yes">联系站长</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</header>
+<!-- Home slider -->
+<div id="full-slider" class="flexslider section-slider">
+<ul class="slides">
+<li>
+{if condition="config('zz_img1')"}
+<img src="{:config('zz_img1')}" alt/>
+{else}
+<img src="https://wx4.sinaimg.cn/mw690/0060lm7Tly1ftp0sjqu6tj31hc0xcaww.jpg" alt/>
+{/if}
+<div class="adjust-block">
+<h2 class="slide-title">{:config('web_name')}</h2>
+<p class="slide-description">致力于为更多的用户提供稳定的等级代挂服务</p>
+<div class="btns-row">
+{if condition="isset($userInfo['uid'])"}
+<a href="{:url('/index/panel/index')}" class="btn btn-bl">用户中心</a>
+{else}
+<a href="{:url('login')}" class="btn btn-tran">登录</a>
+<a href="{:url('reg')}" class="btn btn-tran">注册</a>
+{/if}
+</div>
+</div>
+</li>
+<li>
+{if condition="config('zz_img2')"}
+<img src="{:config('zz_img2')}" alt/>
+{else}
+<img src="https://wx4.sinaimg.cn/mw690/0060lm7Tly1ftp0udt86kj31hc0u0n5w.jpg" alt/>
+{/if}
+<div class="adjust-block">
+<h2 class="slide-title">{:config('web_name')}</h2>
+<p class="slide-description">致力于为更多的用户提供稳定的等级代挂服务</p>
+<div class="btns-row">
+{if condition="isset($userInfo['uid'])"}
+<a href="{:url('/index/panel/index')}" class="btn btn-bl">用户中心</a>
+{else}
+<a href="{:url('login')}" class="btn btn-tran">登录</a>
+<a href="{:url('reg')}" class="btn btn-tran">注册</a>
+{/if}
+</div>
+</div>
+</li>
+<li>
+{if condition="config('zz_img3')"}
+<img src="{:config('zz_img3')}" alt/>
+{else}
+<img src="https://wx2.sinaimg.cn/mw690/0060lm7Tly1ftp0vdtfmej31hc0xc7wh.jpg" alt/>
+{/if}
+<div class="adjust-block">
+<h2 class="slide-title">{:config('web_name')}</h2>
+<p class="slide-description">致力于为更多的用户提供稳定的等级代挂服务</p>
+<div class="btns-row">
+{if condition="isset($userInfo['uid'])"}
+<a href="{:url('/index/panel/index')}" class="btn btn-bl">用户中心</a>
+{else}
+<a href="{:url('login')}" class="btn btn-tran">登录</a>
+<a href="{:url('reg')}" class="btn btn-tran">注册</a>
+{/if}
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section section-services" align="center">
+<div class="title-block title-sub">
+<h3 class="title-big">
+我们的功能
+</h3>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
+<div class="service-block service-left">
+<div class="circle-icon feature-icon">
+<i class="fa fa-music"></i>
+</div>
+<div class="serv-info">
+<h3 class="serv-title">
+QQ音乐 </h3>
+<p class="serv-desc">
+登陆QQ音乐秒领0.5天成长值 </p>
+</div>
+</div>
+</div>
+<div class="col-sm-3">
+<div class="service-block service-left">
+<div class="circle-icon feature-icon">
+<i class="fa fa-bookmark"></i>
+</div>
+<div class="serv-info">
+<h3 class="serv-title">
+勋章墙 </h3>
+<p class="serv-desc">
+点亮勋章墙图标，领取0.2天成长值 </p>
+</div>
+</div>
+</div>
+<div class="col-sm-3">
+<div class="service-block service-left">
+<div class="circle-icon feature-icon">
+<i class="fa fa-html5"></i>
+</div>
+<div class="serv-info">
+<h3 class="serv-title">
+电脑管家 </h3>
+<p class="serv-desc">
+登陆管家进行挂机，领取0.2天成长值 </p>
+</div>
+</div>
+</div>
+<div class="col-sm-3">
+<div class="service-block service-left">
+<div class="circle-icon feature-icon">
+  <i class="fa fa-gamepad"></i>
+</div>
+<div class="serv-info">
+<h3 class="serv-title">
+QQ手游 </h3>
+<p class="serv-desc">
+登陆王者荣耀5分钟，领取0.2天成长值</p>
+</div>
+</div>
+</div>
+<div class="col-sm-3">
+<div class="service-block service-left">
+<div class="circle-icon feature-icon">
+<i class="fa fa-vimeo"></i>
+</div>
+<div class="serv-info">
+<h3 class="serv-title">
+会员成长 </h3>
+<p class="serv-desc">
+每天帮您领取会员成长值，加速会员快速升级！</p>
+</div>
+</div>
+</div>
+<div class="col-sm-3">
+<div class="service-block service-left">
+<div class="circle-icon feature-icon">
+<i class="fa fa-tablet"></i>
+</div>
+<div class="serv-info">
+<h3 class="serv-title">
+电脑/手机在线 </h3>
+<p class="serv-desc">
+每天提供PC/iPhone X的在线为您保证加速服务！</p>
+</div>
+</div>
+</div>
+<div class="col-sm-3">
+<div class="service-block service-left">
+<div class="circle-icon feature-icon">
+<i class="fa fa-play"></i>
+</div>
+<div class="serv-info">
+<h3 class="serv-title">
+微视加速 </h3>
+<p class="serv-desc">
+观看30分钟微视获得0.5成长天！</p>
+</div>
+</div>
+</div>
+<div class="col-sm-3">
+<div class="service-block service-left">
+<div class="circle-icon feature-icon">
+<i class="fa fa-cloud"></i>
+</div>
+<div class="serv-info">
+<h3 class="serv-title">
+QQ空间访客 </h3>
+<p class="serv-desc">
+刷十个空间访客获得0.5成长天！</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section section-funinfo">
+<div class="container">
+<div class="row">
+<div class="col-xs-6 col-sm-3">
+<div class="count-block">
+<div class="count-icon animate pulse" style="visibility: visible; animation-name: pulse;">
+<i class="fa fa-laptop"></i>
+</div>
+<div class="count-amount animate zoomIn" data-from="25" data-to="{$amount.zweb}" style="visibility: visible; animation-name: zoomIn;">{$amount.zweb}</div>
+<div class="count-name">
+系统分站
+</div>
+</div>
+</div>
+<div class="col-xs-6 col-sm-3">
+<div class="count-block">
+<div class="count-icon animate pulse" style="visibility: visible; animation-name: pulse;">
+<i class="fa fa-users"></i>
+</div>
+<div class="count-amount animate zoomIn" data-from="25" data-to="{$amount.zuser}" style="visibility: visible; animation-name: zoomIn;">{$amount.zuser}</div>
+<div class="count-name">
+系统用户
+</div>
+</div>
+</div>
+<div class="col-xs-6 col-sm-3">
+<div class="count-block">
+<div class="count-icon animate pulse" style="visibility: visible; animation-name: pulse;">
+<i class="fa fa-qq"></i>
+</div>
+<div class="count-amount animate zoomIn" data-from="25" data-to="{$amount.zqq}" style="visibility: visible; animation-name: zoomIn;">{$amount.zqq}</div>
+<div class="count-name">
+QQ数量
+</div>
+</div>
+</div>
+<div class="col-xs-6 col-sm-3">
+<div class="count-block">
+<div class="count-icon animate pulse" style="visibility: visible; animation-name: pulse;">
+<i class="fa fa-desktop"></i>
+</div>
+<div class="count-amount animate zoomIn" data-from="25" data-to="{$amount.zorder}" style="visibility: visible; animation-name: zoomIn;">{$amount.zorder}</div>
+<div class="count-name">
+系统订单
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section section-pricing">
+<div class="title-block">
+<div class="title-big">
+代挂价格表
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-sm-4">
+<div class="pricing-tab">
+<div class="package-title">一个月代挂</div>
+<div class="package-price">
+<span>￥{if condition=" $pall[0]"}{$pall[0]}{else/}{:config('zz_price_all')}{/if}</span>/RMB
+</div>
+<ul class="package-advantage">
+<li>享受高速等级成长一个月</li>
+<li>可使用免费的秒赞服务</li>
+<li>快速QQ等级成长</li>
+<li>让你更有逼格</li>
+</ul>
+<div class="buy-package">
+<a class="btn btn-gra" href="{:url('user/order')}">立即购买</a></div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="pricing-tab">
+<div class="package-title">一个季度代挂</div>
+<div class="package-price">
+<span>￥{if condition=" $pall[0]"}{$pall[0]}{else/}{:config('zz_price_all')}{/if}X3</span>/RMB
+</div>
+<ul class="package-advantage">
+<li>享受高速等级成长一个季度</li>
+<li>可使用高速秒赞服务</li>
+<li>高速QQ等级成长</li>
+<li>让你更有逼格</li>
+</ul>
+<div class="buy-package">
+<a class="btn btn-gra" href="{:url('user/order')}">立即购买</a></div>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="pricing-tab">
+<div class="package-title">一年代挂</div>
+<div class="package-price">
+<span>￥{if condition=" $pall[0]"}{$pall[0]}{else/}{:config('zz_price_all')}{/if}X12</span>/RMB
+</div>
+<ul class="package-advantage">
+<li>享受高速等级成长一年</li>
+<li>可使用极速秒赞服务</li>
+<li>极速QQ等级成长</li>
+<li>让你更有逼格</li>
+</ul>
+<div class="buy-package">
+<a class="btn btn-gra" href="{:url('user/order')}">立即购买</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer-bottom">
+<p class="copyright">Copyright © 2017-2018 All Rights Reserved by <a href="" title="{:config('web_name')}">{:config('web_name')}</a></br>
+<a href="http://www.miitbeian.gov.cn/">{:config('zz_beian')}</a></br>
+</p>
+<p align="center">
+<font size="1">
+</font>
+</p>
+</footer>
+<script src="/assets/view3/xc/scripts/jquery.js"></script>
+<script src="/assets/view3/xc/scripts/image-loaded.js"></script>
+<script src="/assets/view3/xc/scripts/wow.js"></script>
+<script src="/assets/view3/xc/scripts/swiper.jquery.min.js"></script>
+<script src="/assets/view3/xc/scripts/isotope.pkgd.min.js"></script>
+<script src="/assets/view3/xc/scripts/jquery.countto.js"></script>
+<script src="/assets/view3/xc/scripts/jquery.flexslider.js"></script>
+<script src="/assets/view3/xc/scripts/app.js"></script>
+</body>
+</html>
+</plaintext>
+</body>
+</html>

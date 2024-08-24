@@ -1,0 +1,158 @@
+{extend name="common/common" /} {block name="title"}代理级别{/block} {block
+name="main"}
+{if condition="$edit EQ false"}
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="panel-btns">
+					<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+				</div>
+				<h4 class="panel-title">添加级别</h4>
+			</div>
+			<div class="panel-body panel-body-nopadding">
+
+				<form class="form-horizontal form-bordered" method="post"
+					action="{:url()}">
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">级别名称</label>
+						<div class="col-sm-6">
+							<input type="text" name="name" class="form-control"
+								value="" placeholder="代理级别的名称">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">级别</label>
+						<div class="col-sm-6">
+							<input type="number" min="1" class="form-control" name="level"
+								placeholder="代理级别，最低为1 不得重复">
+						</div>
+					</div>
+
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label">开通VIP价格</label>
+						<div class="col-sm-6">
+							<input type="number" min="{$vipprice}" class="form-control" name="vipprice"
+								placeholder="不能低于总站限定的价格" step="0.01">
+							总站价格:{$vipprice}元/月
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label">购买配额价格</label>
+						<div class="col-sm-6">
+							<input type="number" min="{$peieprice}" class="form-control" name="peieprice"
+								placeholder="不能低于总站限定的价格" step="0.01">
+							总站价格:{$peieprice}元/个
+						</div>
+					</div>
+
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">添加</button>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<!-- panel-body -->
+
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="table-responsive">
+			<table class="table table-success mb30">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>名称[等级]</th>
+						<th>VIP价格</th>
+						<th>配额价格</th>
+						<th>旗下用户</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{volist name="list" id="arr"}
+					<tr>
+						<td>{$arr.id}</td>
+						<td>{$arr.name}[{$arr.level}]</td>
+						<td>{$arr.vipprice}元/月</td>
+						<td>{$arr.peieprice}元/个</td>
+						<td><a href="{:url('a_ulist',['level'=>$arr.level])}"
+							class="btn btn-info-alt btn-xs">查看</a></td>
+						<td><a
+							href="{:url('a_level',['act'=>'edit','level'=>$arr.level])}"><i
+								class="fa fa-pencil"></i></a>&nbsp;<a
+							href="{:url('a_level',['act'=>'del','level'=>$arr.level])}"
+							class="delete-row" onClick="if(!confirm('确认删除？')){return false;}" ><i class="fa fa-trash-o"></i></a></td>
+					</tr>
+					{/volist}
+				</tbody>
+			</table>
+		</div>
+		<!-- table-responsive -->
+
+		{$list->render()}
+	</div>
+</div>
+{else/}
+<div class="row">
+<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="panel-btns">
+					<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+				</div>
+				<h4 class="panel-title">编辑级别</h4>
+			</div>
+			<div class="panel-body panel-body-nopadding">
+
+				<form class="form-horizontal form-bordered" method="post" action="{:url('',['act'=>'edit','level'=>$row.level])}">
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">级别名称</label>
+						<div class="col-sm-6">
+							<input name="name" class="form-control" value="{$row.name}" placeholder="代理级别的名称" type="text">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label">开通VIP价格</label>
+						<div class="col-sm-6">
+							<input min="{$vipprice}" class="form-control" name="vipprice" placeholder="不能低于总站限定的价格" type="number" value="{$row.vipprice}" step="0.01">
+							总站价格:{$vipprice}元/月
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label">购买配额价格</label>
+						<div class="col-sm-6">
+							<input min="{$peieprice}" class="form-control" name="peieprice" placeholder="不能低于总站限定的价格" type="number" value="{$row.peieprice}" step="0.01">
+							总站价格:{$peieprice}元/个
+						</div>
+					</div>
+
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+								<a href="{:url()}" class="btn btn-default">返回列表</a>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<!-- panel-body -->
+
+		</div>
+	</div>
+</div>
+{/if}
+{/block}

@@ -1,0 +1,24 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<section id="container">
+<div class="content-wrapper animated fadeInUp">
+<h3 style="overflow:hidden;">
+<span class="pull-left">对接检测</span>
+<div style="width:100%; height:4px;" class="hidden-xs"></div>
+<ol class="breadcrumb pull-right">
+<li class="active">主页</li>
+</ol>
+</h3>
+
+<div class="col-lg-8 col-md-12 col-lg-offset-2 text-center">
+<iframe src="http://www.daiguawang.cn/guanjia.php" style="width:100%;height:600px;"></iframe>
+<script>
+window.addEventListener('message',function(e){
+	var winheight = e.data;
+	$("#preview").attr("height", (winheight+120) + "px");
+},false);
+</script>
+</div>
+  <div style="width:200%; height:1px; overflow:hidden;"></div>
+</section>
+{/block}

@@ -1,0 +1,61 @@
+{extend name="panel/layout" /}
+{block name="main"}
+	<div id="content" class="app-content" role="main">
+	<div id="Loading" style="display:none">
+		<div ui-butterbar="" class="butterbar active"><span class="bar"></span></div>
+	</div>
+<div class="app-content-body">	<section id="container">
+<div class="bg-light lter b-b wrapper-md hidden-print">
+<h1 class="m-n font-thin h3">每日领余额</h1>
+</div><div class="wrapper-md ng-scope">    <div class="wrapper-md control">
+<div class="row">
+    <div class="col-lg-12">
+        {if condition="isset($hbList)"}
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                余额领取记录&nbsp;&nbsp;总共{:config('zz_hb_num')}份，已领取{$pageList->total}份。
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>UID</th>
+                            <th>用户名</th>
+                            <th>余额</th>
+                            <th>领取时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$hbList" id="hb"}
+                        <tr>
+                            <td>{$hb.uid}</td>
+                            <td>{$hb.user}</td>
+                            <td>{$hb.point}</td>
+                            <td>{$hb.lqtime}</td>
+                        </tr>
+                        {/volist}
+                        <tr class="text-center">
+                            <td colspan="5">{$pageList->showPage()}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {else}
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                每日领余额
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    <input type="hidden" name="action" value="lye">
+                    <button class="btn btn-block btn-warning">领取余额</button>
+                </form>
+            </div>
+        </div>
+        {/if}
+    </div>
+</div>
+{/block}

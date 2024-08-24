@@ -1,0 +1,110 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+				
+				<div class="wrapper">
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                                      <div class="clear"><i class="fa fa-warning text-lt fa m-r-sm"></i> QQ添加须知！</div>
+                                </div>
+								<div class="list-group-item">站长公告：{:getHtmlCode(config('web_gg_qqadd'))}</div>
+                               <div class="list-group-item">1、首次使用本网站可能会因为异地登陆而被TX临时冻结一次，解冻即可。</div>
+                                <div class="list-group-item">2、添加后会提示广州的异地登陆提醒，以及可能被盗号的提醒，介意的新手请勿使用！</div>
+                                <div class="list-group-item">3、出现的异地提醒可在QQ安全中心确认是本人登录，可解决帐号被频繁冻结的问题！</div>
+                                <div class="list-group-item"><b>添加即代表同意本站协议自愿使用，不同意请关闭，本站不盗号，不信任请关闭。</b></div>
+
+                        </div>
+                    </div>
+
+
+				
+				
+
+ <div class="wrapper">
+    <div class="col-lg-8 col-md-12 col-lg-offset-2" role="main">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">QQ更新&添加
+							<span class="pull-right">
+							
+						</span>
+							
+							</div>
+                            <div class="panel-body padder-v">
+
+							
+						</span>
+            </div>
+			  
+            <div class="panel-body text-center">
+			{if condition="config('zz_addqq_mode') eq 1"}
+				<form method="post" class="alert alert-success">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                ＱＱ
+                            </div>
+                            <input type="text" name="uin" class="form-control" value="{if condition='isset($qqInfo)'}{$qqInfo.uin}{/if}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                密码
+                            </div>
+                            <input type="text" name="pwd" class="form-control" value="" required>
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" value="确认添加" class="btn btn-danger btn-block">
+                </form>
+			{else}
+                <Iframe id="iframepage"
+                        src="/qlogin/{if condition='isset($qqInfo)'}?uin={$qqInfo.uin}&pwd={$qqInfo.pwd}{/if}"
+                        width="100%" scrolling="no" frameborder="0" name="addFrame"></iframe>
+			{/if}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="footJs"}
+<script type="text/javascript">
+    function reinitIframe() {
+        var iframe = document.getElementById("iframepage");
+        try {
+            iframe.height = iframe.contentWindow.document.documentElement.scrollHeight;
+        } catch (ex) {
+        }
+    }
+    window.setInterval("reinitIframe()", 200);
+    function showLoad() {
+        sweetAlert({
+            title: "添加中...",
+            text: '请耐心等待，如很长时间都没反应，请刷新网页重新添加！',
+            imageUrl: "/assets/load.gif",
+            html: true,
+            timer: 600000,
+            showConfirmButton: false
+        });
+    }
+    function closeLoad() {
+        $('.confirm').click();
+    }
+</script>
+
+{/block}

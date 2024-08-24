@@ -1,0 +1,92 @@
+{extend name="common/common" /} {block name="title"}{$LRow['name']}-旗下用户{/block} {block
+name="main"}
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="panel-btns">
+					<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+				</div>
+				<h4 class="panel-title">添加用户到此</h4>
+			</div>
+			<div class="panel-body">
+
+				<form class="form-inline" method="post"
+					action="{:url('',['level'=>$LRow.level])}">
+
+					<div class="form-group">
+							<input type="text" name="uid" class="form-control"
+								value="" placeholder="用户的Uid">
+					</div>
+
+								<button class="btn btn-primary">添加</button>
+
+				</form>
+
+			</div>
+			<!-- panel-body -->
+
+		</div>
+	</div>
+	
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="panel-btns">
+					<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+				</div>
+				<h4 class="panel-title">搜索用户</h4>
+			</div>
+			<div class="panel-body">
+
+				<form class="form-inline" method="get"
+					action="{:url('',['act'=>'search','level'=>$LRow.level])}">
+
+					<div class="form-group">
+							<input type="text" name="query" class="form-control"
+								value="" placeholder="用户名/Uid">
+					</div>
+
+								<button class="btn btn-primary">搜索</button>
+
+				</form>
+
+			</div>
+			<!-- panel-body -->
+
+		</div>
+	</div>
+	
+	<div class="col-md-12">
+		<div class="table-responsive">
+			<table class="table table-success mb30">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>代理级别</th>
+						<th>用户名</th>
+						<th>余额</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{volist name="list" id="arr"}
+					<tr>
+						<td>{$arr.uid}</td>
+						<td>{$arr.name}[{$arr.level}]</td>
+						<td>{$arr.user}</td>
+						<td>{$arr.money}元</td>
+						<td><a
+							href="{:url('',['act'=>'del','level'=>$arr.level,'uid'=>$arr.uid])}"
+							class="delete-row" onClick="if(!confirm('确认取消该用户的代理身份？')){return false;}" ><i class="fa fa-trash-o"></i></a></td>
+					</tr>
+					{/volist}
+				</tbody>
+			</table>
+		</div>
+		<!-- table-responsive -->
+
+		{$list->render()}
+	</div>
+</div>
+{/block}

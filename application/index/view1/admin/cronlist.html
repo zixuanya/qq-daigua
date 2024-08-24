@@ -1,0 +1,205 @@
+{extend name="common/common" /}
+{block name="title"}监控说明{/block}
+{block name="main"}
+<div class="row">
+<div class="col-md-12">
+          <div class="panel panel-dark panel-alt widget-quick-status-post">
+          <div class="panel-heading">
+              <div class="panel-btns">
+                <a href="" class="panel-close">×</a>
+                <a href="" class="minimize">−</a>
+              </div><!-- panel-btns -->
+              <h3 class="panel-title">监控说明</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#cronsm" data-toggle="tab"><i class="fa fa-bookmark-o"></i> <strong>说明</strong></a></li>
+                <li class=""><a href="#cronlist" data-toggle="tab"><i class="fa fa-send-o"></i> <strong>列表1</strong></a></li>
+                <li class=""><a href="#cronlist2" data-toggle="tab"><i class="fa fa-send"></i> <strong>列表2</strong></a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="cronsm" class="tab-pane active">
+                 		<ul class="list-group">
+                 			  <li class="list-group-item">列表为详细监控列表，列表2是为了方便监控的</li>
+                              <li class="list-group-item">1.欢迎使用云影秒赞程序</li>
+                              <li class="list-group-item">2.我们将证明你选着我们是没错的</li>
+                              <li class="list-group-item">3.为了您的平台内所有的功能正常使用</li>
+                              <li class="list-group-item">4.请复制列表2的链接到监控平台,监控</li>
+                              <li class="list-group-item">5.推荐使用阿里云监控 <a href="http://www.aliyun.com" target="_blank">点击进入 阿里云</li>
+							  <li class="list-group-item">6.如果还是不会，请联系客服QQ:8711973<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=8711973&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:8711973:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> 有偿帮助 5元一次</li>
+                          </ul>
+                </div>
+                <div id="cronlist" class="tab-pane">
+                  <div class="table-responsive">
+			          <table class="table table-bordered mb30">
+			            <thead>
+			              <tr>
+			                <th>监控名称</th>
+							<th>监控地址</th>
+			                <th>监控频率</th>
+			              </tr>
+			            </thead>
+			            <tbody>
+			            {for start="1" end="config('zz_server_num')+1"}
+			              <tr>
+			                <td>秒赞{$i}</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/zan.cron.php?key={:config('zz_cronkey')}&net={$i}</td>
+			                <td>10-60s</td>
+			              </tr>
+						{/for}
+						{for start="1" end="config('zz_server_num')+1"}
+			              <tr>
+			                <td>说说{$i}</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/shuo.cron.php?key={:config('zz_cronkey')}&net={$i}</td>
+			                <td>10-60s</td>
+			              </tr>
+						{/for}
+						{for start="1" end="config('zz_server_num')+1"}
+			              <tr>
+			                <td>评论{$i}</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/reply.cron.php?key={:config('zz_cronkey')}&net={$i}</td>
+			                <td>10-60s</td>
+			              </tr>
+						{/for}
+						{for start="1" end="config('zz_server_num')+1"}
+			              <tr>
+			                <td>转发说说{$i}</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/zf.cron.php?key={:config('zz_cronkey')}&net={$i}</td>
+			                <td>10-60s</td>
+			              </tr>
+						{/for}
+						  <tr>
+			                <td>空间签到</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/qdqzone.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>Q群签到</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/qunqd.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>会员签到</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/vipqd.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>删除说说</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/delshuo.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>删除留言</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/delly.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>花藤三项</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/ht.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>钱包签到</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/wallet.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>手机在线6小时</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/phone.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>部落签到</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/buluo.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>百变气泡</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/qipao.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			              <tr>
+			                <td>音乐加速</td>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/yyjs.cron.php?key={:config('zz_cronkey')}</td>
+			                <td>10-60s</td>
+			              </tr>
+			            </tbody>
+			          </table>
+			          </div><!-- table-responsive -->
+                </div>
+                <div id="cronlist2" class="tab-pane">
+                  <div class="table-responsive">
+			          <table class="table table-bordered mb30">
+			            <thead>
+			              <tr>
+							<th>监控地址</th>
+			              </tr>
+			            </thead>
+			            <tbody>
+			            {for start="1" end="config('zz_server_num')+1"}
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/zan.cron.php?key={:config('zz_cronkey')}&net={$i}</td>
+			              </tr>
+						{/for}
+						{for start="1" end="config('zz_server_num')+1"}
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/shuo.cron.php?key={:config('zz_cronkey')}&net={$i}</td>
+			              </tr>
+						{/for}
+						{for start="1" end="config('zz_server_num')+1"}
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/reply.cron.php?key={:config('zz_cronkey')}&net={$i}</td>
+			              </tr>
+						{/for}
+						{for start="1" end="config('zz_server_num')+1"}
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/zf.cron.php?key={:config('zz_cronkey')}&net={$i}</td>
+			              </tr>
+						{/for}
+						  <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/qdqzone.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/qunqd.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/vipqd.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/delshuo.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/delly.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/ht.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/wallet.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/phone.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/buluo.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/qipao.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			              <tr>
+			                <td>http://{$_SERVER['HTTP_HOST']}/cron/yyjs.cron.php?key={:config('zz_cronkey')}</td>
+			              </tr>
+			            </tbody>
+			          </table>
+			          </div><!-- table-responsive -->
+                </div>
+              </div><!-- tab-content -->
+
+            </div><!-- panel-body -->
+          </div><!-- panel -->
+
+          <div class="mb20"></div>
+
+</div>
+</div>
+{/block}

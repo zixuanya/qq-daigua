@@ -1,0 +1,137 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                <form method="post">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的QQ！" name="s"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <hr class="widget-separator">
+            <div class="widget-body table-responsive">
+                <table class="table table-hover table-striped">
+                  
+                    <tbody>
+                    {volist name="$webList" id="web"}
+                    <div class="col-lg-3 col-md-4 col-sm-6 del34">
+                      <div class="panel b-a">
+                        <div class="panel-heading no-border bg-primary">          
+                          <span class="text-lt">ZID：{$web.zid}</span>
+                          <div class="btn-group dropdown" style="float:right;">
+                              <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle clear btn btn-default btn-xs" data-toggle="dropdown">操作 <span class="caret"></span></a>
+                              <ul class="dropdown-menu animated fadeInUp" style="left:auto;right:0;">
+                                  <li><a href="{:url('webSet',['zid'=>$web.zid])}" >编辑</a></li>
+                                  <li><a href="?action=del&zid={$web.zid}" onclick="return confirm('确认删除？');" >删除</a>
+								   <form class="form-inline" method="post" novalidate="">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">充值</div>
+                                            <input type="hidden" name="action" value="cz">
+                                            <input type="hidden" name="uid" value="{$web.uid}">
+                                            <input type="text" name="point" class="form-control" value="10"
+                                                   style="width: 80px;">
+                                            <div class="input-group-addon">元</div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">充值</button>
+                                </form>
+                              </ul>
+							 
+                          </div>
+
+                        </div>
+                        <div class="item m-l-n-xxs m-r-n-xxs">
+                          <div class="bottom wrapper bg-gd-dk text-white" style="width:100%">            
+                            <div class="text-u-c h3 text-default">{$web.name}</div>
+                          </div>
+                          <img src="http://daigua.yuncd.cc/data/img.php?time={$web.qq}" class="img-full">
+                        </div>
+                        <ul class="list-group no-radius alt">
+                          <li class="list-group-item">
+                            <span class="badge bg-info">{$web.qq}</span>
+                            <i class="fa fa-user fa-fw text-muted"></i> 
+                            分站站长QQ：
+                          </li>
+						  <li class="list-group-item">
+                            <span class="badge bg-info">{$web.point}</span>
+                            <i class="fa fa-check-square fa-fw text-muted"></i> 
+                            分站站点余额：
+                          </li>
+						  
+                          <li class="list-group-item">
+                            <span class="badge bg-info">{$web.upzid}</span>
+                            <i class="fa fa-check-square fa-fw text-muted"></i> 
+                            分站站点上级：
+                          </li>
+                          <li class="list-group-item">
+                            <span class="badge bg-info">{$web.domain}</span>
+                            <i class="fa fa-jpy fa-fw text-muted"></i> 
+                            分站绑定域名：
+                          </li>
+						  <li class="list-group-item">
+                            <span class="badge bg-info">{$web.addtime}</span>
+                            <i class="fa fa-jpy fa-fw text-muted"></i> 
+                            分站开通时间：
+                          </li>
+						   <li class="list-group-item">
+                            <span class="badge bg-info">{$web.endtime}</span>
+                            <i class="fa fa-jpy fa-fw text-muted"></i> 
+                            分站到期时间：
+                          </li>
+                          
+                          
+                         
+                          
+                        
+                        </ul>
+
+                      </div>
+ 
+                    </div>  
+                    {/volist}
+                    </tbody>
+                </table>
+                <div class="text-center">{$pageList->showPage()}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

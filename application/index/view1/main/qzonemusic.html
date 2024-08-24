@@ -1,0 +1,48 @@
+{extend name="common/layout" /} 
+{block name="title"}空间背景音乐查询{/block}
+{block name="main"}
+<div class="row">
+<div class="col-md-12">
+	<div class="tab-content">
+		<form action="{:url('qzonemusic')}">
+			<div class="tab-pane active">
+				<input type="text" name="qq" class="form-control"
+					placeholder="你要查询谁的QQ空间背景歌曲呢？输入QQ即可">
+			</div>
+			<button class="btn btn-primary btn-block mt10" type="submit">给我挖出来</button>
+		</form>
+	</div>
+</div>
+</div>
+{php}
+if(input('get.qq')){
+{/php}
+<div class="row">
+<div class="col-md-12">
+          <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>歌曲名称</th>
+				<th>下载地址</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+            {volist name="songs[2]" id="song" }
+            	{php} $i--; {/php}
+				<tr>
+					<td>{$songs[1][$i]}</td>
+					<td><a href="http://stream.qqmusic.tc.qq.com/{$songs[2][$i]}">下载地址1</a>
+					&nbsp;|&nbsp;<a href="http://tsmusic24.tc.qq.com/{$songs[2][$i]}">下载地址2</a>
+					</td>
+				</tr>
+				{php} $i++; {/php}	
+              {/volist}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+</div>
+</div>
+{php} } {/php}
+{/block}

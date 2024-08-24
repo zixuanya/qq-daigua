@@ -1,0 +1,51 @@
+﻿{extend name="panel/layout" /}
+{block name="main"}
+<br/>
+<div class="row">
+	<div class="col-lg-6">
+	  <section class="panel">
+		<header class="panel-heading">
+		  抽奖说明
+		  <span class="tools pull-right">
+			<a href="javascript:;" class="fa fa-chevron-down">
+			</a>
+			<a href="javascript:;" class="fa fa-times">
+			</a>
+		  </span>
+		</header>
+		<div class="panel-body profile-activity">
+		  {:getHtmlCode(config('zz_drawgg'))}
+		</div>
+	  </section>
+	 </div>
+	 <div class="content-wrapper">
+    <section class="content">
+	  <div class="col-md-6">
+           <div class="widget widget-fullwidth be-loading">
+          <div class="widget-head alert-primary alert-icon-border">
+             <span class="title">{$webTitle}</span>
+                </div>
+            <!-- /.box-header -->
+            <div class="panel-body">
+		</header>
+		<div class="panel-body profile-activity">
+		  <form action="?" role="form" method="post">
+                        <div class="form-group">
+                            <center><label class="label label-primary">选择一个QQ进行抽奖，选择后所得代挂天数直接为此QQ续费！</label></center>
+                            <div class="input-group">
+                                <div class="input-group-addon">QQ:</div>
+                                <select name="qq" class="form-control">
+                                    {volist name="qqlist" id="qq"}
+                                        <option value="{$qq.uin}">{$qq.uin}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" value="开始抽奖" onClick="this.value='提交中...'" class="btn btn-success btn-block">
+                        </div>
+                    </form>
+		</div>
+	  </section>
+	 </div>
+{/block}

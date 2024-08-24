@@ -1,0 +1,93 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+                
+                <div class="wrapper">
+                    <div class="col-lg-6 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark">
+                                      <div class="clear">每日前{$num}名签到的人至少可以获得{$rule[1]}元奖励！!<br>
+									  </div>
+                                </div>
+                        </div>
+                                                <div class="panel panel-default">
+                            <div class="panel-wrapper" style="padding:10px;">
+                               <div style="text-align:left;">签到进度：</div>
+                               <div class="progress progress-striped progress-md" style="margin-bottom:12px;">
+                                   <div class="progress">
+                        <div class="progress-bar progress-bar-warning" style="width: {$day * 10}%;"></div>
+                    </div>
+                                </div>
+								<div class="text-center">我已连续签到 <strong>{$day}</strong>天！连续签到有更多奖励哦~</div>
+                            </div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark">每日签到</div>
+                             <div class="list-group-item list-group-item-warning">
+                    <form class="form-horizontal" method="post">
+                        <div class="list-group-item">
+                            {if condition="$isQd"}
+                            <span class="btn btn-warning btn-block">今天已签到</span>
+                            {else}
+                            <button class="btn btn-primary btn-block">签到</button>
+                            {/if}
+                        </div>
+                    </form>
+                </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark">签到记录</div>
+                            <div class="table-responsive">
+                                 <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th class="text-center">UID</th>
+                            <th class="text-center">用户名</th>
+                            <th class="text-center">连续天数</th>
+                            <th class="text-center">签到时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$qdList" id="qd"}
+                        <tr>
+                            <td class="text-center">{$qd.uid}</td>
+                            <td class="text-center">{$qd.user}</td>
+                            <td class="text-center">{$qd.num}</td>
+                            <td class="text-center">{$qd.qdtime}</td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                            </div>
+                                                    </div>
+                        
+                    </div>
+                    <script type="text/javascript">
+
+						</script>
+                        
+                        <!-- 盗用本站代码、模仿本站功能 ==> Si全家 -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+{/block}

@@ -1,0 +1,60 @@
+{extend name="common/common" /}
+{block name="title"}支付宝配置{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">即时到账配置[支付宝]</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('alipayset')}">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">支付宝收款账号</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="支付宝账号" class="form-control" name="alipay_account" value="{:config('web_alipay_account')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">合作身份者ID</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="合作身份者ID" class="form-control" name="alipay_pid" value="{:config('web_alipay_pid')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">合作身份者Key</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="合作身份者Key" class="form-control" name="alipay_key" value="{:config('web_alipay_key')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">是否开启手机支付界面[需要申请接口]</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="alipay_moblie">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="config('web_alipay_moblie') eq 1"}selected{/if}>1_开启</option>
+                </select>
+              </div>
+            </div>
+            
+				<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+</div>
+
+{/block}

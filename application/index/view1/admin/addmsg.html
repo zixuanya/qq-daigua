@@ -1,0 +1,117 @@
+{extend name="common/common" /}
+{block name="title"}添加消息{/block}
+{block name="headjs"}
+<link rel="stylesheet" href="/assets/Main/css/bootstrap-wysihtml5.css" />
+{/block}
+{block name="main"}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-btns">
+      <a href="" class="panel-close">×</a>
+      <a href="" class="minimize">−</a>
+    </div>
+    <h4 class="panel-title">添加消息</h4>
+  </div>
+  <div class="panel-body panel-body-nopadding">
+
+    <form class="form-horizontal form-bordered" method="post" action="{:url('addmsg',['do'=>
+      'add'])}">
+      <div class="form-group">
+        <label class="col-sm-3 control-label">对象</label>
+        <div class="col-sm-6">
+          <input type="text" placeholder="请输入要发给用户的uid，特殊技巧：输入vip或者novip 就批量给vip用户和普通用户推送消息" class="form-control" name="object" required="required"></div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">消息标题</label>
+        <div class="col-sm-6">
+          <input type="text" placeholder="消息标题" class="form-control" name="name" required="required"></div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <textarea id="wysiwyg" placeholder="内容" class="form-control" rows="10" name="value"></textarea>
+        </div>
+      </div>
+
+      <div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">添加</button>
+							</div>
+						</div>
+					</div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">&times;</a>
+            <a href="" class="minimize">&minus;</a>
+          </div>
+          <h4 class="panel-title">发送会员消息</h4>
+          <p>在这里，你可以编写消息内容</a></p>
+        </div>
+        <div class="panel-body">
+        <form action="" method="post">
+          <textarea id="wysiwyg" placeholder="Enter text here..." class="form-control" rows="10" name="abc"></textarea>
+          
+          <input type="submit" name="a" value="tj">
+          </form>
+        </div>
+      </div-->
+{/block}
+{block name="footjs"}
+<script src="/assets/Main/js/wysihtml5-0.3.0.min.js"></script>
+<script src="/assets/Main/js/bootstrap-wysihtml5.js"></script>
+<script>
+jQuery(document).ready(function(){
+    
+    "use strict";
+    
+  // HTML5 WYSIWYG Editor
+  jQuery('#wysiwyg').wysihtml5({color: true,html:true});
+
+
+  window.onload = function() {
+  // Listen to the double click event.
+  if ( window.addEventListener )
+	document.body.addEventListener( 'dblclick', onDoubleClick, false );
+  else if ( window.attachEvent )
+	document.body.attachEvent( 'ondblclick', onDoubleClick );
+  };
+
+  function onDoubleClick( ev ) {
+	// Get the element which fired the event. This is not necessarily the
+	// element to which the event has been attached.
+	var element = ev.target || ev.srcElement;
+
+	// Find out the div that holds this element.
+	var name;
+
+	do {
+		element = element.parentNode;
+	}
+	while ( element && ( name = element.nodeName.toLowerCase() ) &&
+		( name != 'div' || element.className.indexOf( 'editable' ) == -1 ) && name != 'body' );
+
+	if ( name == 'div' && element.className.indexOf( 'editable' ) != -1 )
+		replaceDiv( element );
+	}
+
+	var editor;
+
+	function replaceDiv( div ) {
+		if ( editor )
+			editor.destroy();
+		editor = CKEDITOR.replace( div );
+	}
+
+});
+</script>
+{/block}

@@ -1,0 +1,101 @@
+{extend name="common/layout" /}
+{block name="title"}{$qqInfo.qq}功能配置{/block}
+{block name="main"}
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            <h4 class="modal-title">手动测试</h4>
+        </div>
+        <div class="modal-body modal-body-nopadding">
+			<iframe src="/assets/Main/images/loaders/loader6.gif" id="iframes" width="100%" height="38%" scrolling="no" frameborder="0" >
+			</iframe>
+		</div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+function load(cron){
+	var url = '/cron/' + cron + '.run.php?type=1&qid={$qqInfo.qid}&qq={$qqInfo.qq}&code={:md5(md5('8711973').md5($qqInfo.qq).$qqInfo.qid)}';
+	$("#iframes").attr("src",url);
+}
+</script>
+{php}
+$tools = [
+'zan'=>'自动点赞',
+'shuo'=>'发表说说',
+'reply'=>'自动评论',
+'zf'=>'转发说说',
+'vipqd'=>'会员签到',
+'qd'=>'空间签到',
+'delshuo'=>'删除说说',
+'delly'=>'删除留言',
+'qt'=>'说说圈图',
+'qunqd'=>'Q群签到',
+'ht'=>'花藤三项',
+'walletqd'=>'钱包签到',
+'phone'=>'手机在线',
+'buluo'=>'部落签到',
+'qipao'=>'百变气泡',
+'yyjs'=>'音乐加速',
+];
+{/php}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">功能配置</h4>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>功能名称</th>
+                <th>上次执行时间</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            	<tr>
+            		<td>自动更新</td>
+            		<td>{$qqInfo.lastauto}</td>
+            		<td>{:getZt(2)}</td>
+            		<td><span class="label label-primary">锁定</span></td>
+            	</tr>
+            	{php}
+            		foreach($tools as $k=>$tool){
+            				$onclick = '';
+            				unset($tools[$k]);
+            				if ($k == 'zan' || $k == 'reply' || $k == 'shuo' || $k == 'zf'){
+            					$url = url('qqfunset',['uin'=>$qqInfo['qq'],'name'=>$k]);
+            					$onclick='onclick="'."window.location.href='".$url."'".'"';
+            				} else {
+            					$url = url('qqset',['uin'=>$qqInfo['qq'],'do'=>'funsave','name'=>$k,'zt'=>zt($qqInfo[$k])]);
+            					$onclick='onclick='.'"'.'javascript:if(confirm('."'".'确实要更改'.$tool.'状态?'."'".'))location='."'".$url."'".'"';
+            				}
+            				$v = $k;
+            				if($k == 'walletqd') $v = 'wallet';
+            				$test = 'data-toggle="modal" data-target=".bs-example-modal-lg" onclick="load(\'' . $v . '\');"';
+							$span=getZt($qqInfo[$k]);
+
+							echo '<tr>
+            						<td>'.$tool.'</td>
+            						<td>'.$qqInfo["last$k"].'</td>
+					            	<td>'.$span.'</td>
+					            	<td><span class="label label-primary" '.$onclick.'>更改</span>&nbsp;<span class="label label-primary" '.$test.'>手动测试</span></td>
+					            </tr>';
+            		}
+            	{/php}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+          
+          
+        </div><!-- panel-body -->
+        
+</div>
+{/block}

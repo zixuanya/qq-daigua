@@ -1,0 +1,125 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal" method="post">
+                    
+					 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">是否开启抽奖</span>
+                                        <select name="cjoff" class="form-control">
+							<option value="0">关闭</option>
+							<option value="1" {if condition="config('zz_cjoff')"}selected{/if}>开启</option>
+						</select>
+                                    </div>
+                                </div>
+								
+								 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">是否显示奖品</span>
+                                       <select name="cjshow" class="form-control">
+							<option value="0">关闭</option>
+							<option value="1" {if condition="config('zz_cjshow')"}selected{/if}>开启</option>
+						</select>
+                                    </div>
+                                </div>
+					
+                    
+								 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">抽奖开放权限</span>
+                                       <select name="cj_vip" class="form-control">
+							<option value="88" {if condition="config('zz_cj_vip') EQ 88"}selected{/if}>所有用户</option>
+							<option value="9" {if condition="config('zz_cj_vip') EQ 9"}selected{/if}>所有站长</option>
+							<option value="0" {if condition="config('zz_cj_vip') EQ 0"}selected{/if}>普通用户</option>
+							<option value="1" {if condition="config('zz_cj_vip') EQ 1"}selected{/if}>VIP1用户</option>
+							<option value="2" {if condition="config('zz_cj_vip') EQ 2"}selected{/if}>VIP2用户</option>
+							<option value="3" {if condition="config('zz_cj_vip') EQ 3"}selected{/if}>VIP3用户</option>
+							<option value="4" {if condition="config('zz_cj_vip') EQ 4"}selected{/if}>VIP4用户</option>
+							<option value="5" {if condition="config('zz_cj_vip') EQ 5"}selected{/if}>VIP5用户</option>
+							<option value="90" {if condition="config('zz_cj_vip') EQ 90"}selected{/if}>普通分站站长</option>
+                            <option value="91" {if condition="config('zz_cj_vip') EQ 91"}selected{/if}>二级主站站长</option>
+                            <option value="92" {if condition="config('zz_cj_vip') EQ 92"}selected{/if}>超级主站站长</option>
+						    <option value="93" {if condition="config('zz_cj_vip') EQ 93"}selected{/if}>分销商站长</option>
+                            <option value="94" {if condition="config('zz_cj_vip') EQ 94"}selected{/if}>合作伙伴站长</option>
+						</select>
+                                    </div>
+                                </div>
+                   
+					  <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">抽奖扣除余额</span>
+                                       <input type="text" name="cj_need" 
+							value="{:config('zz_cj_need')}" class="form-control">
+						</div>
+                                    </div>
+                               
+							   <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">免费抽奖次数</span>
+                                       <input type="text" name="cj_free_day" 
+							value="{:config('zz_cj_free_day')}" class="form-control">
+						</div>
+                                    </div>
+                    
+					
+					<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">单IP抽奖次数</span>
+                                       <input type="text" name="cj_free_day" 
+							<input type="text" name="cj_ipxzcj" 
+							value="{:config('zz_ipxzcj')}" class="form-control">
+						</div>
+                                    </div>
+					
+					<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">抽奖页面公告</span>
+                                       <textarea name="gg_cj" class="form-control" rows="5">{:config('zz_gg_cj')}</textarea>
+						</div>
+                                    </div>
+					
+                   
+                    
+                    <div class="form-group">
+                        <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

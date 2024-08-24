@@ -1,0 +1,88 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                <form method="post">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的QQ！" name="s"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <hr class="widget-separator">
+            <div class="widget-body table-responsive">
+                <table class="table table-hover table-striped">
+                   
+                    <tbody>
+                    {volist name="$qqList" id="row"}
+					<div class="col-lg-3 col-md-4 col-sm-6 m-b-xs">
+            <div class="panel panel-info">
+                <div class="panel-body text-center">
+                    <div class="m-b-sm">
+                        <img alt="image" class="img-circle" src="//q4.qlogo.cn/headimg_dl?dst_uin={$row.uin}&amp;spec=100" width="100" height="100">
+                    </div>
+                    <h2 class="text-success"># {$row.uin}</h2>
+                    <h3 class="text-warning">状态：<font color="green">{:getQqzt($row.zt)}</font></h3>
+					 <h5 class="text-success">所属用户：<font color="blue">{$row.uid}</font></h3>
+					  <h5 class="text-success">QQID：<font color="blue">{$row.qid}</font></h3>
+					  <h5 class="text-success">添加时间：<font color="blue">{$row.addtime}</font></h3>
+					
+                    <hr>
+                    <div style="width:100%; height:3px;"></div>
+                    <div class="text-center m-b-sm">
+                        <a class="btn btn-outline btn-success btn-dialog" href="{:url('index/qqinfo',['uin'=>$row.uin])}" class="btn-xs btn-info">详情</a>
+                   
+						<a class="btn btn-danger" href="{:url('qqList')}?qid={$row.qid}&action=del" onclick="if(!confirm('确认删除QQ:{$row.uin}吗?')){return false;}" title="删除QQ:{$qq.uin}"}>删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+					
+					
+					
+                   
+                    {/volist}
+                    </tbody>
+                </table>
+                <div class="text-center">{$pageList->showPage()}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

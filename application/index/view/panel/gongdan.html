@@ -1,0 +1,106 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <form role="form" class="form-horizontal" method="post">
+                                <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">工单标题</span>
+                                        <input type="text" name="domain" class="form-control"
+                                           value="{:config('zz_domain')}">
+                                    </div>
+                                </div>
+								
+								
+						
+						
+                                <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">工单内容</span>
+                                         <textarea name="gg_admin" rows="5" class="form-control">{:getHtmlCode(config('zz_gg_admin'),true)}</textarea>
+                                    </div>
+                                </div>
+                                
+                             
+                            </form>
+                    <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+           
+  
+
+        
+
+                    <div class="col-sm-12">
+                        <div class="panel panel-info" draggable="true">
+                            <div class="list-group-item bg-dark m-b-sm">工单列表
+							
+							
+							</div>
+                            <div class="panel-body padder-v">
+
+							
+						</span>
+            </div>
+                    <div class="panel-body table-responsive">
+                        <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                            <thead>
+                            <tr>
+                                <th><font size="1">#ID</th>
+                                <th><font size="1">UID</th>
+                               
+                                <th><font size="1">工单标题</th>
+								<th><font size="1">提交时间</th>
+                                <th><font size="1">状态</th>
+                            </tr>
+                            </thead>
+                          <tbody>
+							{volist name="$pList" id="res"}
+							<tr>
+							<td>1000</td>
+							<td>10001</td>
+							
+								<td>test</td>
+								<td>{$res['addtime']}</td>
+								<td><a href="{:url('',['act'=>'del','id'=>$res.aid])}" class="btn-xs btn-warning" onclick="return confirm('确认放弃？');">正在处理</a></td>
+                                    
+                    </tr>
+                    {/volist}
+                    </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{/block}

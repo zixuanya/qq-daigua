@@ -1,0 +1,46 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="bg-light lter b-b wrapper-md hidden-print">
+<h1 class="m-n font-thin h3">{$webTitle}</h1>
+</div>
+<div class="wrapper-md control">
+<div class="col-sm-12">
+<div class="panel panel-default">
+<div class="list-group">
+<div class="list-group-item bg-light mb-md" style="background-color:#778899;">
+<div class="clear"><font color="white">{$webTitle}</font>
+</div>
+</div>
+</div>
+<div class="panel-body">
+<div class="row">
+<div class="col-md-12">
+<div class="table-responsive">
+<table class="table table-bordered mb30">
+<thead>
+<tr>
+<th>云支付订单号/商户订单号</th>
+<th>创建/结束订单时间</th>
+<th>支付方式</th>
+<th>商品名称/金额</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+{volist name="list" id="arr" empty="没有任何记录哦" }
+<tr>
+<td>{$arr.trade_no}<br/>{$arr.out_trade_no}</td>
+<td>{$arr.addtime}<br/>{$arr.endtime}</td>
+<td>{$arr.type}</td>
+<td>{$arr.name}<br/>￥&nbsp;{$arr.money}元</td>
+<td>{$arr.status == 1 ? "<font color='green'>已完成</font>" : "<font color='red'>未支付</font>"}</td>
+</tr>
+{/volist}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+{/block}

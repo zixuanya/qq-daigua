@@ -1,0 +1,73 @@
+{extend name="admin/layout" /}
+{block name="main"}
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>导入{$title}QQ</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">导入{$title}QQ</div>
+            <div class="panel-body">
+            <div class="widget-body">
+                <div class="alert alert-info text-center"><i class="fa fa-volume-up"></i> 你可以上传QQ列表文件，或者直接输入QQ列表</div>
+                <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="action" value="import">
+					 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">QQ列表文件</span>
+                                        <input type="file" name="qqfile" class="form-control">
+                                    </div>
+                                </div>
+					 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">QQ列表</span>
+                                        <textarea id="textarea-input" name="qqs" rows="10" class="form-control"
+                                      placeholder="一行一个QQ"></textarea>
+                                    </div>
+                                </div>
+                 
+                 <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认导入</button>
+                                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

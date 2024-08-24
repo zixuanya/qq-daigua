@@ -1,0 +1,104 @@
+{extend name="common/common"/}
+{block name="title"}{if condition="$do eq 'edit'"}编辑公告{else /}添加公告{/if}{/block}
+{block name="main"}
+<div class="panel panel-default {if condition="$do eq 'edit'"}hide{/if}">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">添加公告</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('addgg',['do'=>'add'])}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">名称</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="公告名称" class="form-control" name="name" required="required">
+              </div>
+            </div>
+            
+            <div class="form-group">
+				  <label class="col-sm-3 control-label" for="readonlyinput">公告内容</label>
+				  <div class="col-sm-6">
+				  	<textarea rows="5" cols="3" class="form-control"  name="gg" required="required"></textarea>
+				  </div>
+			</div>
+			
+			<div class="form-group">
+              <label class="col-sm-3 control-label">公告类型</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="imp">
+                  <option value="0">0_普通公告</option>
+                  <option value="1">1_重要公告</option>
+                </select>
+              </div>
+            </div>
+				
+				<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">添加</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+</div>
+
+<div class="panel panel-default {if condition="$do neq 'edit'"}hide{/if}">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">添加公告</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('addgg',['do'=>'edit','id'=>$id])}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">名称</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="公告名称" class="form-control" name="name" value="{$gginfo.name}" required="required">
+              </div>
+            </div>
+            
+            <div class="form-group">
+				  <label class="col-sm-3 control-label" for="readonlyinput">公告内容</label>
+				  <div class="col-sm-6">
+				  	<textarea rows="5" cols="3" class="form-control"  name="gg" required="required">{$gginfo.value}</textarea>
+				  </div>
+			</div>
+			
+			<div class="form-group">
+              <label class="col-sm-3 control-label">公告类型</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="imp">
+                  <option value="0">0_普通公告</option>
+                  <option value="1" {if condition="$gginfo.imp neq 0"}selected{/if}>1_重要公告</option>
+                </select>
+              </div>
+            </div>
+				
+				<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">修改</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+      </div>
+
+{/block}

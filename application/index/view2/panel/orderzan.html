@@ -1,0 +1,96 @@
+﻿{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+		<div class="panel-body profile-activity">
+		  <form method="post" class="form-horizontal">
+                    <input type="hidden" name="mod" value="coin">
+					
+					<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">开启QQ</span>
+                                      <select class="form-control" name="qid">
+                                {volist name="qqList" id="qq"}
+                                <option value="{$qq.qid}" {if condition="$qq.qid eq $aqid" }selected{
+                                /if}>{$qq.uin}</option>
+                                {/volist}
+                            </select>
+                                    </div>
+                                </div>
+					
+                    <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">开启项目</span>
+                                    <select class="form-control" name="tid" id="dgtid" onchange="getPoint();">
+                                <option value="10" price="0.0">QQ秒赞</option>
+                            </select>
+                                    </div>
+                                </div>
+					
+					<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">下单月数</span>
+                                       <input type="number" name="num" value="1" id="num" class="form-control"
+                                       onchange="getPoint();" required>
+                                    </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">消耗金额</span>
+                                      <input type="text" value="{$price_zan}" class="form-control" id="need"
+                                       disabled>
+                                    </div>
+                                </div>
+                   
+                   
+                   
+                                <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                </form>
+		</div>
+	  </section>
+	 </div>
+</div>
+{/block}
+{block name="footJs"}
+<script type="text/javascript">
+    function getPoint() {
+        var value = $('#num').val();
+        var tid = $('#dgtid option:selected').val();
+        var price = {$price_zan};
+        $('#need').val((value * price).toFixed(2));
+    }
+</script>
+{/block}

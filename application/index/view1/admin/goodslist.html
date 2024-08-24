@@ -1,0 +1,85 @@
+{extend name="common/common" /}
+{block name="title"}商品列表{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">添加商品</h4>
+          <p>在这里，你可以快速添加商品</p>
+        </div>
+        <div class="panel-body">
+          <form class="form-inline" method="post" action="{:url('',['act'=>'add'])}">
+            <div class="form-group">
+              <label class="sr-only">商品名称</label>
+              <input class="form-control" placeholder="商品名称" type="text" name="name" >
+            </div>
+            <div class="form-group">
+              <label class="sr-only" >商品价格</label>
+              <input class="form-control" placeholder="商品价格" type="number" min="0" step="0.01" name="price">
+            </div>
+            <button type="submit" class="btn btn-primary">添加</button>
+          </form>
+        </div><!-- panel-body -->
+</div>
+
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">搜索商品</h4>
+          <p>在这里，你可以快速搜索商品</p>
+        </div>
+        <div class="panel-body">
+          <form class="form-inline" method="get" action="{:url('',['act'=>'search'])}">
+            <div class="form-group">
+              <label class="sr-only">商品名称</label>
+              <input class="form-control" placeholder="商品名称" type="text" name="name" >
+            </div>
+            <button type="submit" class="btn btn-primary">搜索</button>
+          </form>
+        </div><!-- panel-body -->
+</div>
+
+		<div class="table-responsive">
+			<table class="table table-success mb30">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>名称</th>
+						<th>价格</th>
+						<th>库存</th>
+						<th>卡密</th>
+						<th>添加时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{volist name="list" id="arr"}
+					<tr>
+						<td>{$arr.id}</td>
+						<td>{$arr.name}</td>
+						<td>{$arr.price}</td>
+						<td>{:db('goods_km')->alias('a')->join('goods b','a.gid = b.id')->where(['a.buyuid'=>0,'b.zid'=>ZID,'b.id'=>$arr.id])->count()}</td>
+						<td><a href="{:url('goodskm',['gid'=>$arr.id])}"
+							class="btn btn-info-alt btn-xs">查看</a></td>
+						<td>{$arr.addtime}</td>
+						<td><a
+							href="{:url('editgoods',['gid'=>$arr.id])}"><i
+								class="fa fa-pencil"></i></a>&nbsp;<a
+							href="{:url('goodslist',['act'=>'del','gid'=>$arr.id])}"
+							class="delete-row" onClick="if(!confirm('确认删除？')){return false;}" ><i class="fa fa-trash-o"></i></a></td>
+					</tr>
+					{/volist}
+				</tbody>
+			</table>
+		</div>
+		<!-- table-responsive -->
+
+		{$list->render()}
+
+{/block}

@@ -1,0 +1,57 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="bg-light lter b-b wrapper-md hidden-print">
+<h1 class="m-n font-thin h3">{$webTitle}</h1>
+</div>
+<div class="wrapper-md control">
+<div class="col-lg-8 col-md-12 col-lg-offset-2">
+<div class="panel panel-default">
+<div class="list-group">
+<div class="list-group-item bg-light mb-md" style="background-color:#778899;">
+<div class="clear"><font color="white">{$webTitle}</font>
+</div>
+</div>
+</div>
+{if condition="config('web_super') eq 4"}
+<div class="panel-body">
+<div class="alert alert-success"><h2>恭喜！您已经升级至最高级别——至尊外包！</h2>
+</div>
+</div>
+{else}
+<div class="panel-body">
+<form method="post" class="form-horizontal" onsubmit="return checkinput()">
+<div class="list-group-item">
+<div class="input-group">
+<span class="input-group-addon">本站级别</span>
+<select name="own" class="form-control" disabled>
+<option value="0" {if condition="config('web_super') eq 0"}selected{/if}>普通分站</option>
+<option value="1" {if condition="config('web_super') eq 1"}selected{/if}>高级分站</option>
+<option value="2" {if condition="config('web_super') eq 2"}selected{/if}>超级主站</option>
+<option value="3" {if condition="config('web_super') eq 3"}selected{/if}>合作分销</option>
+<option value="4" {if condition="config('web_super') eq 4"}selected{/if}>至尊外包</option>
+</select>
+</div>
+</div>
+<div class="list-group-item">
+<div class="input-group">
+<span class="input-group-addon">升级至（逐步升级）</span>
+<select name="type" class="form-control">
+<option value="0" disabled>普通分站({$p0}元)</option>
+{if condition="config('web_super') eq 0"}<option value="1">高级分站({$p1}元)</option>{/if}
+{if condition="config('web_super') eq 1"}<option value="2">超级主站({$p2}元)</option>{/if}
+{if condition="config('web_super') eq 2"}<option value="3"}>合作分销({$p3}元)</option>{/if}
+{if condition="config('web_super') eq 3"}<option value="4"}>至尊外包({$p4}元)</option>{/if}
+</select>
+</div>
+</div>		
+<div class="list-group-item">
+<button class="btn btn-info btn-block" type="submit">确认保存</button>
+</div>
+</form>
+<div class="alert alert-info">提示：分销代理无限开通合作伙伴及以下;合作伙伴无限开通超级主站及以下;超级主站无限开通二级主站及以下;二级主站无限开通普通分站.详细请联系站长！
+</div>
+</div>
+</div>
+{/if}
+</div>
+{/block}

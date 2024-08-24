@@ -1,0 +1,63 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+ <div class="wrapper">
+    <div class="col-lg-8 col-md-12 col-lg-offset-2" role="main">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+                            <form role="form" class="form-horizontal" method="post">
+                                <div class="list-group-item">
+                                    <div class="input-group">
+                免费代挂卡密&nbsp;&nbsp;总共{$amount.total}个，已领取{$amount.finish}个。
+            </div>
+            <div class="panel-body table-responsive">
+                {if condition="isset($kmRow)"}
+                <table class="table  table-hover general-table">
+                    <thead>
+                    <tr>
+                        <th>卡密</th>
+                        <th>领取时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{$kmRow.km}</td>
+                        <td>{$kmRow.usetime}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                {else}
+                <a href="?action=freekm" class="btn btn-block btn-success">免费领取代挂卡密</a>
+                {/if}
+
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+

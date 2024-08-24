@@ -1,0 +1,256 @@
+{extend name="common/layout" /} 
+{block name="title"}单项检测{/block} 
+{block name="main"}
+<div class="row">
+	<div class="col-md-12">
+		<div class="tab-content">
+			<form action="{:url('dxjc')}">
+				<div class="tab-pane active">
+					<select class="form-control mb12" name="qid"> 
+					{volist name="qqlist" id="arr" empty="<option value='0'>没有添加QQ哦</option>"}
+						<option value="{$arr.qid}">{$arr.qq}</option> {/volist}
+					</select>
+					</div>
+					<button class="btn btn-primary btn-block mt10" type="submit">查询</button>
+			</form>
+		</div>
+	</div>
+	</div>
+	{php} if(input('get.qid')){ {/php}
+
+	<script type="text/javascript">
+		var efar={
+				  postData: function(url, parameter, callback, dataType, ajaxType) {
+					  if(!dataType) dataType='JSON';
+					  $.ajax({
+						  type: "POST",
+						  url: url,
+						  async: true,
+						  dataType: dataType,
+						  json: "callback",
+						  data: parameter,
+						  success: function(data) {
+							  if (callback == null) {
+								  return;
+							  } 
+							  callback(data);
+						  },
+						  error: function(error) {
+							  alert('创建连接失败');
+						  }
+					  });
+				  }
+			  }
+		$(document).ready(function() {
+			$('#startcheck').click(function(){
+				$('#load').html('检测中');
+				var self=$(this);
+				if (self.attr("data-lock") === "true") return;
+					else self.attr("data-lock", "true");
+				var touin,num=0;
+				$(".nocheck").each(function(){
+					var checkself=$(this),
+						touin=checkself.attr('uin');
+					checkself.html("<img src='/assets/Main/images/loaders/loader6.gif' height=25>")
+					var url="/api/dx.php";
+					efar.postData(url,'uin={$qqrow['qq']}&skey={$info_arr['skey']}&p_skey={$info_arr['pskey']}&touin='+touin, function(d) {
+						if(d.code==0){
+							if(d.is==0){
+								num = $('#hydx').text();
+								num=parseInt(num);
+								num++;
+								checkself.html('<span class="btn btn-large btn-block btn-danger">单向</span>');
+								checkself.removeClass('nocheck');
+								$(".qqdel[uin="+touin+"]").addClass('isdx');
+								$('#hydx').text(num);
+							}else{
+								checkself.html('<span class="btn btn-large btn-block btn-primary">正常</span>');
+								checkself.removeClass('nocheck');
+							}
+							$('#dxload').html('QQ：'+touin+'检测完成');
+						}else if(d.code==-1){
+							checkself.html('<span class="btn btn-large btn-block btn-danger">失败</span>');
+							alert('SKEY已过期，请更新SKEY！');
+							return false;
+						}else{
+							checkself.html('<span class="btn btn-large btn-block btn-danger">失败</span>');
+						}
+					});
+					num++;
+					//if(num>10) return false;
+				});
+				if(num<1) $('#dxload').html('没有待检测的');
+				self.attr("data-lock", "false");
+			});
+			$('#startdelete').click(function(){
+				$('#load').html('删除中');
+				var self=$(this);
+				if (self.attr("data-lock") === "true") return;
+					else self.attr("data-lock", "true");
+				var touin,num=0;
+				$(".isdx").each(function(){
+					var checkself=$(this),
+						touin=checkself.attr('uin');
+					checkself.html("<img src='/assets/Main/images/loaders/loader6.gif' height=25>")
+					var url="/api/del.php";
+					efar.postData(url,'uin={$qqrow['qq']}&skey={$info_arr['skey']}&pskey={$info_arr['pskey']}&touin='+touin, function(d) {
+						if(d.code==0){
+							num = $('#hydel').text();
+							num=parseInt(num);
+							num++;
+							checkself.html('<span class="btn btn-large btn-block btn-primary">成功</span>');
+							$('#hydel').text(num);
+							$('#dxload').html('QQ：'+touin+'删除单向好友完成');
+						}else if(d.code==-1){
+							checkself.html('<span class="btn btn-large btn-block btn-danger">失败</span>');
+							alert('SKEY已过期，请更新SKEY！');
+							return false;
+						}else{
+							checkself.html('<span class="btn btn-large btn-block btn-danger">失败</span>');
+						}
+					});
+				});
+				if(num<1) $('#load').html('没有待删除的');
+				self.attr("data-lock", "false");
+			});
+			$('.recheck').click(function(){
+				var self=$(this),
+					touin=self.attr('uin');
+				var checkself=$("#to"+touin);
+				checkself.html("<img src='/assets/Main/images/loaders/loader6.gif' height=25>")
+				var url="/api/dx.php";
+				efar.postData(url,'uin={$qqrow['qq']}&skey={$info_arr['skey']}&p_skey={$info_arr['pskey']}&touin='+touin, function(d) {
+					if(d.code==0){
+						if(d.is==0){
+							num = $('#hydx').text();
+							num=parseInt(num);
+							num++;
+							checkself.html('<span class="btn btn-large btn-block btn-danger">单向</span>');
+							checkself.removeClass('nocheck');
+							$('#hydx').text(num);
+						}else{
+							checkself.html('<span class="btn btn-large btn-block btn-primary">正常</span>');
+							checkself.removeClass('nocheck');
+						}
+					}else if(d.code==-1){
+						checkself.html('<span class="btn btn-large btn-block btn-danger">失败</span>');
+						alert('SKEY已过期，请更新SKEY！');
+						return false;
+					}else{
+						checkself.html('<span class="btn btn-large btn-block btn-danger">失败</span>');
+					}
+				});
+			});
+			$('#startmove').click(function(){
+				var self=$(this);
+				if (self.attr("data-lock") === "true") return;
+					else self.attr("data-lock", "true");
+				self.html('移动中<img src="/assets/Main/images/loaders/loader6.gif" height=25>');
+				var fenzu=$("#gpname").val();
+				var num=0;
+				$(".isdx").each(function(){
+					var checkself=$(this),
+						touin=checkself.attr('uin');
+					var url="/api/fenzu.php";
+					checkself.html("<img src='/assets/Main/images/loaders/loader6.gif' height=25>");
+					efar.postData(url,'uin={$qqrow['qq']}&skey={$info_arr['skey']}&p_skey={$info_arr['pskey']}&touin='+touin+'&gpid='+fenzu, function(d) {
+						if(d.code==0){
+							num++;
+							checkself.html('<span class="btn btn-large btn-block btn-primary">移动成功</span>');
+							checkself.removeClass('ismove');
+							self.html('QQ：'+touin+'移动完成');
+						}else if(d.code==-1){
+							checkself.html('<span class="btn btn-large btn-block btn-danger">移动失败</span>');
+							alert('SKEY已过期，请更新SKEY！');
+							return false;
+						}else{
+							checkself.html('<span class="btn btn-large btn-block btn-danger">移动失败</span>');
+						}
+						
+					});
+				});
+				if(num<1) self.html('没有待移动的QQ！');
+				else self.html('移动成功！');
+				self.attr("data-lock", "false");
+			});
+			$('.qqdel').click(function(){
+				var self=$(this),
+					touin=self.attr('uin');
+				var checkself=$(this);
+				checkself.html("<img src='/assets/Main/images/loaders/loader6.gif' height=25>")
+				var url="/api/del.php";
+				efar.postData(url,'uin={$qqrow['qq']}&skey={$info_arr['skey']}&pskey={$info_arr['pskey']}&touin='+touin, function(d) {
+					if(d.code==0){
+						num = $('#hydel').text();
+						num=parseInt(num);
+						num++;
+						checkself.html('<span class="btn btn-large btn-block btn-primary">成功</span>');
+						$('#hydel').text(num);
+					}else if(d.code==-1){
+						checkself.html('<span class="btn btn-large btn-block btn-danger">失败</span>');
+						alert('SKEY已过期，请更新SKEY！');
+						return false;
+					}else{
+						checkself.html('<span class="btn btn-large btn-block btn-danger">失败</span>');
+					}
+				});
+			});
+			
+		});
+		</script>
+<div class="row">
+	<div class="col-md-12">
+	<div class="table-responsive">
+		<table class="table table-bordered mb30">
+			<thead>
+				<tr>
+					<th>QQ</th>
+					<th>昵称</th>
+					<th>结果</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="2"><button class="btn btn-block btn-default"
+							id="startcheck">开始检测</button></td>
+					<td colspan="2"><button class="btn btn-block btn-default"
+							id="startdelete">一键删除</button></td>
+				</tr>
+				<tr>
+					<td colspan="3"><button class="btn btn-block btn-default"
+							id="startmove">一键移动单项好友到</button></td>
+					<td colspan="1" align="center"><select id="gpname">
+							{foreach name="fenzulist" item="row"}
+							<option value="{$row['gpid']}">{$row['gpname']}</option>
+							{/foreach}
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="4" align="center">总共<span id="hyall">{:count($lists)}<span>个好友,其中<span
+								id="hydx">0</span>个单项，已删除<span id="hydel">0</span>个！</td>
+				</tr>
+				{foreach name="lists" item="list"}
+				<tr>
+					<td uin="{$list.uin}">{$list.uin}</td>
+					<td>{$list.nick}</td>
+					<td id="to{$list.uin}" uin="{$list.uin}" class="nocheck recheck">
+						<span class="btn btn-large btn-block btn-primary">检测</span>
+					</td>
+					<td class="qqdel" uin="{$list.uin}"><span
+						class="btn btn-large btn-block btn-danger">删除</span></td>
+				</tr>
+				{/foreach}
+
+
+			</tbody>
+		</table>
+	</div>
+	</div>
+	</div>
+	<!-- table-responsive -->
+	{php} } {/php}
+{/block}
+
+
+

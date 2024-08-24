@@ -1,0 +1,120 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                            
+             
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">导入卡密</div>
+                <form class="form-horizontal" method="post">
+				<div class="list-group-item">
+                    <input type="hidden" name="action" value="add">
+                    <div class="input-group">
+					   <span class="input-group-addon">卡密列表</span>
+                        <textarea name="kms" class="form-control" rows="5" placeholder="输入要导入的卡密，一行一个卡密"></textarea>
+					
+                    </div>
+						 <div class="list-group-item">
+                        <input type="submit" value="确定导入" class="btn btn-block btn-success">
+                </form>
+            </div>
+			</div>
+           </div>
+
+							
+              
+		<div class="row">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">卡密列表</div>
+                            <div class="row wrapper">
+                                <div class="col-sm-12">
+                                    <div class="btn-group dropdown m-l-xs" style="float:left;">
+                                      <button type="button" class="btn btn-primary" data-toggle="dropdown" data-toggle="dropdown">
+                                        卡密总数                                        <span ></span>
+                                      </button>
+                                      
+                                    </div>
+                                    <div class="btn-group dropdown m-l-xs" style="float:left;">
+                                      <button type="button" class="btn btn-info" data-toggle="dropdown" data-toggle="dropdown">
+                                        {:count($kmList)}                                       
+                                      </button>
+                                    </div>
+                       
+                                    <div class="form-inline ng-pristine ng-valid hidden-xs" style="float:right;">
+                                      <form method="post">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的卡密！" name="s"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                 <table class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                        <th>卡密</th>
+                        <th>状态</th>
+                        <th>导入时间</th>
+                        <th>领取时间</th>
+                        <th>领取者UID</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="$kmList" id="km"}
+                    <tr>
+                        <td>{$km.km}</td>
+                        <td>{if condition="$km.useid"}<font color="red">已领取</font>{else}未领取{/if}</td>
+                        <td>{$km.addtime}</td>
+                        <td>{$km.usetime}</td>
+                        <td>{$km.useid}</td>
+                        <td><a href="?action=del&kid={$km.kid}" class="btn-xs btn-warning">删除</a></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                            </div>
+                            <footer class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">                
+                                        <div class="btn-group">
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+    </div>
+</div>
+{/block}

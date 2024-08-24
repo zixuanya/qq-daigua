@@ -1,0 +1,32 @@
+{extend name="common/layout" /}
+{block name="title"}QQ列表{/block}
+{block name="main"}
+<div class="row">
+{volist name="qqlist" id="arr" empty="没有QQ" }
+<div class="col-md-6">
+            <div class="people-item">
+              <div class="media">
+                <a href="#" class="pull-left">
+                  <img alt="" src="http://q1.qlogo.cn/g?b=qq&nk={$arr.qq}&s=100" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                  <h4 class="person-name">{$arr.qq}</h4>
+                  <div class="text-muted"><i class="fa fa-star-o"></i> 状态:{:cookieZt($arr.cookiezt)}</div>
+                  <div class="text-muted"><i class="fa fa-qq"></i> Qid:{$arr.qid}</a></div>
+                  <ul class="social-list">
+                    <li><a href="{:url('qqlist',array('do'=>'del','uin'=>$arr.qq))}" onClick="if(!confirm('确认删除？')){return false;}" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="glyphicon glyphicon-remove-circle"></i></a></li>
+                    <li><a href="{:url('addqq',array('uin'=>$arr.qq))}" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="更新密码"><i class="fa fa-exchange"></i></a></li>
+                    <li><a href="{:url('qqset',array('uin'=>$arr.qq))}" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="功能配置"><i class="glyphicon glyphicon-edit"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+{/volist}
+</div>
+<div class="row">
+<div class="col-md-6">
+{$qqlist->render()}
+</div>
+</div>
+{/block}

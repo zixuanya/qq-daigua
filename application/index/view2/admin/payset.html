@@ -1,0 +1,205 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<section id="container">
+<div class="content-wrapper animated fadeInUp">
+<h3 style="overflow:hidden;">
+<span class="pull-left">{$webTitle}</span>
+<div style="width:100%; height:4px;" class="hidden-xs"></div>
+<ol class="breadcrumb pull-right">
+<li class="active">主页</li>
+</ol>
+</h3>
+
+<div class="wrapper">
+                    
+  <div class="wrapper">
+
+                                        
+                    
+                    <div class="col-sm-12">
+<div class="panel panel-default">
+<div class="panel-heading">{$webTitle}</div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal" method="post">
+				<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">支付宝即时到账</span>
+                                        <select class="form-control" name="alipay_api" default="{:config('zz_alipay_api')}"><option value="0">关闭</option><option value="1">支付宝官方即时到账接口</option><option value="2">易支付免签约接口</option></select>
+                        </div>
+                                </div>
+							
+                   
+					<div id="payapi_01" style="{if condition="config('zz_alipay_api') neq 1"}display:none;{/if}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">合作者身份(PID)</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="alipay_pid" class="form-control" value="{:config('zz_alipay_pid')}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">安全校验码(Key)</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="alipay_key" class="form-control" value="{:config('zz_alipay_key')}">
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="col-sm-3 control-label">支付宝手机网站支付</label>
+                        <div class="col-sm-9">
+							<select class="form-control" name="alipay2_api" default="{:config('zz_alipay2_api')}"><option value="0">关闭</option><option value="1">支付宝官方手机网站支付接口</option></select>
+							<pre id="payapi_02"  style="{if condition="config('zz_alipay2_api') neq 1"}display:none;{/if}">相关信息与以上支付宝即时到账接口一致，开启前请确保已开通支付宝手机支付，否则会导致手机用户无法支付！</pre>
+                        </div>
+                    </div>
+					</div>
+<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">财付通即时到账</span>
+                                        <select class="form-control" name="tenpay_api" default="{:config('zz_tenpay_api')}"><option value="0">关闭</option><option value="1">财付通官方即时到账接口</option><option value="2">易支付免签约接口</option></select>
+                        </div>
+                                </div>
+					
+					
+					<div id="payapi_03" style="{if condition="config('zz_tenpay_api') neq 1"}display:none;{/if}">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">财付通商户号</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tenpay_pid" class="form-control"
+                                   value="{:config('zz_tenpay_pid')}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">财付通密钥</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tenpay_key" class="form-control" value="{:config('zz_tenpay_key')}">
+                        </div>
+                    </div>
+					</div>
+<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">QQ钱包支付</span>
+                                        <select class="form-control" name="qqpay_api" default="{:config('zz_qqpay_api')}"><option value="0">关闭</option><option value="1">QQ钱包支付官方接口</option><option value="2">易支付免签约接口</option></select>
+										<pre id="payapi_05"  style="{if condition="config('zz_wxpay_api') neq 1"}display:none;{/if}"><font color="green">*QQ钱包支付相关信息配置请修改other/qqpay/qpayMch.config.php</font></pre>
+                        </div>
+                                </div>
+							<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">微信支付</span>
+                                        <select class="form-control" name="wxpay_api" default="{:config('zz_wxpay_api')}"><option value="0">关闭</option><option value="1">微信支付官方接口</option><option value="2">易支付免签约接口</option></select>
+							<pre id="payapi_04"  style="{if condition="config('zz_wxpay_api') neq 1"}display:none;{/if}"><font color="green">*微信支付相关信息配置请修改other/wxpay/WxPay.Config.php</font></pre>
+                        </div>
+                                </div>
+					
+
+                     <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                </form>
+			  </div>
+            </div>
+        </div>
+		</div>
+		{if condition="config('zz_alipay_api') eq 2 or config('zz_tenpay_api') eq 2 or config('zz_qqpay_api') eq 2 or config('zz_wxpay_api') eq 2"}
+<div class="wrapper">
+                    
+  <div class="wrapper">
+
+                                        
+                    
+                    <div class="col-sm-12">
+<div class="panel panel-default">
+<div class="panel-heading">密匙设置</div>
+            <div class="panel-body">
+                      <form role="form" class="form-horizontal" method="post">
+					  <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">易支付商户ID</span>
+                                        <input type="text" name="epay_pid" class="form-control"
+                                   value="{:config('zz_epay_pid')}">
+                        </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">易支付密匙</span>
+                                          <input type="text" name="epay_key" class="form-control" value="{:config('zz_epay_key')}">
+                        </div>
+                                </div>
+					
+					<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">接口获取方式</span>
+                                         <select class="form-control" name="chose" default="{:config('zz_chose')}"><option value="0">系统推荐接口</option></select>
+                                    </div>
+                    </div>
+								{if condition="config('zz_chose') == 0"}
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">推荐接口</span>
+                                         <select class="form-control" name="apiurl" default="{:config('zz_apiurl')}"><option value="http://pay.yw52.cn/">裕网云官方接口</option></select>
+                                    </div>
+                                </div>
+					  {/if}
+					  {if condition="config('zz_chose') == 1"}
+					  <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">支付接口</span>
+                                        <input type="text" name="apiurl" class="form-control"
+                                           value="{:config('zz_apiurl')}">
+                                    </div>
+                                </div>
+					<a href="http://pay.yw52.cn/" style="color:red;">裕网云支付pay.yw52.cn </a>
+					  {/if}
+					<div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+				</form>
+            </div>
+        </div>
+		{/if}
+    </div>	
+</div>
+<div style="width:100%; height:1px; overflow:hidden;"></div>
+</section>
+<script>
+$("select[name=\'alipay_api\']").change(function(){
+	if($(this).val() == 1){
+		$("#payapi_01").css("display","inherit");
+	}else{
+		$("#payapi_01").css("display","none");
+	}
+});
+$("select[name=\'tenpay_api\']").change(function(){
+	if($(this).val() == 1){
+		$("#payapi_03").css("display","inherit");
+	}else{
+		$("#payapi_03").css("display","none");
+	}
+});
+$("select[name=\'wxpay_api\']").change(function(){
+	if($(this).val() == 1){
+		$("#payapi_04").css("display","inherit");
+	}else{
+		$("#payapi_04").css("display","none");
+	}
+});
+$("select[name=\'qqpay_api\']").change(function(){
+	if($(this).val() == 1){
+		$("#payapi_05").css("display","inherit");
+	}else{
+		$("#payapi_05").css("display","none");
+	}
+});
+$("select[name=\'alipay2_api\']").change(function(){
+	if($(this).val() == 1){
+		$("#payapi_02").css("display","inherit");
+	}else{
+		$("#payapi_02").css("display","none");
+	}
+});
+</script>
+<script>
+var items = $("select[default]") || 0;
+for (i = 0; i < items.length; i++) {
+	$(items[i]).val($(items[i]).attr("default")||0);
+}
+</script>
+{/block}

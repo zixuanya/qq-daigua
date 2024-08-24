@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+//                       .::::.
+//                     .::::::::.
+//                    :::::::::::
+//                 ..:::::::::::'
+//              '::::::::::::'
+//                .::::::::::
+//           '::::::::::::::..
+//                ..::::::::::::.
+//              ``::::::::::::::::
+//               ::::``:::::::::'        .:::.
+//              ::::'   ':::::'       .::::::::.
+//            .::::'      ::::     .:::::::'::::.
+//           .:::'       :::::  .:::::::::' ':::::.
+//          .::'        :::::.:::::::::'      ':::::.
+//         .::'         ::::::::::::::'         ``::::.
+//     ...:::           ::::::::::::'              ``::.
+//    ```` ':.          ':::::::::'                  ::::..
+//                       '.:::::'                    ':'````..
+//          美女镇码，永无BUG！！！
+//
+//      ┏┛ ┻━━━━━┛ ┻┓
+//      ┃　　　　　　 ┃
+//      ┃　　　━　　　┃
+//      ┃　┳┛　  ┗┳　┃
+//      ┃　　　　　　 ┃
+//      ┃　　　┻　　　┃
+//      ┃　　　　　　 ┃
+//      ┗━┓　　　┏━━━┛
+//            ┃　　　┃   神兽保佑
+//            ┃　　　┃   代挂无BUG！
+//            ┃　　　┗━━━━━━━━━┓
+//            ┃　　　　　　　    ┣┓
+//            ┃　　　　         ┏┛
+//            ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
+//              ┃ ┫ ┫   ┃ ┫ ┫
+//              ┗━┻━┛   ┗━┻━┛
+-->
+<html>	
+<head>
+<meta charset="utf-8">
+<title>{:config('web_name')}-订单查询</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/favicon.ico" />
+<link href="/assets/view3/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/assets/view3/sweetalert/sweetalert.css" rel="stylesheet">
+</head>
+<body>
+<h1>订单查询</h1>
+<div class="login-form">
+<div class="close"> </div>
+<div class="head-info">
+<label class="lbl-1"> </label>
+<label class="lbl-2"> </label>
+<label class="lbl-3"> </label>
+</div>
+<div class="clear"> </div>
+<div class="avtas"></div>
+<input type="text" class="text" value="" id="qq" placeholder="输入QQ号查询订单~" onKeyUp="value=value.replace(/[^1234567890-]+/g,'')" maxlength="11">
+<div class="avtas"></div>
+<div class="signin">
+<input type="submit" value="立即查询" id="query">
+</div>
+</div>
+</body>
+<script src="/dg/assets/sweetalert/sweetalert.min.js"></script>
+<script src="/dg/assets/js/jquery.min.js"></script>
+<script src="/dg/assets/js/layer.js"></script>
+<script>
+$(document).ready(function () {
+$("#query").click(function(){
+var qq= $("#qq").val();
+var reg = /^[0-9]+$/;
+if(!qq){
+swal({title:"请先输入QQ号码后再查询哦！",type:"warning"})
+return false;
+}else if(!reg.exec(qq)){
+swal({title:"输入QQ号格式错误（只能数字哦）",type:"warning"})
+return false;
+}else if(qq.length<5){
+swal({title:"请输入正常的QQ号（5-10位数）",type:"warning"})
+return false;
+}else if(qq.length>10){
+swal({title:"请输入正常的QQ号（5-10位数）",type:"warning"})
+return false;
+}else{
+layer.load(0,2);
+var url="{:url('chadan')}";
+xiha.postData(url, "qq="+qq, function(d) {
+layer.closeAll('loading');
+if(d.code==1){
+location.href = "/index/cdinfo/uin/"+qq+".html";
+}else if(d.code==2){
+swal({title:"这个QQ下没有任何订单哦~",type:"warning"})
+return false;
+}else{
+swal({title:"非法操作！",type:"warning"})
+return false;
+}
+});
+}
+});
+});
+var xiha={
+postData: function(url, parameter, callback, dataType, ajaxType) {
+if(!dataType) dataType='json';
+$.ajax({
+type: "POST",
+url: url,
+async: true,
+dataType: dataType,
+json: "callback",
+data: parameter,
+timeout : 10000,
+success: function(data) {
+if (callback == null) {
+return;
+} 
+callback(data);
+},
+error: function(request,status,err) {
+layer.closeAll('loading');
+if (status == "timeout"){
+swal({title:"请求超时，请重试！",type:"warning"});
+}else{
+swal({title:"链接失败，请重试！",type:"warning"});
+}
+return false;
+}
+});
+}
+}
+</script>
+</html>

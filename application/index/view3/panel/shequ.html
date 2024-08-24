@@ -1,0 +1,186 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+				<div class="wrapper">
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                                      <div class="clear"><i class="fa fa-warning text-lt fa m-r-sm"></i> 代刷下单须知！</div>
+                                </div>
+                                <div class="list-group-item">代刷下单的项目我们都会完成，请耐心等待。</div>
+								<div class="list-group-item">{:getHtmlCode(config('zz_gg_shequ'))}</div>
+                        </div>
+                    </div>
+
+
+<div class="row">
+  <div class="col-lg-8 col-md-12 col-lg-offset-2" role="main">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">代刷下单
+							<span class="pull-right">
+							<label class="label-checkbox inline">
+                                剩余金额：{$userInfo.point}
+                            </label>
+						</span>
+							
+							</div>
+                            <div class="panel-body padder-v">
+
+							
+						</span>
+            </div>
+            <hr class="widget-separator">
+            <div class="widget-body">
+                <form method="post" class="form-horizontal">
+                    <input type="hidden" name="mod" value="coin">
+		<div class="line line-dashed b-b line-md"></div>
+
+                     <div class="input-group">
+                        <span class="input-group-addon">下单QQ</span>
+                        <div class="col-sm-12">
+                            <select class="form-control" name="qid">
+                                {volist name="qqList" id="qq"}
+                                <option value="{$qq.qid}" {if condition="$qq.qid eq $aqid" }selected{
+                                /if}>{$qq.uin}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+		<div class="line line-dashed b-b line-md"></div>
+
+                     <div class="input-group">
+                        <span class="input-group-addon">代刷项目</span>
+                        <div class="col-sm-12">
+                            <select class="form-control" name="sqid" id="shequ" onchange="getPoint();">
+                                {volist name="sqList" id="sq"}
+                                <option value="{$sq.sqid}" price="{$sq.p}">{$sq.name}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+		<div class="line line-dashed b-b line-md"></div>
+
+                     <div class="input-group">
+                        <span class="input-group-addon">下单份数</span>
+                        <div class="col-sm-12">
+                            <input type="number" name="num" value="1" placeholder="输入下单份数" class="form-control"
+                                   onchange="getPoint();">
+                        </div>
+                    </div>
+		<div class="line line-dashed b-b line-md"></div>
+
+                     <div class="input-group">
+                        <span class="input-group-addon">消耗金币</span>
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <input type="text" value="{if condition="isset($sqList[0])"}{$sqList[0]['p']}{else/}0{/if}" class="form-control" id="need"
+                                       disabled>
+                                <div class="input-group-addon">个</div>
+                            </div>
+                        </div>
+                    </div>
+		<div class="line line-dashed b-b line-md"></div>
+                     <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认下单</button>
+                                </div>
+                </form>
+            </div><!-- .widget-body -->
+        </div><!-- .widget -->
+    </div>
+
+     
+
+  	 <div class="col-lg-8 col-md-12 col-lg-offset-2 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                订单列表
+                <span class="label label-danger pull-right">{:count($orderList)}</span>
+            </div>
+            <hr class="widget-separator">
+            <div class="widget-body table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <th class="text-center">代刷项目</th>
+                        <th class="text-center">Q Q</th>
+                        <th class="text-center">份数</th>
+                        <th class="text-center">下单时间</th>
+                        <th class="text-center">状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="orderList" id="order" }
+                    <tr>
+                        <td>#{$order.id}</td>
+                        <td class="text-center">{$order.name}</td>
+                        <td class="text-center">{$order.uin}</td>
+                        <td class="text-center">{$order.num}</td>
+                        <td class="text-center">{$order.addtime}</td>
+                        <td class="text-center">
+                            {if condition="$order.status eq 0"}
+                            等待中
+                            {elseif condition="$order.status eq 1"}
+                            进行中
+                            {elseif condition="$order.status eq 2"}
+                            已完成
+                            {elseif condition="$order.status eq 3"}
+                            异常
+                            {/if}
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">{$pageList->showPage()}</div>
+            </div><!-- .widget-body -->
+        </div><!-- .widget -->
+    </div>
+	
+	
+	
+	
+
+</div>
+{/block}
+{block name="footJs"}
+<script type="text/javascript">
+    function getPoint() {
+        var num = $("input[name='num']").val();
+        var price = $('#shequ option:selected').attr("price");
+
+        $('#need').val((price * num).toFixed(2));
+    }
+    $("#search").click(function () {
+        $("#orderSearch").show();
+        $("#iframe").attr("src", "http://kp.qqbug.net/s/s_zan.aspx");
+        var iframe = document.getElementById("iframepage");
+        try {
+            iframe.height = iframe.contentWindow.document.documentElement.scrollHeight;
+        } catch (ex) {
+        }
+    });
+</script>
+{/block}

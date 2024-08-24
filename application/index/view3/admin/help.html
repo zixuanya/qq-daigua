@@ -1,0 +1,139 @@
+{extend name="panel/layout" /}
+{block name="main"}
+	<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+            
+        <title>{$webTitle} - {:config('web_name')}</title>
+        <script>document.title="{$webTitle} - {:config('web_name')}";</script>
+        <div class="app-content-body app-content-full animated fadeInUp">
+            <div class="hbox hbox-auto-xs">
+                <div class="col w-md w-auto-xs bg-light lter b-r">
+                    <div class="wrapper-sm dker b-b text-center">
+                         <b>常见问题教程</b>
+                    </div>
+                    <div class="wrapper-xs">
+                        <ul class="list-group list-group-sp">
+                          <li class="btn btn-default list-group-item">
+                            <a href="/index/help.html" data-pjax>常见问题解答</a>
+                          </li>
+                          <!--<li class="list-group-item">
+                            <a href="#" onclick="javascript:swal({title:'暂无其他说明！',type:'warning'})">更多使用说明</a>
+                          </li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="bg-light lter b-b wrapper-sm ng-scope">
+                        <ul class="breadcrumb">
+                            <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+                            <li>使用帮助</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="wrapper">
+                    
+                        <div class="col-lg-12">
+                            <div class="panel panel-info">
+                                        
+                                <div class="panel-info">
+                                    <a data-toggle="collapse" href=".1"><div role="tab" class="panel-heading list-group-item"><b>什么是代挂？</b></div></a>
+                                    <div role="tabpanel" class="collapse 1">
+                                       <div class="list-group-item well">
+                                           代挂是帮助你QQ等级加速升级，每天帮你完成等级加速任务，服务器每天帮你挂机，免去自己手动的麻烦。
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="panel-info">
+                                    <a data-toggle="collapse" href=".2"><div role="tab" class="panel-heading list-group-item"><b>全套代挂里面包含哪些加速任务？</b></div></a>
+                                    <div role="tabpanel" class="collapse 2">
+                                       <div class="list-group-item well">
+                                           <b>包含</b><br>
+                                              手机QQ在线6小时 &nbsp; -- &nbsp; 加速1.0天<br>
+                                              电脑QQ在线2小时 &nbsp; -- &nbsp; 加速0.5天<br>
+                                              非隐身在线2小时 &nbsp; -- &nbsp; 加速0.2天<br>
+                                              点亮QQ勋章墙 &nbsp; -- &nbsp; 加速0.2天<br>
+                                              QQ音乐听歌半小时 &nbsp; -- &nbsp; 加速0.5天<br>
+                                              QQ钱包签到 &nbsp; -- &nbsp; 加速0.2天<br>
+                                              电脑管家在线30分钟 &nbsp; -- &nbsp; 加速0.2天<br>
+                                              电脑管家使用安全功能(月限4次) &nbsp; -- &nbsp; 加速0.5天<br>
+                                              玩QQ手机游戏 &nbsp; -- &nbsp; 加速0.2天<br>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="panel-info">
+                                    <a data-toggle="collapse" href=".3"><div role="tab" class="panel-heading list-group-item"><b>如何添加QQ进行代挂呢？</b></div></a>
+                                    <div role="tabpanel" class="collapse 3">
+                                       <div class="list-group-item well">
+                                           在添加代挂QQ页面输入QQ号、QQ密码登陆后添加需要的代挂功能即可。
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="panel-info">
+                                    <a data-toggle="collapse" href=".4"><div role="tab" class="panel-heading list-group-item"><b>代挂每天什么时候开始挂机？</b></div></a>
+                                    <div role="tabpanel" class="collapse 4">
+                                       <div class="list-group-item well">
+                                           每天晚上凌晨12点后开始代挂登陆，在你早上醒来时所有加速任务均已完成！
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="panel-info">
+                                    <a data-toggle="collapse" href=".5"><div role="tab" class="panel-heading list-group-item"><b>补挂是干什么用的以及补挂的是时间是多少？</b></div></a>
+                                    <div role="tabpanel" class="collapse 5">
+                                       <div class="list-group-item well">
+                                           补挂是当天凌晨代挂时由于帐号进入保护模式或密码错误导致代挂无法登陆完成加速任务的，可以点击补挂连接申请补挂，这样会在晚上9点时给你的QQ再代挂一次，补挂的时间也就是晚上9点！
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="panel-info">
+                                    <a data-toggle="collapse" href=".6"><div role="tab" class="panel-heading list-group-item"><b>QQ为什么会进入保护模式？</b></div></a>
+                                    <div role="tabpanel" class="collapse 6">
+                                       <div class="list-group-item well">
+                                           这是你平时使用QQ的地区与我们的代挂服务器地区不一致，导致出现异地登陆，腾讯为了保护你的帐号，担心你是被盗号了，所以会出现这个提示，或者是被冻结进入保护模式，这个一般是在刚开始代挂前3-7天容易出现，之后就不会再有了。（建议你在QQ安全中心APP里的登陆记录中把异地登陆的“确认为本人登陆”，这样可以加快挂出常用地点和减少冻结的可能）
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="panel-info">
+                                    <a data-toggle="collapse" href=".7"><div role="tab" class="panel-heading list-group-item"><b>QQ进入保护模式了怎么办？</b></div></a>
+                                    <div role="tabpanel" class="collapse 7">
+                                       <div class="list-group-item well">
+                                           登陆 <a href="https://aq.qq.com/007" target="_blank" class="text-ab">https://aq.qq.com/007</a>这个页面可以解除保护模式，解除后在本平台更新一次QQ密码就可以恢复代挂了。
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="panel-info">
+                                    <a data-toggle="collapse" href=".8"><div role="tab" class="panel-heading list-group-item"><b>代挂的服务器地理位置在哪里？</b></div></a>
+                                    <div role="tabpanel" class="collapse 8">
+                                       <div class="list-group-item well">
+                                           位置需要联系站长询问，如果你也是在这个地方，那么你添加的代挂QQ不会异常哦。
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="panel-info">
+                                    <a data-toggle="collapse" href=".9"><div role="tab" class="panel-heading list-group-item"><b>代挂加速任务每天能加速多少呢？</b></div></a>
+                                    <div role="tabpanel" class="collapse 9">
+                                       <div class="list-group-item well">
+                                           非QQ会员每天固定加速3天，QQ会员用户根据会员加速倍数计算公式为：会员加速倍数×1.7+1.7 ，例如SVIP8级加速是3.0倍的计算为3×1.7+1.7=6.8天。(以上计算不包含电脑管家月限4次使用安全功能任务的0.5天)
+                                       </div>
+                                    </div>
+                                 </div>
+                                 
+                                     
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+{/block}

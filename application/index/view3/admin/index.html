@@ -1,0 +1,207 @@
+{extend name="admin/layout" /}
+{block name="main"}
+{if condition="config('zz_tcoff') == 1"}
+<script type="text/javascript">
+window.alert("{:getHtmlCode(config('zz_fztc'),true)}");
+
+</script>
+{/if}
+
+
+
+
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+        <title>{$webTitle}-{:config('web_name')}</title>
+		<script>document.title="{$webTitle}-{:config('web_name')}";</script>
+        <div class="app-content-body animated fadeInUp">
+            <div class="hbox hbox-auto-xs hbox-auto-sm">
+                <div class="col">  
+                    <div class="bg-light lter b-b wrapper-sm ng-scope">
+                        <ul class="breadcrumb">
+                            <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+                            <li>用户中心</li>
+                        </ul>
+                    </div>
+                    
+					
+					
+					 <div class="wrapper">
+                    
+                        <div class="col-lg-4">
+                            <div class="panel b-a" draggable="true">
+                                <div class="panel-heading bg-info dk no-border wrapper-lg"></div>
+                                <div class="text-center m-b clearfix">
+                                    <div class="thumb-lg avatar m-t-n-xl">
+                                        <img alt="image" class="b b-3x b-white" src="//q4.qlogo.cn/headimg_dl?dst_uin={$userInfo.qq}&spec=100">
+                                    </div>
+                                    <div class="h4 font-thin m-t-sm">站长</div>
+                                    <span class="text-muted text-xs block">{$userInfo.user} UID:{$userInfo.uid}</span>
+                                </div>
+                                <div class="padder-v b-t b-light bg-light lter row text-center no-gutter">
+                                <br />
+                                <br />
+                                <br />
+                                    <div class="col-xs-12">
+                                        <div class="inline m-t-sm m-b-sm"><div class="h1 text-info font-thin h2">帐号余额:{$userInfo.point}元</div></div>
+                                    </div>
+                                </div>
+                                
+                                    
+                                <div class="btn-group btn-group-justified">
+                                    <a href="{:url('kmList')}" class="btn btn-info" >卡密管理</a>
+                                    <a href="/index/panel/recharge.html" class="btn btn-primary" >账户充值</a>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="panel panel-info" draggable="true">
+                                <div class="panel-heading font-bold">分站后台公告</div>
+                                <div class="panel-body">
+								
+{:getHtmlCode(config('zz_gg_admin'),true)}
+
+</div></div>
+</div>
+            </div>
+            
+             <div class="col-lg-4">
+                            <div class="panel panel-info" draggable="true">
+                                <div class="panel-heading font-bold">站点更新进度表</div>
+                                <div class="panel-body">
+      <table width="100%" bordercolor="#FFFFFF" border="1">                      
+    <tbody> 
+     <tr>
+     <td>
+    <font size="3">优化站点程序★漏洞修补</font>
+     </td>
+     </tr>
+     <tr> 
+      <td>
+      <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+        </div>
+      </div>
+      </td>
+     </tr> 
+     <tr>
+     <td>
+     <font size="3"> 模板优化★美化模板</font>
+     </td>
+     </tr>
+     <tr> 
+      <td>
+      <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+        </div>
+      </div>
+      </td>
+     </tr> 
+     <tr>
+     <td>
+     <font size="3">添加更多功能★小游戏</font>
+     </td>
+     </tr>
+     <tr> 
+      <td>
+      <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+        </div>
+      </div>
+      </td>
+     </tr> 
+     <tr>
+     <td>
+     <font size="3">秒赞类任务★稳定优化</font>
+     </td>
+     </tr>
+     <tr> 
+      <td>
+      <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-warning"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+        </div>
+      </div>
+      </td>
+     </tr> 
+     <tr>
+     <td>
+     <font size="3">程序更多功能开发★多功能</font>
+     </td>
+     </tr>
+     <tr> 
+      <td>
+      <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-danger"  role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+        </div>
+      </div>
+      </td>
+     </tr> 
+    </tbody> 
+    </table>
+    </div>
+                                
+                                
+                                                                </div>
+                            </div>
+                             </div>
+                        </div>
+                         
+                            
+                              
+ 
+                        <div class="col-lg-4">
+                            
+                            <div class="panel panel-info" draggable="true">
+                                <div class="panel-heading font-bold">我的站点数据</div>
+                                <div class="panel-body text-center">
+                                    
+                                    <div class="col-sm-3 col-xs-6">
+                                        <div class="block panel padder-v bg-primary item">
+                                            <span class="text-white font-thin h1 block">{$amount.user}</span>
+                                            <span class="text-muted text-xs">总用户数</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-6">
+                                        <div class="block panel padder-v bg-info item">
+                                            <span class="text-white font-thin h1 block">{$amount.order}</span>
+                                            <span class="text-muted text-xs">总订单数</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-6">
+                                        <div class="block panel padder-v bg-success item">
+                                            <span class="text-white font-thin h1 block">{$amount.qq}</span>
+                                            <span class="text-muted text-xs">总QQ数</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-6">
+                                        <div class="block panel padder-v bg-dark item">
+                                            <span class="text-white font-thin h1 block">{$amount.web}</span>
+                                            <span class="text-muted text-xs">总站点数</span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                
+                        
+						
+				
+            </div>
+        </div>
+		
+		
+		
+		
+		
+        <script type="text/javascript">
+		get_xiaoxi2();
+        </script>
+            </section>
+
+{/block}

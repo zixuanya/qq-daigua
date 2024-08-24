@@ -1,0 +1,32 @@
+{extend name="common/layout" /}
+{block name="title"}秒赞QQ墙{/block}
+{block name="main"}
+<div class="row">
+{volist name="mzqqlist" id="arr" empty="还没有QQ开启了秒赞功能哦" }
+<div class="col-md-4">
+            <div class="people-item">
+              <div class="media">
+                <a href="#" class="pull-left">
+                  <img alt="" src="http://q1.qlogo.cn/g?b=qq&nk={$arr.qq}&s=100" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                  <h4 class="person-name">{$arr.qq}</h4>
+                  <div class="text-muted"><i class="fa fa-star-o"></i> 状态:<font color="green">秒赞中</font></div>
+                  <div class="text-muted"><i class="fa fa-thumbs-up"></i> 服务器:{$arr.zannet}号</a></div>
+                  <div class="text-muted"><i class="glyphicon glyphicon-time"></i> 添加时间:{$arr.addtime}</a></div>
+                  <ul class="social-list">
+                    <li><a href="{:url('mzauth',array('uin'=>$arr.qq))}" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="秒赞认证"><i class="glyphicon glyphicon-ok"></i></a></li>
+                    <li><a href="http://wpa.qq.com/msgrd?v=3&uin={$arr.qq}&site=&menu=yes" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="添加好友"><i class="glyphicon glyphicon-plus"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+{/volist}
+</div>
+<div class="row">
+<div class="col-md-6">
+{$pagelist->showPage()}
+</div>
+</div>
+{/block}

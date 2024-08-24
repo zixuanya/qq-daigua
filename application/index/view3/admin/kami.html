@@ -1,0 +1,141 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+ <div class="wrapper">
+{if isset($kms)}
+ <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+                </h4>
+            </header><!-- .widget-header -->
+            <hr class="widget-separator">
+            <div class="widget-body">
+                {$kms}
+            </div>
+        </div>
+    </div>
+{/if}
+
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">卡密生成-剩余余额: {$userInfo.point} 元，每张卡密：{$priceAll} 元</div>
+            <div class="panel-body">
+				<div class="alert alert-info">
+                    API地址：http://{$_SERVER['HTTP_HOST']}/<br/>
+					在彩虹云任务后台选择自定义代挂接口，并填写以上地址，即可完成对接。
+                </div>
+                 <form class="form-horizontal group-border-dashed" method="post">
+                    <input type="hidden" name="action" value="add">
+					 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">生成卡密月数</span>
+                                         <input name="value" type="number" min="1" max="1000"
+                                   placeholder="输入要生成卡密的开通月数！（最低1个月，最高12个月）" class="form-control"
+                                   required>
+                                    </div>
+                                </div>
+					 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">生成卡密数量</span>
+                                       <input name="num" type="number" min="1" max="100"
+                                   placeholder="输入要生成多少张卡密！(最低1张，最高100张）"
+                                   class="form-control" required>
+                                    </div>
+                                </div>	
+					
+					 <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认生成</button>
+                                </div>
+					
+					
+					
+					
+					
+					
+					
+					 </div>
+					
+					 </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">卡密管理
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的卡密！" name="s"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th>卡密</th>
+                            <th>状态</th>
+                            <th>月数</th>
+                            <th>生成时间</th>
+                            <th>使用时间</th>
+                            <th>使用者QQ</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$kmList" id="km"}
+                        <tr>
+                            <td>{$km.km}</td>
+                            <td>{if condition="$km.user"}<font color="red">已使用</font>{else}未使用{/if}</td>
+                            <td>{$km.value}</td>
+                            <td>{$km.addtime}</td>
+                            <td>{$km.usetime}</td>
+                            <td>{$km.user}</td>
+                            <td><a href="?action=del&kid={$km.kid}" class="btn-xs btn-warning">删除</a></td>
+                        </tr>
+                        {/volist}
+                        <tr class="text-center">
+                            <td colspan="7">{$pageList->showPage()}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

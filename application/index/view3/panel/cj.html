@@ -1,0 +1,83 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				<div class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+            <div class="list-group-item bg-dark m-b-sm">
+                幸运抽奖说明
+            </div>
+                <div class="panel-body">
+                    {:getHtmlCode(config('zz_gg_cj'))}                
+				</div>
+            </div>
+        </div>
+	</div>
+
+{if condition="config('zz_cjshow')"}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+            <div class="list-group-item bg-dark m-b-sm">
+                幸运抽奖说明
+            </div>
+            <hr class="widget-separator">
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+											<th>名称</th>
+                                            <th>类型</th> 
+                                            <th>面值</th>
+										</tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$List" id="res"}
+                        <tr>
+                                        <td>{$res['name']}</td> 
+										<td>{if condition="$res.type eq 0"}无奖励{elseif condition="$res.type eq 1"}代挂卡密{elseif condition="$res.type eq 2"}余额{else/}需审核{/if}</td>
+										<td>{if condition="$res.type eq 0"}无{else/}{$res.value}{/if}</td> 
+                                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="list-group-item bg-dark m-b-sm">
+                当前余额：{$userInfo.point}元，{if condition="$rfree gt 0"}目前剩余免费抽奖次数{$rfree}{else/}每次抽奖消耗{:config('zz_cj_need')}元{/if}！
+            </div>
+            <div class="panel-body">
+                <form method="post">
+					<input type="hidden" name="act" value="cj">
+					<button class="btn btn-block">
+						<img src="/assets/cj.gif">
+					</button>
+				</form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

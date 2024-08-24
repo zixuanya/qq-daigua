@@ -1,0 +1,75 @@
+{extend name="common/layout" /}
+{block name="main"}
+    <div class="padding-md">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary table-responsive">
+            <div class="panel-heading">
+                {$info.uin}-订单列表
+            </div>
+            <div class="panel-body text-center">
+                <img src="//q4.qlogo.cn/headimg_dl?dst_uin={$info.uin}&amp;spec=100"
+                     class="img-circle circle-border m-b-md">
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table table-bordered">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-center"> QQ状态</td>
+                            <td class="text-center">{:getQqZt($info.zt)}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center"> COOKIE状态</td>
+                            <td class="text-center">{if condition="$info.cookiezt"}<font
+                                    color="red">需更新</font>{else}<font
+                                    color="green">正常</font>{/if}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th class="text-center">代挂项目</th>
+                            <th class="text-center">到期时间</th>
+                            <th class="text-center">状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$orderList" id="order"}
+                        <tr>
+                            <td class="text-center">{$order.name}</td>
+                            <td class="text-center">{$order.endtime}</td>
+                            <td class="text-center">
+                                {if condition="$order.zt eq 0"}
+                                <font color="green">加速中</font>
+                                {elseif condition="$order.zt eq 1"}
+                                <font color="#d2691e">补挂中</font>
+                                {elseif condition="$order.zt eq 2"}
+                                <font color="#red">已关闭</font>
+                                {else}
+                                <font color="#red">未知</font>
+                                {/if}
+                            </td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{/block}
+

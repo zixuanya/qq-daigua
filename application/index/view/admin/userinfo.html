@@ -1,0 +1,83 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            </header><!-- .widget-header -->
+            <hr class="widget-separator">
+            <div class="widget-body">
+                <form method="post" class="form-horizontal">
+				 <div class="text-center m-b clearfix">
+                                <div class="thumb-lg avatar m-t-n-xl">
+                                    <img alt="image" class="b b-3x b-white" src="//q4.qlogo.cn/headimg_dl?dst_uin={$user.qq}&amp;spec=100">
+                                    <span class="text-muted text-xs block">{$user.user}</span>
+                                </div>
+                          </div>
+				 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">UID</span>
+                                       <input type="text" class="form-control" value="{$user.uid}" disabled>
+                                    </div>
+                                </div>
+				
+				 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">用户名</span>
+                                        <input type="text" class="form-control" value="{$user.user}" disabled>
+                                    </div>
+                                </div>
+				 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">QQ</span>
+                                        <input type="text" name="qq" class="form-control" value="{$user.qq}">
+                                    </div>
+                                </div>
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">修改密码</span>
+                                       <input type="text" name="pwd" class="form-control" placeholder="不修改则留空">
+                                    </div>
+                                </div>
+								
+								
+                   
+                   
+                    
+                                <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

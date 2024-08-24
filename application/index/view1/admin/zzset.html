@@ -1,0 +1,340 @@
+{extend name="common/common"/}
+{block name="title"}主站配置{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">主站配置</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('zzset')}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">主站域名</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="主站域名" class="form-control" name="domain" value="{:config('zz_domain')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">分站顶级域名</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="请输入域名后缀，也就是顶级域名" class="form-control" name="fzhz" value="{:config('zz_fzhz')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">分站价格[月]</label>
+              <div class="col-sm-6">
+                <input type="number" min="1" placeholder="不用解释了" class="form-control" name="fzprice_month" value="{:config('zz_fzprice_month')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">是否开启分站到期自动续费</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="fz_auto">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="config('zz_fz_auto') eq 1"}selected{/if}>1_开启</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">QQ登录API</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="QQ登录API" class="form-control" name="qqloginApi" value="{:config('zz_qqloginApi')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">客服QQ</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="请输入客服QQ" class="form-control" name="qq" value="{:config('zz_qq')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">开通分站默认挂机配额</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="不想解释" class="form-control" name="peie" value="{:config('zz_peie')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">开通分站默认分站配额</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="不想解释" class="form-control" name="fzpeie" value="{:config('zz_fzpeie')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">刷说说队形总上限数量</label>
+              <div class="col-sm-6">
+                <input type="number" placeholder="" min="0" class="form-control" name="ssdx_num" value="{:config('zz_ssdx_num')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">刷说说赞总上限数量</label>
+              <div class="col-sm-6">
+                <input type="number" placeholder="" min="0" class="form-control" name="shuozan_num" value="{:config('zz_shuozan_num')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">代理开通VIP最低价格</label>
+              <div class="col-sm-6">
+                <input type="number" placeholder="" min="0" class="form-control" name="agent_vipprice" value="{:config('zz_agent_vipprice')}" step="0.01">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">代理购买配额最低价格</label>
+              <div class="col-sm-6">
+                <input type="number" placeholder="" min="0" class="form-control" name="agent_peieprice" value="{:config('zz_agent_peieprice')}" step="0.01">
+              </div>
+            </div>
+            
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">监控识别码</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="监控识别码" class="form-control" name="cronkey" value="{:config('zz_cronkey')}">
+              </div>
+            </div>
+            
+            
+			<div class="form-group">
+              <label class="col-sm-3 control-label">挂机API[和彩虹云任务的通用]</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="请输入完整的挂机API链接，不输入则为本地" class="form-control" name="cronapi" value="{:config('zz_cronapi')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">秒赞,评论,发表说说,转发说说服务器数量</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="请输入秒赞,评论,发表说说,转发说说服务器数量" class="form-control" name="server_num" value="{:config('zz_server_num')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">每个服务器上限数量</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="请输入每个服务器上限数量" class="form-control" name="server_end_num" value="{:config('zz_server_end_num')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">添加QQ邮件提醒[总开关]</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="addqq_mail">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="config('zz_addqq_mail') eq 1"}selected{/if}>1_开启</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">反腾讯管家网址检测</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="txprotect">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="config('zz_txprotect') eq 1"}selected{/if}>1_开启</option>
+                </select>
+              </div>
+            </div>
+            
+            
+            
+            
+            
+            <!-- div class="form-group">
+				  <label class="col-sm-3 control-label" for="disabledinput">Disabled Input</label>
+				  <div class="col-sm-6">
+					 <input type="text" placeholder="Disabled Input" id="disabledinput" class="form-control" disabled="">
+				  </div>
+				</div>
+            
+            <div class="form-group">
+				  <label class="col-sm-3 control-label" for="readonlyinput">Read-Only Input</label>
+				  <div class="col-sm-6">
+					 <input type="text" value="Read Only Input" id="readonlyinput" class="form-control" readonly="readonly">
+				  </div>
+				</div-->
+				<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+</div>
+     
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">邮箱配置</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('zzset')}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">SMTP服务器</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="SMTP服务器" class="form-control" name="mail_host" value="{:config('zz_mail_host')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">端口</label>
+              <div class="col-sm-6">
+                <input type="numer" placeholder="端口" class="form-control" name="mail_port" value="{:config('zz_mail_port')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">用户名</label>
+              <div class="col-sm-6">
+                <input type="text" min="1" placeholder="用户名" class="form-control" name="mail_user" value="{:config('zz_mail_user')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">密码</label>
+              <div class="col-sm-6">
+                <input type="text" min="1" placeholder="密码" class="form-control" name="mail_pass" value="{:config('zz_mail_pass')}">
+              </div>
+            </div>
+				<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+</div>
+
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">每日签到配置</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('zzset')}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">签到规则</label>
+              <div class="col-sm-6">
+                <input type="text" name="qiandao_rule" class="form-control" value="{:config('zz_qiandao_rule')}">
+                <div class="alert alert-danger">1:10 代表连续签到1天送10金币，多条规则用,隔开<br>
+                    1:10,3:20,5:30 代表连续签到第一天送10，第二天送10，第三天送20，第4天送20，第五天送30，以后都是送30。以此类推！
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">每天前多少个签到有奖励</label>
+              <div class="col-sm-6">
+                <input type="text" name="qiandao_num" class="form-control" value="{:config('zz_qiandao_num')}" placeholder="0为无限制">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">签到发布说说协议</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="qd_shuo_xy">
+                  <option value="1">1_PE</option>
+                  <option value="2" {if condition="config('zz_qd_shuo_xy') eq 2"}selected{/if}>2_PC</option>
+                </select>
+              </div>
+            </div>
+            
+			<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+</div>
+
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">自动打码配置[超人]</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('zzset')}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">超人打码账号</label>
+              <div class="col-sm-6">
+                <input type="text" name="dm_chaoren_account" class="form-control" value="{:config('zz_dm_chaoren_account')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">超人打码密码</label>
+              <div class="col-sm-6">
+                <input type="text" name="dm_chaoren_pass" class="form-control" value="{:config('zz_dm_chaoren_pass')}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">开关</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="dm_chaoren_on">
+                  <option value="0">0_关闭打码</option>
+                  <option value="1" {if condition="config('zz_dm_chaoren_on') eq 1"}selected{/if}>1_开启[VIP]</option>
+                  <option value="2" {if condition="config('zz_dm_chaoren_on') eq 2"}selected{/if}>2_所有用户</option>
+                </select>
+              </div>
+            </div>
+            
+			<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+</div>
+{/block}

@@ -1,0 +1,136 @@
+{extend name="common/common"/}
+{block name="title"}站点信息配置{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">站点信息配置</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('web',['do'=>'save','id'=>input('id')])}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">名称</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="网站名称" class="form-control" name="webname" value="{$webinfo.webname}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+				  <label class="col-sm-3 control-label" >客服QQ</label>
+				  <div class="col-sm-6">
+					 <input type="text" placeholder="多个客服QQ请用|分隔开" name="kfqq" class="form-control" value="{$webinfo.kfqq}">
+				  </div>
+			</div>
+			
+			<div class="form-group">
+              <label class="col-sm-3 control-label">配额价格[1个]</label>
+              <div class="col-sm-6">
+                <input type="number" placeholder="配额价格" class="form-control" min="1" name="price_1peie" value="{$webinfo.price_1peie}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">VIP价格[1个月]</label>
+              <div class="col-sm-6">
+                <input type="number" placeholder="VIP价格" class="form-control" min="1" name="price_1vip" value="{$webinfo.price_1vip}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+				  <label class="col-sm-3 control-label" for="readonlyinput">网站公告</label>
+				  <div class="col-sm-6">
+				  	<textarea rows="5" cols="3" class="form-control"  name="gg" >{$webinfo.gg}</textarea>
+				  </div>
+			</div>
+			
+			<div class="form-group">
+				  <label class="col-sm-3 control-label" for="readonlyinput">关键词[SEO优化]</label>
+				  <div class="col-sm-6">
+				  	<textarea rows="5" cols="3" class="form-control"  name="keywords" >{$webinfo.keywords}</textarea>
+				  </div>
+			</div>
+			
+			<div class="form-group">
+              <label class="col-sm-3 control-label">是否开启互刷功能</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="hushua">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="$webinfo.hushua eq 1"}selected{/if}>1_开启</option>
+                </select>
+              </div>
+            </div>
+            
+			{php}
+			if(ZID == 1){ {/php}
+			
+			<div class="form-group">
+              <label class="col-sm-3 control-label">到期时间</label>
+              <div class="col-sm-6">
+                <input type="date" class="form-control" name="enddate" value="{$webinfo.enddate}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">挂机配额</label>
+              <div class="col-sm-6">
+                <input type="number"  class="form-control" min="{:db('qqs')->where(['zid'=>$webinfo.zid])->count()}" name="peie" value="{$webinfo.peie}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">分站配额</label>
+              <div class="col-sm-6">
+                <input type="number"  class="form-control" min="{:db('weblist')->where(['upzid'=>$webinfo.zid])->count()}" name="fzpeie" value="{$webinfo.fzpeie}">
+              </div>
+            </div>
+            
+			<div class="form-group">
+              <label class="col-sm-3 control-label">生成卡密需要扣钱</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="fzneed">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="$webinfo.fzneed eq 1"}selected{/if}>1_开启</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">是否封禁</label>
+              <div class="col-sm-6">
+                <select class="form-control mb12" name="stop">
+                  <option value="0">0_否</option>
+                  <option value="1" {if condition="$webinfo.stop eq 1"}selected{/if}>1_是</option>
+                </select>
+              </div>
+            </div>
+            {php} } {/php}
+			<div class="form-group">
+              <label class="col-sm-3 control-label">普通用户使用功能的权限</label>
+              <div class="col-sm-5">
+                <select class="form-control mb12" name="xzvip">
+                  <option value="0">0_关闭</option>
+                  <option value="1" {if condition="$webinfo.xzvip eq 1"}selected{/if}>1_开启</option>
+                </select>
+              </div>
+            </div>
+            
+				<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+      </div>
+
+{/block}

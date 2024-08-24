@@ -1,0 +1,62 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="page-heading">
+    <h3>
+        API配置
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">主页</a>
+        </li>
+        <li>
+            <a href="{:url('index')}">管理后台</a>
+        </li>
+        <li class="active">API配置</li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                API配置
+            </div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">API SK</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="api_sk" class="form-control" value="{:config('zz_api_sk')}"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-8">
+                            <button class="btn btn-sm btn-primary m-t-n-xs" type="submit">保存配置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                API信息统计
+            </div>
+            <div class="panel-body">
+                {if condition="isset($info)"}
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">余额: {$info.rmb} 元</li>
+                    <li class="list-group-item list-group-item-warning">QQ数: {$info.amount.qq}</li>
+                    <li class="list-group-item list-group-item-danger">总订单数: {$info.amount.dg}</li>
+                    <li class="list-group-item list-group-item-danger">今日订单数: {$info.amount.jdg}</li>
+                </ul>
+                {/if}
+                {if condition="config('zz_api_sk')"}<a href="?action=info"
+                                                       class="btn btn-info btn-block text-center">点击查看</a>{/if}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

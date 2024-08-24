@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/assets/Main/images/favicon.png" type="image/png">
+
+
+<title>{:config('web_webname')} | {block name="title"}{/block}</title>
+{block name="headjs"}{/block}
+  <script src="/assets/Main/js/jquery-1.11.1.min.js"></script>
+  
+  <link href="/assets/Main/css/style.default.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+	href="/assets/sweetalert/sweetalert.css" />
+<script src="/assets/sweetalert/sweetalert.min.js"></script>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="/assets/Main/js/html5shiv.js"></script>
+  <script src="/assets/Main/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+
+<section>
+
+  <div class="leftpanel">
+
+    <div class="logopanel">
+        <h1><span>[</span> {:config('web_webname')} <span>]</span></h1>
+    </div><!-- logopanel -->
+
+    <div class="leftpanelinner">
+
+        <!-- This is only visible to small devices -->
+        <div class="visible-xs hidden-sm hidden-md hidden-lg">
+            <div class="media userlogged">
+                <img alt="" src="/assets/Main/images/photos/loggeduser.png" class="media-object">
+                <div class="media-body">
+                    <h4>{$userinfo.user}</h4>
+                    <span>"欢迎回来"</span>
+                </div>
+            </div>
+
+            <h5 class="sidebartitle actitle">操作</h5>
+            <ul class="nav nav-pills nav-stacked nav-bracket mb30">
+              <li><a href="{:url('main/myinfo')}"><i class="fa fa-user"></i> <span>个人资料</span></a></li>
+              <li><a href="{:url('main/uppwd')}"><i class="fa fa-cog"></i> <span>修改密码</span></a></li>
+              <!--li><a href=""><i class="fa fa-question-circle"></i> <span>Help</span></a></li-->
+              <li><a href="{:url('main/logout')}"><i class="fa fa-sign-out"></i> <span>注销登录</span></a></li>
+            </ul>
+        </div>
+
+      <h5 class="sidebartitle">导航条</h5>
+      <ul class="nav nav-pills nav-stacked nav-bracket">
+        <li><a href="{:url('index')}"><i class="fa fa-home"></i> <span>代理中心</span></a></li>
+        <li><a href="{:url('main/index')}"><i class="fa fa-dashboard"></i> <span>用户中心</span></a></li>
+        <li><a href="{:url('main/logout')}"><i class="fa fa-sign-out"></i> <span>安全退出</span></a></li>
+      </ul>
+
+    </div><!-- leftpanelinner -->
+  </div><!-- leftpanel -->
+
+  <div class="mainpanel">
+
+    <div class="headerbar">
+
+      <a class="menutoggle"><i class="fa fa-bars"></i></a>
+
+      <form class="searchform" action="index.html" method="post">
+        <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+      </form>
+
+      <div class="header-right">
+        <ul class="headermenu">
+
+
+          <li>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <img src="/assets/Main/images/photos/loggeduser.png" alt="">
+                {$userinfo.user}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                <li><a href="{:url('main/myinfo')}"><i class="glyphicon glyphicon-user"></i> 我的资料</a></li>
+                <li><a href="{:url('main/uppwd')}"><i class="glyphicon glyphicon-cog"></i> 修改密码</a></li>
+                <!--li><a href="#"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li-->
+                <li><a href="{:url('main/logout')}"><i class="glyphicon glyphicon-log-out"></i> 注销账号</a></li>
+              </ul>
+            </div>
+          </li>
+							<button id="chatview" class="btn btn-default tp-icon chat-icon">
+								<i class="glyphicon glyphicon-paperclip"></i>
+							</button>
+						</li>
+        </ul>
+      </div><!-- header-right -->
+
+    </div><!-- headerbar -->
+
+    <div class="pageheader">
+				<h2>
+					<i class="fa fa-home"></i> {block name="title"}{/block} <span>Subtitle
+						goes here...</span>
+				</h2>
+				<div class="breadcrumb-wrapper">
+					<span class="label">You are here:</span>
+					<ol class="breadcrumb">
+						<li><a href="/">{:config('web_webname')}</a></li>
+						<li class="active">{block name="title"}{/block}</li>
+					</ol>
+				</div>
+			</div>
+
+    <div class="contentpanel">
+		{block name="main"}
+		
+		{/block}
+
+    </div><!-- contentpanel -->
+
+  </div><!-- mainpanel -->
+
+  <div class="rightpanel">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#rp-alluser" data-toggle="tab"><i class="fa fa-users"></i></a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="rp-alluser">
+            <h5 class="sidebartitle">客服列表</h5>
+            <ul class="chatuserlist">
+						{for start="0" end="count($kfqqs)"}
+						<li class="online">
+							<div class="media">
+								<a href="#" class="pull-left media-thumb"> <img
+									src="http://q1.qlogo.cn/g?b=qq&nk={$kfqqs[$i]}&s=100" alt=""
+									class="media-object" />
+								</a>
+								<div class="media-body">
+									<strong>QQ:{$kfqqs[$i]}</strong> <small>客服编号:{$i}</small>
+								</div>
+							</div>
+							<!-- media -->
+						</li> {/for}
+					</ul>
+            
+        </div>
+
+    </div><!-- tab-content -->
+  </div><!-- rightpanel -->
+
+
+</section>
+
+
+<script src="/assets/Main/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/assets/Main/js/jquery-ui-1.10.3.min.js"></script>
+<script src="/assets/Main/js/bootstrap.min.js"></script>
+<script src="/assets/Main/js/jquery.sparkline.min.js"></script>
+<script src="/assets/Main/js/toggles.min.js"></script>
+<script src="/assets/Main/js/retina.min.js"></script>
+<script src="/assets/Main/js/jquery.cookies.js"></script>
+
+
+<script src="/assets/Main/js/custom.js"></script>
+{block name="footjs"}
+
+{/block}
+<script>{$alert}</script>
+</body>
+</html>

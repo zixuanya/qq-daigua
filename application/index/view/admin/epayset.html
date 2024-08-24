@@ -1,0 +1,46 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+<div class="wrapper">
+                                        
+                    
+    <div class="col-sm-12">
+<div class="panel panel-default">
+<div class="panel-heading">易支付设置</div>
+            <div class="panel-body">
+                      <form role="form" class="form-horizontal" method="post">
+					  <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">接口地址</span>
+                                        <input type="text" name="zz_apiurl" class="form-control"
+                                   value="{:config('zz_apiurl')}">
+								
+
+                   	<div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                </form>
+				<div class="alert alert-info">提示：此页为易支付相关设置
+			  </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+{/block}

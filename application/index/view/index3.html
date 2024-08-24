@@ -1,0 +1,196 @@
+<html><head>
+<title>{:config('web_webname')} - {:config('web_alias')}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{:config('web_keywords')}">
+<meta name="description" content="{:config('web_description')}">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900" rel="stylesheet" type="text/css">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<link href="/assets/Index/css/bootstrap.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.header{
+	background: url("{$bgurl}") no-repeat;
+	background-size:cover;
+	min-height:870px;  
+}
+.btnAudio{ width:36px; height:36px; position:fixed; right:30px; top:18px; overflow:hidden; background:url("/assets/Main/images/btn_audio.png") left top no-repeat; z-index:1050;}
+.rotate1circle{-webkit-animation:rotate1circle 1s linear infinite;}
+@-webkit-keyframes rotate1circle {
+        0% {
+                -webkit-transform-origin:center center;
+                -webkit-transform:rotate(0deg);
+        }
+        100% {
+                -webkit-transform-origin:center center;
+                -webkit-transform:rotate(360deg);
+        }
+}
+</style>
+<link href="/assets/Index/css/style.css" rel="stylesheet" type="text/css" media="all">	    
+<script type="text/javascript" src="/assets/Index/js/jquery-1.10.2.min.js"></script>  
+<script src="/assets/Index/js/responsiveslides.min.js"></script>
+ <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+  <script type="text/javascript" src="/assets/Index/js/move-top.js"></script>
+<script type="text/javascript" src="/assets/Index/js/easing.js"></script>
+ <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+
+</head>
+<body style="">
+	<div class="header">
+		<div class="container">
+			<div class="header-info">
+				<h1>{:config('web_webname')}</h1>
+				<p>没有竞争，就没有压力，没有压力，就没有更好的{:config('web_webname')}</p>
+				<div class="buttons">
+				{if condition="$userinfo eq NULL"}
+				<a class="button" href="{:url('login')}">登录</a>
+				{else/}
+				<a class="button" href="{:url('main/index')}">控制台</a>
+				{/if}
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="content">
+			<div class="container">
+			<div class="features-section">
+				<div class="feature-header">
+					<h2><span class="ia">稳定</span> <span class="ib">高效率</span> <span class="ic">分布式</span> <span class="id">懒人化</span> <span class="ie">安全</span></h2>
+					<p class="{if condition="$qqs eq NULL"}hide{/if}">正在使用我们网站的客户</p>
+					</div>
+					{volist name="qqs" id="arr"}
+					<img style="border:1px solid #FFF;-moz-box-shadow:0 0 3px #AAA;-webkit-box-shadow:0 0 3px #AAA;box-shadow:0 0 3px #AAA;padding:3px;margin-right:10px;margin-top:15px;margin-left:15px;"  src="http://q2.qlogo.cn/headimg_dl?bs=qq&dst_uin={$arr.qq}&spec=100" width="90px" height="90px" alt="{$arr.qq}" title="{$arr.qq}|添加时间:{$arr.addtime}">
+					{/volist}
+					
+				</div>
+				</div>
+				
+							<!--start-divice-scree-slider-->
+		
+			<!---image-carsuals---->
+	    <link href="/assets/Index/css/owl.carousel.css" rel="stylesheet">
+	    <link href="/assets/Index/css/owl.theme.css" rel="stylesheet">
+   		<script src="/assets/Index/js/owl.carousel.js"></script>
+   		<script>
+	    $(document).ready(function() {
+	      $("#owl-demo").owlCarousel({
+	      	navigation: true,
+		    navigationText: [
+		      "<i class='icon-chevron-left icon-white'></i>",
+		      "<i class='icon-chevron-right icon-white'></i>"
+		      ],
+	        items :5,
+	        slideSpeed :100,
+	        lazyLoad : true,
+	        autoPlay : true,
+	      });
+	    });
+	    </script>
+   		<!---//End-carsuals---->
+			<!--End-divice-scree-slider-->	
+			
+		</div>
+		<div class="footer-section">
+			<div class="container">	
+			<div class="footer-top">
+				<div class="copy-rights">
+					<p>Copyright © 2016.Company name All rights reserved.<a href="#" target="_blank">{:config('web_webname')}</a></p>
+					</div>
+						<div class="clearfix"></div>
+				</div>
+				<div class="footer-bottom">
+					<div class="footer-button">
+						<a href="#" onclick="alert('暂未开放');return false;">
+						<div class="apple">
+						<img src="/assets/Index/images/apple.png">
+							</div>
+							<div class="appstore">
+								<p>{:config('web_webname')}</p>
+								<h4>下载专属APP</h4>
+							</div></a>
+								<div class="clearfix"></div>
+								</div>
+								<div class="coming-soon">
+									<a href="#">快来加入我们吧</a>
+									</div>
+									<div class="clearfix"></div>
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function() {
+							/*
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear' 
+					 		};
+							*/
+							
+							$().UItoTop({ easingType: 'easeOutQuart' });
+							
+						});
+					</script>
+					<section class="u-audio hidden" data-src="{:config('web_music_url')}"></section>
+					<div class="btnAudio rotate1circle" id="btnAudio"></div>
+					<script>
+						var bg_audio_val = true;
+						var bg_audio = new Audio();
+						function audio_init(){
+						        var options_audio = {
+						                loop: true,
+						                preload: "auto",
+						                src: $('.u-audio').attr('data-src')
+						        }
+						        for (var key in options_audio) {
+						                bg_audio[key] = options_audio[key];
+						        }
+						        bg_audio.load();
+						        audio_addEvent();
+						        bg_audio.play();
+						}
+						function audio_addEvent(){
+						        $("#btnAudio").on('click', audio_control);
+						        $(bg_audio).on('play',function(){
+						                bg_audio_val = false;
+						                $('#btnAudio').addClass('rotate1circle');
+						        })
+						        $(bg_audio).on('pause',function(){
+						                $('#btnAudio').removeClass('rotate1circle');
+						        })
+						}
+						function audio_control(){
+						        if(!bg_audio_val){
+						                bg_audio.pause();
+						                bg_audio_val = true;
+						        }else{
+						                bg_audio.play();
+						        }
+						}
+						audio_init();
+					</script>
+				<a href="#" id="toTop" style="display: block;"><span id="toTopHover"></span> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
+
+				</div>
+			</div>				
+		
+
+<a href="#" id="toTop">To Top</a></body></html>

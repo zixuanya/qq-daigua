@@ -1,0 +1,283 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+            <div class="widget-body table-responsive">
+                <div class="alert alert-warning text-center">
+                    <i class="fa fa-volume-up"></i>
+                    全套代挂价格(成本{:config('zz_price_all')}元)，单个项目代挂价格(成本{:config('zz_price_dx')}元)
+                </div>
+				
+				 <div class="col-lg-3 col-md-4 col-sm-6 del34">
+                      <div class="panel b-a">
+                        <div class="list-group-item bg-dark m-b-sm">          
+                          <span class="text-lt">全套价格设置</span>
+                          
+                        </div>
+                        <div class="item m-l-n-xxs m-r-n-xxs">
+                          <div class="bottom wrapper bg-gd-dk text-white" style="width:100%">            
+                            <div class="text-u-c h3 text-default">全套代挂</div>
+                          </div>
+                          <img src="http://daigua.yuncd.cc/data/img.php?time=722" class="img-full">
+                        </div>
+                        <ul class="list-group no-radius alt">
+						 <form method="post">
+						<input type="hidden" name="action" value="set">
+                                <input type="hidden" name="sp" value="all">
+                          <div class="list-group-item">
+                                    <div class="input-group">
+									 <input type="hidden" name="action" value="set">
+                                <input type="hidden" name="sp" value="all">
+                                        <span class="input-group-addon">普通用户</span>
+                                         <input type="text" name="p0" value="{if condition=" $pall[0]"}{$pall[0]}{else/}{:config('zz_price_all')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+                          
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP1用户</span>
+                                        <input type="text" name="p1" value="{if condition=" isset($pall[1])"}{$pall[1]}{else/}{:config('zz_price_all')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+                          
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP2用户</span>
+                                         <input type="text" name="p2" value="{if condition=" isset($pall[2])"}{$pall[2]}{else/}{:config('zz_price_all')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+                         
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP3用户</span>
+                                         <input type="text" name="p3" value="{if condition=" isset($pall[3])"}{$pall[3]}{else/}{:config('zz_price_all')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP4用户</span>
+                                        <input type="text" name="p4" value="{if condition=" isset($pall[4])"}{$pall[4]}{else/}{:config('zz_price_all')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP5用户</span>
+                                         <input type="text" name="p5" value="{if condition=" isset($pall[5])"}{$pall[5]}{else/}{:config('zz_price_all')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								  <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                            </form>
+						  
+                        </ul>
+
+                      </div>
+ 
+                    </div>  
+					
+					
+					
+				 <div class="col-lg-3 col-md-4 col-sm-6 del34">
+                      <div class="panel b-a">
+                        <div class="list-group-item bg-dark m-b-sm">          
+                          <span class="text-lt">单项价格设置</span>
+                          
+                        </div>
+                        <div class="item m-l-n-xxs m-r-n-xxs">
+                          <div class="bottom wrapper bg-gd-dk text-white" style="width:100%">            
+                            <div class="text-u-c h3 text-default">单项代挂</div>
+                          </div>
+                          <img src="http://daigua.yuncd.cc/data/img.php?time=922" class="img-full">
+                        </div>
+                        <ul class="list-group no-radius alt">
+						 <form method="post">
+						<input type="hidden" name="action" value="set">
+                                <input type="hidden" name="sp" value="all">
+                          <div class="list-group-item">
+                                    <div class="input-group">
+									 <input type="hidden" name="action" value="set">
+                                <input type="hidden" name="sp" value="dx">
+                                        <span class="input-group-addon">普通用户</span>
+                                         <input type="text" name="p0" value="{if condition=" isset($pdx[0])"}{$pdx[0]}{else/}{:config('zz_price_dx')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+                          
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP1用户</span>
+                                       <input type="text" name="p1" value="{if condition=" isset($pdx[1])"}{$pdx[1]}{else/}{:config('zz_price_dx')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+                          
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP2用户</span>
+                                         <input type="text" name="p2" value="{if condition=" isset($pdx[2])"}{$pdx[2]}{else/}{:config('zz_price_dx')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+                         
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP3用户</span>
+                                        <input type="text" name="p3" value="{if condition=" isset($pdx[3])"}{$pdx[3]}{else/}{:config('zz_price_dx')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP4用户</span>
+                                        <input type="text" name="p4" value="{if condition=" isset($pdx[4])"}{$pdx[4]}{else/}{:config('zz_price_dx')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP5用户</span>
+                                         <input type="text" name="p5" value="{if condition=" isset($pdx[5])"}{$pdx[5]}{else/}{:config('zz_price_dx')}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								  <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                            </form>
+						  
+                        </ul>
+
+                      </div>
+ 
+                    </div>  
+					
+					 <div class="col-lg-3 col-md-4 col-sm-6 del34">
+                      <div class="panel b-a">
+                        <div class="list-group-item bg-dark m-b-sm">          
+                          <span class="text-lt">VIP价格设置</span>
+                          
+                        </div>
+                        <div class="item m-l-n-xxs m-r-n-xxs">
+                          <div class="bottom wrapper bg-gd-dk text-white" style="width:100%">            
+                            <div class="text-u-c h3 text-default">VIP售价</div>
+                          </div>
+                          <img src="http://daigua.yuncd.cc/data/img.php?time=3789" class="img-full">
+                        </div>
+                        <ul class="list-group no-radius alt">
+						 <form method="post">
+						 <input type="hidden" name="action" value="set">
+                                <input type="hidden" name="sp" value="vip">
+                          <div class="list-group-item">
+                                    <div class="input-group">
+									 <input type="hidden" name="action" value="set">
+                                <input type="hidden" name="sp" value="vip">
+                                        <span class="input-group-addon">普通用户</span>
+                                        <input type="text" name="p0" value=""
+                                           class="form-control" disabled>
+                                    </div>
+                                </div>
+                          
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP1用户</span>
+                                      <input type="text" name="p1" value="{$pvip[0]}"
+                                           class="form-control">
+                                    </div>
+                                </div>
+                          
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP2用户</span>
+                                        <input type="text" name="p2" value="{if condition=" isset($pvip[1])"}{$pvip[1]}{else/}{$pvip[0]}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+                         
+                           <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP3用户</span>
+                                      <input type="text" name="p3" value="{if condition=" isset($pvip[2])"}{$pvip[2]}{else/}{$pvip[0]}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP4用户</span>
+                                       <input type="text" name="p4" value="{if condition=" isset($pvip[3])"}{$pvip[3]}{else/}{$pvip[0]}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VIP5用户</span>
+                                        <input type="text" name="p5" value="{if condition=" isset($pvip[4])"}{$pvip[4]}{else/}{$pvip[0]}{/if}"
+                                    class="form-control">
+                                    </div>
+                                </div>
+								
+								  <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                            </form>
+						  
+                        </ul>
+						
+						
+
+                      </div>
+ 
+                    </div>  
+					
+				
+                
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

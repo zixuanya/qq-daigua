@@ -1,0 +1,42 @@
+{extend name="common/layout"/}
+{block name="title"}修改密码{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">修改密码</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('uppwd')}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">旧密码</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="oldpwd" placeholder="请输入旧密码">
+              </div>
+            </div>
+            
+            <div class="form-group">
+				  <label class="col-sm-3 control-label" >新密码</label>
+				  <div class="col-sm-6">
+					 <input type="text" placeholder="请输入新密码" class="form-control" name="newpwd">
+				  </div>
+				</div>
+            <div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+          </form>
+          
+        </div><!-- panel-body -->
+        
+      </div>
+
+{/block}

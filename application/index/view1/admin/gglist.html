@@ -1,0 +1,35 @@
+{extend name="common/common" /}
+{block name="title"}公告列表{if condition="$all eq true"}[全]{/if}{/block}
+{block name="main"}
+<div class="row">
+<div class="col-md-12">
+          <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>ID</th>
+				<th>公告名称</th>
+                <th>添加时间</th>
+                <th>公告类型</th>
+                <th>所属站点ID</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {volist name="gglist" id="arr" empty="没有公告" }
+              <tr>
+                <td>{$arr.id}</td>
+                <td>{$arr.name}</td>
+                <td>{$arr.addtime}</td>
+                <td>{$imp[$arr.imp]}</td>
+                <td>{$arr.zid}</td>
+                <td><a href="{:url('addgg',array('do'=>'edit','id'=>$arr.id))}" ><span class="label label-info">编辑</span></a>&nbsp;<a href="{:url('gglist',array('do'=>'del','id'=>$arr.id))}" onClick="if(!confirm('确认删除？')){return false;}"><span class="label label-info">删除</span></a></td>
+              </tr>
+              {/volist}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+          {$pagelist->showPage()}
+</div>
+</div>
+{/block}

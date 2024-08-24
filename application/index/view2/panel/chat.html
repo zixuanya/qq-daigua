@@ -1,0 +1,221 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+				
+				<div class="main-header clearfix">
+        <div class="page-title">
+        </div><!-- /page-title -->
+    </div>
+<script type="text/javascript">
+var ajax={
+	get: function(url, dataType, callback) {
+		dataType = dataType || 'html';
+		$.ajax({
+			type: "GET",
+			url: url,
+			async: true,
+			dataType: dataType,
+			cache:false,
+			beforeSend:function(){
+				$(".colorful_loading_frame,.colorful_loading").css("display", "block");
+			},
+			complete:function(){
+				$(".colorful_loading_frame,.colorful_loading").css("display", "none");
+			},
+			success: function(data,status) {
+				if (callback == null) {
+					return;
+				}
+				callback(data);
+			},
+			error: function(error) {
+				alert('创建连接失败');
+			}
+		});
+	},
+	post: function(url, parameter, dataType, callback) {
+		dataType = dataType || 'html';
+		$.ajax({
+			type: "POST",
+			url: url,
+			async: true,
+			dataType: dataType,
+			data: parameter,
+			cache:false,
+			beforeSend:function(){
+				$(".colorful_loading_frame,.colorful_loading").css("display", "block");
+			},
+			complete:function(){
+				$(".colorful_loading_frame,.colorful_loading").css("display", "none");
+			},
+			success: function(data,status) {
+				if (callback == null) {
+					return;
+				}
+				callback(data);
+			},
+			error: function(error) {
+				alert('创建连接失败');
+			}
+		});
+	}
+}
+function Addstr(str) {
+	$("#chatval").val($("#chatval").val()+str);
+}
+function deleteid(id) {
+	var url="/index/ajax/chat/do/delete.html";
+	ajax.post(url,'id='+id, 'json', function(d) {
+		alert(d.msg);
+	});
+}
+$(document).ready(function(){
+	$('#clear').click(function(){
+		$("#chatpage").html('<div class="chat-ts">系统提示：你已成功清除聊天内容！</div>');
+	});
+	$('#look').click(function(){
+		self=$(this);
+		var id=self.attr('startchat');
+		if(id == 1){
+			alert('没有更早的聊天内容了！');
+			return;
+		}
+		if (self.attr("data-lock") === "true") return;
+			else self.attr("data-lock", "true");
+		self.html('加载中……');
+		var url="/index/ajax/chat/do/look.html";
+		ajax.post(url,'id='+id, 'json', function(d) {
+			if(d.code ==0){
+				if(d.data){
+					$.each(d.data, function(i, chat){
+						if(chat.user == '{$userInfo.user}'){
+							$("#chatpage").prepend('<div class="chat-user chat-me">['+chat.addtime+'] <span class="chatuser"><a class="chatuser" href="#" onclick="Addstr(\'@'+chat.user+' \');return false">'+chat.user+'</a></span> '+chat.id+'#</div><div class="chat-div"><div class="chat-content right">'+chat.message+'</div></div>'); 
+						}else{
+							$("#chatpage").prepend('<div class="chat-user">#'+chat.id+' <span class="chatuser"><a class="chatuser" href="#" onclick="Addstr(\'@'+chat.user+' \');return false">'+chat.user+'</a></span> ['+chat.addtime+']</div><div class="chat-content">：'+chat.message+'</div>'); 
+						}
+						self.attr('startchat',chat.id);
+					}); 
+				}
+			}else{
+				alert(d.msg);
+			}
+			self.attr("data-lock", "false");
+			self.html('查看稍早内容^');
+		});
+	});
+	$('#send').click(function(){
+		self=$(this);
+		var content=$("#chatval").val();
+		if(content == ''){
+			alert('请输入聊天内容！');
+			return;
+		}
+		if (self.attr("data-lock") === "true") return;
+			else self.attr("data-lock", "true");
+		self.html('发送中……');
+		var id=self.attr('lastchat');
+		var url="/index/ajax/chat/do/send.html";
+		ajax.post(url,'id='+id+'&content='+content, 'json', function(d) {
+			if(d.code ==0){
+				if(d.data){
+					$.each(d.data, function(i, chat){
+						if(chat.user == '{$userInfo.user}'){
+							$("#chatpage").append('<div class="chat-user chat-me">['+chat.addtime+'] <span class="chatuser"><a class="chatuser" href="#" onclick="Addstr(\'@'+chat.user+' \');return false">'+chat.user+'</a></span> '+chat.id+'#</div><div class="chat-div"><div class="chat-content right">'+chat.message+'</div></div>'); 
+						}else{
+							$("#chatpage").append('<div class="chat-user">#'+chat.id+' <span class="chatuser"><a class="chatuser" href="#" onclick="Addstr(\'@'+chat.user+' \');return false">'+chat.user+'</a></span> ['+chat.addtime+']</div><div class="chat-content">：'+chat.message+'</div>'); 
+						}
+						self.attr('lastchat',chat.id);
+					}); 
+					$('#body').scrollTop($('body')[0].scrollHeight);
+					$("#chatval").val('');
+				}
+			}else{
+				alert(d.msg);
+			}
+			self.attr("data-lock", "false");
+			self.html('发送');
+		});
+	});
+});
+function Loadmsg(){
+	var self=$('#send');
+	var id=self.attr('lastchat');
+	var url="/index/ajax/chat/do/new.html";
+	ajax.post(url,'id='+id, 'json', function(d) {
+		if(d.code ==0){
+			if(d.data){
+				$.each(d.data, function(i, chat){
+					if(chat.user == '{$userInfo.user}'){
+						$("#chatpage").append('<div class="chat-user chat-me">['+chat.addtime+'] <span class="chatuser"><a class="chatuser" href="#" onclick="Addstr(\'@'+chat.user+' \');return false">'+chat.user+'</a></span> '+chat.id+'#</div><div class="chat-div"><div class="chat-content right">'+chat.message+'</div></div>'); 
+					}else{
+						$("#chatpage").append('<div class="chat-user">#'+chat.id+' <span class="chatuser"><a class="chatuser" href="#" onclick="Addstr(\'@'+chat.user+' \');return false">'+chat.user+'</a></span> ['+chat.addtime+']</div><div class="chat-content">：'+chat.message+'</div>'); 
+					}
+					self.attr('lastchat',chat.id);
+				}); 
+			}
+		}else{
+			alert(d.msg);
+		}
+	});
+}
+window.setInterval(Loadmsg, 30000);
+</script>
+
+<div class="wrapper">
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                                      <div class="clear"><i class="fa fa-warning text-lt fa m-r-sm"></i> 交友大厅！</div>
+                                </div>
+                                <div class="list-group-item">请勿发送敏感词汇，否则将会冻结账号。</div>
+                        </div>
+                    </div>
+
+
+
+<div class="wrapper">
+    <div class="col-lg-8 col-md-12 col-lg-offset-2" role="main">
+	<div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+公共聊天室<span class="right" id="look" startchat="{$startchat}">查看稍早内容^</span></div>
+			<div class="panel-body" id="chatpage">
+				{volist name="chatList" id="chat"}
+					{if condition=" $userInfo.user eq $chat.user"}
+					<div class="chat-user chat-me">[{$chat.addtime}] <span class="chatuser"><a class="chatuser" href="#" onclick="Addstr('@{$chat.user} ');return false">{$chat.user}</a></span> {$chat.id}#</div><div class="chat-div"><div class="chat-content right">{$chat.message}{if condition="$userInfo.power eq 9"}&nbsp;[<a href="#" onclick="deleteid('{$chat.id}')">删</a>]{/if}</div></div>
+					{else}
+					<div class="chat-user chat-me">[{$chat.addtime}] <span class="chatuser"><a class="chatuser" href="#" onclick="Addstr('@{$chat.user} ');return false">{$chat.user}</a></span> {$chat.id}#</div><div class="chat-div"><div class="chat-content right">{$chat.message}{if condition="$userInfo.power eq 9"}&nbsp;[<a href="#" onclick="deleteid('{$chat.id}')">删</a>]{/if}</div></div>
+					{/if}
+				{/volist}
+				<div class="chat-ts">系统提示：请文明聊天，勿刷屏，违者后果自负！</div>
+			</div>
+		</div>
+		<div class="panel panel-info">
+			<div class="input-group">
+				<div class="input-group-addon" id="clear">清屏</div>
+				<input class="form-control" id="chatval" placeholder="请输入文明聊天内容" onkeydown="if(event.keyCode==13){$('#send').click()}">
+				<div class="input-group-addon" lastchat="{$lastchat}" id="send">发送</div>
+			</div>
+		</div>
+    </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="footJs"}
+<link rel="stylesheet" type="text/css" href="/assets/css/chat.css"/>
+{/block}

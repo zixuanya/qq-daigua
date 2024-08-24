@@ -1,0 +1,110 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 控制面板</a></li>
+                <li class="active">余额充值</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+{if isset($kms)}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">生成的卡密</div>
+            <div class="panel-body">{$kms}</div>
+        </div>
+    </div>
+</div>
+{/if}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary table-responsive">
+            <div class="panel-heading">
+                <i class="icon-table"></i>卡密生成-剩余余额: {$userInfo.point} 元&nbsp;&nbsp;代理生成卡密折扣:{:config('zz_daili_rate')}%
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal group-border-dashed" method="post">
+                    <input type="hidden" name="action" value="add">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">每张卡密金额：</label>
+                        <div class="col-sm-4">
+                            <input name="value" type="number" min="1" max="1000"
+                                   placeholder="输入要生成卡密的每张卡密金额！（最低1元，最高1000元每张卡）" class="form-control"
+                                   required>
+                        </div>
+                        <label class="col-sm-1 control-label">生成卡数量：</label>
+                        <div class="col-sm-4">
+                            <input name="num" type="number" min="1" max="100"
+                                   placeholder="输入要生成多少张卡密！(最低1张，最高100张）"
+                                   class="form-control" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-space btn-danger">确认生成</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-warning table-responsive">
+            <div class="panel-heading">
+                <i class="icon-table"></i>卡密管理
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的卡密！" name="s"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th>卡密</th>
+                            <th>状态</th>
+                            <th>金额</th>
+                            <th>生成时间</th>
+                            <th>使用时间</th>
+                            <th>使用者UID</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$kmList" id="km"}
+                        <tr>
+                            <td>{$km.km}</td>
+                            <td>{if condition="$km.useid"}<font color="red">已使用</font>{else}未使用{/if}</td>
+                            <td>{$km.value}</td>
+                            <td>{$km.addtime}</td>
+                            <td>{$km.usetime}</td>
+                            <td>{$km.useid}</td>
+                            <td><a href="?action=del&kid={$km.kid}" class="btn-xs btn-warning">删除</a></td>
+                        </tr>
+                        {/volist}
+                        <tr class="text-center">
+                            <td colspan="7">{$pageList->showPage()}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

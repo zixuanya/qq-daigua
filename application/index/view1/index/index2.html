@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{:config('web_webname')} - {:config('web_alias')}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="keywords" content="{:config('web_keywords')}">
+<meta name="description" content="{:config('web_description')}">
+<!--[if lte IE 8]><script src="/assets/Index2/index/js/html5shiv.js"></script><![endif]-->
+<link rel="stylesheet" href="/assets/Index2/index/css/main.css" />
+<!--[if lte IE 9]><link rel="stylesheet" href="/assets/Index2/index/css/ie9.css" /><![endif]-->
+<!--[if lte IE 8]><link rel="stylesheet" href="/assets/Index2/index/css/ie8.css" /><![endif]-->
+<noscript>
+	<link rel="stylesheet" href="/assets/Index2/index/css/noscript.css" />
+</noscript>
+</head>
+<body class="is-loading">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<section id="main">
+			<header>
+				{php} $kfqqs = explode('|',config('web_kfqq')); {/php} <span
+					class="avatar"><img
+					src="http://q1.qlogo.cn/g?b=qq&nk={$kfqqs[0]}&s=100" alt="100">
+				</span>
+				<h1>{:config('web_webname')}</h1>
+				<p>欢迎您的到来</p>
+			</header>
+			<footer>
+				<ul class="icons">
+					{if condition="$userinfo eq NULL"}
+					<li><a href="{:url('login')}" class="fa-thumbs-up">登录</a></li>
+					{else/}
+					<li><a href="{:url('main/index')}" class="fa-qq">控制台</a></li> {/if}
+				</ul>
+			</footer>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="copyright">
+				<li>&copy; YunYing</li>
+				<li>Design: <a href="#" target="_blank">{:config('web_webname')}</a></li>
+			</ul>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<!--[if lte IE 8]><script src="/assets/Index2/index/js/respond.min.js"></script><![endif]-->
+	<script>
+		if ('addEventListener' in window) {
+			window.addEventListener('load', function() {
+				document.body.className = document.body.className.replace(
+						/\bis-loading\b/, '');
+			});
+			document.body.className += (navigator.userAgent
+					.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+		}
+	</script>
+
+</body>
+</html>

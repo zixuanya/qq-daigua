@@ -1,0 +1,84 @@
+﻿{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+  <div class="col-lg-8 col-md-12 col-lg-offset-2" role="main">
+                        <div class="panel panel-info">
+						   <div class="list-group-item bg-dark m-b-sm">秒赞QQ墙
+							
+							
+							</div>
+                           
+		<div class="panel-body profile-activity">
+		  <form method="post">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要上墙的QQ！" name="qq"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即添加</button>
+                        </span>
+                    </div>
+					
+					
+					                     
+		<div class="panel-body profile-activity">
+		 <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>QQ</th>
+                        <th>是否秒赞</th>
+                        <th>添加时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+					 {volist name="$qqlist" id="qq"}
+                      <tr>
+                        <td>{$qq.id}</td>
+                        <td>{$qq.qq}</td>
+                        <td>是</td>
+                        <td>{$qq.addtime}</td>
+                        <td><a href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin={$qq.qq}&amp;website={:config('zz_domain')}" class="btn-xs btn-success">加为好友</a></td>
+                    </tr>
+					{/volist}
+                                        </tbody>
+                </table>
+                <div class="text-center">{$pageList->showPage()}</div>
+		</div>
+					
+                </form>
+		</div>
+	  </section>
+	 </div>
+ </div>
+ 
+ 
+{/block}

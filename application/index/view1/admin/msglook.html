@@ -1,0 +1,34 @@
+{extend name="common/common" /}
+{block name="title"}查看消息{/block}
+{block name="main"}
+<div class="col-sm-9 col-lg-12">
+                
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                    	<div class="pull-right">
+							状态：{$zt[$msgrow.zt]}
+                        </div>
+                        <div class="btn-group mr10">
+                            <a class="btn btn-sm btn-white tooltips" href="{:url('msglook',['act'=>'read','id'=>$msgrow.id])}"  data-original-title="已读">已读</a>
+                            <a class="btn btn-sm btn-white tooltips" href="{:url('msglook',['act'=>'noread','id'=>$msgrow.id])}" data-original-title="未读" >未读</a>
+                        	</div>
+                        <div class="read-panel">
+                            <div class="media">
+                                <a href="#" class="pull-left">
+                                    <img alt="" src="http://q1.qlogo.cn/g?b=qq&nk={$msgrow.qq}&s=100" class="media-object">
+                                </a>
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">{$msgrow.addtime}</span>
+                                    <h4 class="text-primary">标题：{$msgrow.name}</h4>
+                                    <small class="text-muted">推送给用户ID：{$msgrow.uid}</small>
+                                </div>
+                            </div><!-- media -->
+                            
+                            <h4 class="email-subject">以下是消息内容</h4>
+							{$msgrow.value}
+                        </div><!-- read-panel -->
+                        
+                    </div><!-- panel-body -->
+        </div><!-- panel -->       
+</div>
+{/block}

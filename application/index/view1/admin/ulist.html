@@ -1,0 +1,40 @@
+{extend name="common/common" /}
+{block name="title"}用户列表{/block}
+{block name="main"}
+<div class="row">
+<div class="col-md-12">
+          <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>用户名</th>
+                <th>代理信息</th>
+                <th>余额</th>
+                <th>QQ数量</th>
+                <th>注册时间</th>
+                <th>注册IP</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {volist name="ulist" id="arr" empty="没有用户" }
+              <tr>
+                <td>{$arr.uid}</td>
+                <td>{$arr.user}</td>
+                <td>{$arr->AgentLevel->name ? : "不是代理"}</td>
+                <td>{$arr.money}</td>
+                <td>{:db('qqs')->where(['uid'=>$arr.uid])->count()}</td>
+                <td>{$arr.regtime}</td>
+                <td>{$arr.regip}</td>
+                <td><a href="{:url('uedit',array('do'=>'edit','uid'=>$arr.uid))}"><span class="label label-info">编辑</span></a>&nbsp;
+                <a href="{:url('ulist',array('do'=>'del','uid'=>$arr.uid))}" onClick="if(!confirm('确认删除？')){return false;}"><span class="label label-info">删除</span></a>
+              </tr>
+              {/volist}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+          {$pagelist->showPage()}
+</div>
+</div>
+{/block}

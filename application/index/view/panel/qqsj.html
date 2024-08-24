@@ -1,0 +1,146 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+				
+				<div class="wrapper">
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2 text-left" role="main">
+      <div class="panel panel-info"> 
+      <div class="panel-heading font-bold">
+                                      <div class="clear"><i class="fa fa-warning text-lt fa m-r-sm"></i> QQ等级计算工具！</div>
+                                </div>
+                                <div class="list-group-item">帮助您更好更快计算QQ等级。</div>
+								<div class="list-group-item">QQ等级计算公式:第N级所需累积的活跃天数 = N*N+4*N。</div>
+                        </div>
+                    </div>
+
+
+				
+				
+
+ <div class="wrapper">
+ <div class="col-lg-8 col-md-12 col-lg-offset-2 text-left" role="main">
+       <div class="panel panel-info"> 
+      <div class="panel-heading font-bold">升级计算
+							<span class="pull-right">
+							
+						</span>
+							
+							</div>
+                            <div class="panel-body padder-v">
+
+							
+						</span>
+            </div>
+
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+				<div class="line line-dashed b-b line-md"></div>
+
+                      <div class="input-group">
+                        <span class="input-group-addon">QQ号码</span>
+                        <div class="col-sm-12">
+                            <input type="number" name="uin" placeholder="输入QQ号码" class="form-control" required>
+                        </div>
+                    </div>
+				<div class="line line-dashed b-b line-md"></div>
+
+                      <div class="input-group">
+                        <span class="input-group-addon">活跃天数</span>
+                        <div class="col-sm-12">
+                            <input type="text" name="day" placeholder="当前活跃天数" class="form-control" required>
+                        </div>
+                    </div>
+				<div class="line line-dashed b-b line-md"></div>
+
+                      <div class="input-group">
+                        <span class="input-group-addon">升级速度</span>
+                        <div class="col-sm-12">
+                            <input type="text" name="sd" placeholder="每天获得活跃天数" class="form-control" required>
+                        </div>
+                    </div>
+				<div class="line line-dashed b-b line-md"></div>
+
+                      <div class="input-group">
+                        <span class="input-group-addon">升到等级</span>
+                        <div class="col-sm-12">
+                            <input type="number" name="level" placeholder="输入希望升到的等级" class="form-control" value="17"
+                                   required>
+                        </div>
+                    </div>
+				<div class="line line-dashed b-b line-md"></div>
+
+                    
+                    <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认查询</button>
+                                </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+                       
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+{/block}
+{block name="footJs"}
+<script type="text/javascript">
+    function js() {
+        $("#result").hide();
+        var data = {
+            uin: $("input[name='uin']").val(),
+            day: $("input[name='day']").val(),
+            sd: $("input[name='sd']").val(),
+            level: $("input[name='level']").val()
+        }
+        var qq = /^[1-9]{1}\d{4,9}$/;
+        if (!qq.test(data.uin)) {
+            alert("请输入正确的QQ号码");
+            return;
+        }
+        var reg = /^[0-9]{1}\d*(\.\d{1,2})?$/;
+        if (!reg.test(data.day)) {
+            alert("请输入正确的活跃天数");
+            return;
+        }
+        if (!reg.test(data.sd)) {
+            alert("请输入正确的升级速度");
+            return;
+        }
+        if (data.level == "" || data.level < 1) {
+            alert("请输入正确的QQ等级");
+            return;
+        }
+
+        $.post("#", data, function (json) {
+            if (json.code == 0) {
+                $(".uin").text(json.uin);
+                $("#day_now").text(json.day);
+                $("#day_need").text(json.need);
+                $("#level_now").text(json.level_now);
+                $("#level_xx").text(json.level);
+                $("#result").show();
+            }
+        }, "json");
+    }
+
+</script>
+{/block}

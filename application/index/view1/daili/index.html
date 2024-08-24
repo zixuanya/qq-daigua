@@ -1,0 +1,155 @@
+{extend name="common/dllayout"/}
+{block name="title"}代理中心{/block}
+{block name="main"}
+<div class="row">
+<div class="col-sm-6 col-md-3">
+          <div class="panel panel-success panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-user.png" alt=""-->
+                    <i class='fa fa-star-o'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">代理级别</small>
+                    <h1>{$dlinfo['name']}</h1>
+                  </div>
+                </div><!-- row -->
+					
+
+
+                <div class="mb15"></div>
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-danger panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-document.png" alt=""-->
+                    <i class='fa fa-thumbs-up'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">VIP价格[单位:月]</small>
+                    <h1>{$dlinfo['vipprice']}</h1>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-primary panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!--img src="/assets/Main/images/is-document.png" alt=""-->
+                    <i class='fa fa-qq'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">VIP价格[单位:个]</small>
+                    <h1>{$dlinfo['peieprice']}</h1>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-dark panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-money.png" alt=""-->
+                    <i class='fa fa-money'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">我的余额</small>
+                    <h1>￥{$userinfo.money}</h1>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+</div>
+<div class="row">
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">配置</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url()}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Uid</label>
+              <div class="col-sm-6">
+                <input type="number" min="0"  name="uid" class="form-control"  value="" placeholder="请输入要充值的用户ID，必须为本站会员！">
+              </div>
+            </div>
+            
+            <div class="form-group">
+				  <label class="col-sm-3 control-label" >数量</label>
+				  <div class="col-sm-6">
+					 <input type="number" min="1" class="form-control" name="num" placeholder="请输入要充值的VIP月数/配额个数">
+				  </div>
+			</div>
+			
+			<div class="form-group">
+				  <label class="col-sm-3 control-label" >服务</label>
+				  <div class="col-sm-6">
+				  	 <select name="type" class="form-control" >
+				  	 	<option value="vip">开通/续费VIP</option>
+				  	 	<option value="peie">充值配额</option>
+				  	 </select>
+				  </div>
+			</div>
+			
+            
+            <div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">确定</button>
+							</div>
+						</div>
+					</div>
+          </form>
+          
+        </div><!-- panel-body -->
+        
+      </div>
+</div>
+{/block}

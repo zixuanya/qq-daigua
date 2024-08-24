@@ -1,0 +1,44 @@
+{extend name="common/common" /}
+{block name="title"}编辑商品 - {$row['name']}{/block}
+{block name="main"}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="panel-btns">
+			<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+		</div>
+		<h4 class="panel-title">{$row['name']}</h4>
+	</div>
+	<div class="panel-body panel-body-nopadding">
+
+		<form class="form-horizontal form-bordered" method="post"
+			action="{:url('',['gid'=>$row.id])}">
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">商品名称</label>
+				<div class="col-sm-5">
+					<input type="text" name="name" value="{$row.name}" class="form-control" >
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">商品价格</label>
+				<div class="col-sm-5">
+					<input type="number" min="0" step="0.01" name="price" value="{$row.price}" class="form-control">
+				</div>
+			</div>
+
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-sm-9 col-sm-offset-3">
+						<button class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<!-- panel-body -->
+
+</div>
+
+{/block}

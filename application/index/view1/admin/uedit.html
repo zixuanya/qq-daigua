@@ -1,0 +1,46 @@
+{extend name="common/common"/}
+{block name="title"}编辑{$userrow['user']}的资料{/block}
+{block name="main"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">{$userrow['user']}的资料</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('uedit',['do'=>'edit','uid'=>$userrow['uid']])}">
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">密码</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="pass"  placeholder="留空则不修改" value="" >
+              </div>
+            </div>
+            {php}
+            	if(ZID == 1){
+            		echo '<div class="form-group">
+				              <label class="col-sm-3 control-label">余额</label>
+				              <div class="col-sm-6">
+				                <input type="number" class="form-control" name="money" min="0" step="0.01" placeholder="请输入余额" value="'.$userrow['money'].'" >
+				              </div>
+				            </div>';
+				 }
+            {/php}
+            
+            <div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+          </form>
+          
+        </div><!-- panel-body -->
+        
+      </div>
+
+{/block}

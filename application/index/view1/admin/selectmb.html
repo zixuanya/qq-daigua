@@ -1,0 +1,57 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+				<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">选择模板</span>
+                                          <select name="mb" class="form-control">
+                                {volist name="mbList" id="mb"}
+                                <option value="{$mb}" {if condition="$xzmb eq $mb"}selected{/if}>{$mb}</option>
+                                {/volist}
+                            </select>
+                                    </div>
+                                </div>
+                   
+
+                   <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

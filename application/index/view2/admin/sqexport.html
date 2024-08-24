@@ -1,0 +1,38 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <header class="widget-header text-center">
+                <h4 class="widget-title">{$tool.name}-数据导出
+                </h4>
+            </header><!-- .widget-header -->
+            <hr class="widget-separator">
+            <div class="widget-body text-center">
+                <div class="spacer spacer-bottom">
+                    <h2 class="text-warning">
+                        目前总共有&nbsp;
+                        <font color=green>{$amount.all}</font>
+                        &nbsp;条订单，进行中&nbsp;
+                        <font color=green>{$amount.jx}</font>
+                        &nbsp;条，等待中&nbsp;
+                        <font color=red>{$amount.dd}</font>
+                        &nbsp;条！
+                    </h2>
+                    <br>
+                    <a href="{:url('sqXz',['sqid'=>$tool.sqid])}?type=jx" target="_blank" type="button"
+                       class="btn btn-space btn-warning btn-rounded"
+                       onClick="return confirm('确认导出全部进行中{$tool.name}订单')">
+                        导出全部进行中订单
+                    </a>
+                    <a href="{:url('sqXz',['sqid'=>$tool.sqid])}" target="_blank" type="button"
+                       class="btn btn-space btn-info btn-rounded"
+                       onClick="return confirm('确认导出全部等待中{$tool.name}数据？')">
+                        导出全部等待中订单
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

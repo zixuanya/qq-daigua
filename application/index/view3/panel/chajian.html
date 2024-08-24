@@ -1,0 +1,106 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+                            <form role="form" class="form-horizontal" method="post">
+							
+						
+							
+							
+							
+							
+                                <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">龙蛋代点链接</span>
+										
+                                        <input type="text" name="action" value="" class="form-control"
+                                           value="">
+                                    </div>
+									 <div class="list-group-item">
+                                      <a href="{:config('zz_ldapi')}" class="btn btn-info btn-block"><span>点击提交</span></a>
+                                </div>
+                                </div>
+								
+								
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">球球代点链接</span>
+                                         <input type="test" size="11" name="qiuapi" class="form-control" value="">
+                                    </div>
+									<div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">点击提交</button>
+                                </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">圈圈赞99+QQ</span>
+                                      <input type="text" name="quan_api" class="form-control" value="">
+                                    </div>
+									<div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">点击提交</button>
+                                </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">视频解析链接</span>
+                                       <input type="test" size="11" name="video" class="form-control" value="">
+                                    </div>
+									<div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">点击提交</button>
+                                </div>
+                                </div>
+								
+								
+                                
+                                
+                               
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+var items = $("select[default]") || 0;
+for (i = 0; i < items.length; i++) {
+	$(items[i]).val($(items[i]).attr("default"));
+}
+
+</script>
+{/block}

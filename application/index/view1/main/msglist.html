@@ -1,0 +1,76 @@
+{extend name="common/layout" /}
+{block name="title"}{$title}{/block}
+{block name="main"}
+{if condition="$msgrow EQ NULL"}
+<div class="col-sm-9 col-lg-12">
+                
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        
+                        <h5 class="subtitle mb5">消息列表[点击头像即可查看]</h5>
+                        <p class="text-muted">显示1 -15 条信息，共{:count(db('msglist')->where(['uid'=>$userinfo['uid']])->select())}条</p>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-email">
+                              <tbody>
+                              
+                              {volist name="msglist" id="msgarr"}
+                                <tr class="unread">
+                                  <td>
+                                    <div class="media">
+                                        <a href="{:url('msglist',['look'=>$msgarr.id])}" class="pull-left">
+                                          <img alt="" src="http://q1.qlogo.cn/g?b=qq&nk={$msgarr.qq}&s=100" class="media-object">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="media-meta pull-right">{$msgarr.addtime}</span>
+                                            <h4 class="text-primary">管理员</h4>
+                                            <small class="text-muted"></small>
+                                            <p class="email-summary"><strong>{$msgarr.name}</strong> 详细请点击查看 </p>
+                                        </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                               {/volist}
+                                
+                              </tbody>
+                            </table>
+                        </div><!-- table-responsive -->
+                        
+                    </div><!-- panel-body -->
+                </div><!-- panel -->
+                {$pagelist->showPage()}
+</div>
+{else/}
+<div class="col-sm-9 col-lg-12">
+                
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                    	<div class="pull-right">
+							状态：{$zt[$msgrow.zt]}
+                        </div>
+                        <div class="btn-group mr10">
+                            <a class="btn btn-sm btn-white tooltips" href="{:url('msglist',['act'=>'read','look'=>$msgrow.id])}"  data-original-title="已读">已读</a>
+                            <a class="btn btn-sm btn-white tooltips" href="{:url('msglist',['act'=>'del','look'=>$msgrow.id])}" data-original-title="删除">删除</a>
+                        	</div>
+                        <div class="read-panel">
+                            <div class="media">
+                                <a href="#" class="pull-left">
+                                    <img alt="" src="http://q1.qlogo.cn/g?b=qq&nk={$msgrow.qq}&s=100" class="media-object">
+                                </a>
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">{$msgrow.addtime}</span>
+                                    <h4 class="text-primary">标题：{$msgrow.name}</h4>
+                                    <small class="text-muted">来自：管理员</small>
+                                </div>
+                            </div><!-- media -->
+                            
+                            <h4 class="email-subject">以下是消息内容</h4>
+							{$msgrow.value}
+                        </div><!-- read-panel -->
+                        
+                    </div><!-- panel-body -->
+        </div><!-- panel -->       
+</div>
+
+{/if}
+{/block}

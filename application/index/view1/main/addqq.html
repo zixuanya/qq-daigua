@@ -1,0 +1,68 @@
+{extend name="common/layout" /}
+{block name="title"}添加QQ{/block}
+{block name="headjs"}
+<script>
+var siteurl = "http://{$Think.server.http_host}/";
+</script>
+<script src="/api/getsid/login.js"></script>
+<script src="/api/getsid/getsid.js"></script>
+{/block}
+{block name="main"}
+<div class="row">
+<div class="col-md-12">
+<div id="load" class="alert alert-info">准备就绪</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-btns">
+                <a href="" class="panel-close">×</a>
+                <a href="" class="minimize">−</a>
+              </div>
+              <h4 class="panel-title">在这里，您可以添加QQ或者更新QQ</h4>
+             </div><!-- panel-heading -->
+              
+              <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered">
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">QQ账号</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="uin"
+								placeholder="请输入您的QQ号码" value="{:input('uin')}">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label">QQ密码</label>
+						<div class="col-sm-6">
+							<input type="password" class="form-control" id="pwd"
+								placeholder="请输入您的QQ密码">
+						</div>
+					</div>
+					
+					<div class="form-group  code" style="display:none;">
+						<label class="col-sm-3 control-label">验证码</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="code"
+								placeholder="请输入验证码"  onkeydown="if(event.keyCode==13){submit.click()}">
+						</div>
+						<div id="codeimg"></div>
+					</div>
+					
+					
+					
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button type="button" class="btn btn-primary"  id="submit" onkeydown="if(event.keyCode==13){submit.click()}" >添加</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div>
+          </div><!-- panel -->
+        </div>
+</div>
+{/block}

@@ -1,0 +1,114 @@
+{extend name="common/common" /}
+{block name="title"}彩虹易支付配置{/block}
+{block name="main"}
+{if condition="$noepay EQ true"}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">提示</h4>
+         </div>
+        <div class="panel-body">
+          <div class="alert alert-danger">
+                <h4>该站点还未创建彩虹易支付账号</h4>
+           </div>
+          <form action="{:url('epayset',['act'=>'epay_creat'])}" method="post" >
+            <button type="submit" class="btn btn-primary btn-block">点击初始化易支付账号</button>
+            </form>
+          
+        </div><!-- panel-body -->
+        
+</div>
+{elseif condition="$epay_settle EQ true"}
+<div class="row">
+<div class="col-md-12">
+          <div class="table-responsive">
+          <table class="table table-bordered mb30">
+            <thead>
+              <tr>
+                <th>结算账号</th>
+				<th>结算金额</th>
+                <th>手续费</th>
+                <th>结算时间</th>
+              </tr>
+            </thead>
+            <tbody>
+            {volist name="rows" id="arr" empty="没有任何记录哦" }
+              <tr>
+                <td>{$arr.id}</td>
+                <td>{$arr.account}</td>
+                <td>{$arr.money}</td>
+                <td>{$arr.fee}</td>
+                <td>{$arr.time}</td>
+              </tr>
+              {/volist}
+            </tbody>
+          </table>
+          </div><!-- table-responsive -->
+</div>
+</div>
+{else/}
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">即时到账配置[易支付]</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered" method="post" action="{:url('epayset',['act'=>'save'])}">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">商户ID</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="商户ID" class="form-control" name="epay_pid" value="{$arr['pid']}"  disabled>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Key</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="Key" class="form-control" name="epay_key" value="{:substr($arr['key'],0,8).'****************'.substr($arr['key'],24,32)}"  disabled>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">商户余额&nbsp;[<a href="{:url('epayset',['act'=>'epay_settle'])}">查看结算记录</a>]</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="商户余额" class="form-control" name="epay_pid" value="{$arr['money']}" disabled>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">支付宝收款账号</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="支付宝账号" class="form-control" name="epay_account" value="{$arr['account']}">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-3 control-label">支付宝姓名</label>
+              <div class="col-sm-6">
+                <input type="text" placeholder="支付宝姓名" class="form-control" name="epay_username" value="{$arr['username']}">
+              </div>
+            </div>
+            
+            
+				<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">保存</button>
+							</div>
+						</div>
+					</div>
+            
+          </form>
+          
+        </div><!-- panel-body -->
+        
+</div>
+{/if}
+{/block}

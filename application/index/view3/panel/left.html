@@ -1,0 +1,247 @@
+<body>
+
+ <div class="app app-header-fixed">
+<section id="containerdemo">
+    <!-- 导航部分开始 -->
+    <div class="app-header navbar">
+        <div class="navbar-header bg-info dk">
+            <button class="pull-right visible-xs" data-toggle="class:off-screen" data-target=".app-aside" ui-scroll="app">
+                <i class="fa fa-bars"></i>
+            </button>
+            <button class="pull-right visible-xs" data-toggle="class:show" data-target=".navbar-collapse">
+                <i class="fa fa-gear"></i>
+            </button>
+            <a href="/" class="navbar-brand text-lt text-center">
+                <i class="fa fa-rocket"></i>
+                <span class="hidden-folded m-l-xs">{:config('web_name')}</span>
+            </a>
+        </div>
+
+        <div class="collapse pos-rlt navbar-collapse box-shadow bg-info dk">
+            <div class="nav navbar-nav hidden-xs">
+                <a href="javascript:;" class="btn no-shadow navbar-btn" data-toggle="class:app-aside-folded" data-target=".app">
+                    <i class="fa fa-dedent fa-fw text"></i>
+                    <i class="fa fa-indent fa-fw text-active"></i>
+                </a>
+                <a href="{:url('index')}" class="btn no-shadow navbar-btn" >
+                    <i class="fa fa-user-circle"></i>
+                </a>
+            </div>
+
+        
+            <ul class="nav navbar-nav navbar-right">
+                              
+                <li class="dropdown">
+                    <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+                        <span class="hidden-sm hidden-md">商城</span> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight w">
+                        <li><a href="{:url('recharge')}" ><i class="fa fa-cny"></i> &nbsp;&nbsp;账户充值</a></li>
+                        <li><a href="{:url('shop')}" ><i class="fa fa-eur"></i> &nbsp;&nbsp;开通代理</a></li>
+                        <li><a href="{:url('ktfz')}" ><i class="fa fa-chain"></i> &nbsp;&nbsp;搭建分站</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                            <img alt="image" class="img-full" src="//q4.qlogo.cn/headimg_dl?dst_uin={$userInfo.qq}&spec=40" style="width:70px;">
+                            <i class="on md b-white bottom"></i>
+                        </span>
+                        <span class="hidden-sm hidden-md">{$userInfo.user}</span> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight w">
+                        <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                            <div>
+                                <p class="text-center">{$userInfo.user}</p>
+                            </div>
+                            <progressbar value="60" class="progress-xs m-b-none bg-white"></progressbar>
+                        </li>
+                        <li><a href="{:url('profile')}" ><i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;账户资料</a></li>
+                        <li><a href="{:url('profile')}"><i class="fa fa-chain"></i> &nbsp;&nbsp;密码修改</a></li>
+                        <li class="divider"></li>
+                      <li><a href="/index/index/logout.html" ><i class="fa fa-sign-out"></i> &nbsp;&nbsp;退出登陆</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+
+        </div>
+        <div id="loading" class="app-footer" style="display:none">
+            <div ui-butterbar="" class="butterbar active"><span class="bar"></span></div>
+        </div>
+    </div>
+
+    <div class="app-aside hidden-xs bg-white b-r">
+        <div class="aside-wrap">
+            <div class="navi-wrap">
+            
+                <div class="clearfix text-center">
+                    <div class="dropdown wrapper">
+                        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
+                            <span class="thumb-lg w-auto-folded avatar">
+                                <img alt="image" class="img-full b b-3x b-white" src="//q4.qlogo.cn/headimg_dl?dst_uin={$userInfo.qq}&spec=100" style="width:70px;border:1px solid #B5B5B5;padding:3px;">
+                            </span>
+                        </a>
+                        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
+                            <span class="clear">
+                                <span class="block m-t-sm">
+                                    <strong class="font-bold text-lt">{$userInfo.user}</strong> 
+                                    <b class="caret"></b>
+                                </span>
+                                <span class="text-muted text-xs block">UID{$userInfo.uid}</span>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight w hidden-folded">
+                            <li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
+                                <span class="arrow top hidden-folded arrow-info"></span>
+                                <div>
+                                  <p class="text-center">{$userInfo.user}</p>
+                                </div>
+                                <progressbar value="60" type="white" class="progress-xs m-b-none dker"></progressbar>
+                            </li>
+                            <li><a href="{:url('profile')}" ><i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;账户资料</a></li>
+                        <li><a href="{:url('profile')}"><i class="fa fa-chain"></i> &nbsp;&nbsp;密码修改</a></li>
+                        <li class="divider"></li>
+                      <li><a href="/index/index/logout.html" ><i class="fa fa-sign-out"></i> &nbsp;&nbsp;退出登陆</a></li>
+                        </ul>
+                    </div>
+                    <div class="line dk hidden-folded"></div>
+                </div>
+
+                <nav ui-nav class="navi">
+                    <ul class="nav">
+					
+					{if condition="$userInfo.power eq 9"}
+					 <li class="hidden-folded padder text-muted text-xs">
+                            <span>后台中心</span>
+                        </li>
+                        <li class="active">
+                            <a href="{:url('index/Admin/index')}" class="auto" >
+                               <i class="fa fa-dashboard"></i>
+                                <span class="font-bold">站长后台</span>
+                            </a>
+                        </li>
+					  {/if}
+					
+                        <li class="hidden-folded padder text-muted text-xs">
+                            <span>用户中心</span>
+                        </li>
+                        <li class="active">
+                            <a href="{:url('index')}" class="auto" >
+                               <i class="fa fa-camera-retro fa-lg"></i>
+                                <span class="font-bold">用户中心</span>
+                            </a>
+                        </li>
+						  
+                                                                        <li class="line dk"></li>
+          
+                        <li class="hidden-folded padder text-muted text-xs">
+                            <span>代挂中心</span>
+                        </li>
+                        
+                        <li >
+                            <a href="{:url('qqlist')}" class="auto" >
+                               <i class="fa fa-qq fa-1x"></i>
+                                <span class="font-bold">Q Q管理</span>
+                            </a>
+                        </li>
+						
+						 
+						<li >
+                            <a href="{:url('order')}" class="auto" >
+                               <i class="fa fa-tag"></i>
+                                <span class="font-bold">自助下单</span>
+                            </a>
+                        </li>
+						
+						
+						<li >
+                            <a href="{:url('qqsj')}" class="auto" >
+                               <i class="fa fa-sheqel"></i>
+                                <span class="font-bold">升级计算</span>
+                            </a>
+                        </li>
+						
+                        
+                        <li >
+                            <a href="{:url('qqadd')}" class="auto" >
+                                <i class="fa fa-plus-square fa-1x"></i>
+                                <span class="font-bold">添加代挂</span>
+                            </a>
+                        </li>
+						
+                        
+                        <li class="hidden-folded padder text-muted text-xs">
+                            <span>在线商城</span>
+                        </li>
+                        <li >
+                            <a href="{:url('recharge')}" >
+                                <i class="fa fa-bitcoin"></i>
+                                <span class="font-bold">账户充值</span>
+                            </a>
+                        </li>
+						
+						
+						
+                        <li >
+                            <a href="{:url('shop')}" >
+                                <i class="fa fa-chain-broken"></i>
+                                <span class="font-bold">自助开通</span>
+                            </a>
+                        </li>
+                        <li >
+                            <a href="{:url('ktfz')}" >
+                                <i class="fa fa-telegram"></i>
+                                <span class="font-bold">搭建分站</span>
+                            </a>
+                        </li>
+                        </li>
+	
+                        
+                        <li class="hidden-folded padder text-muted text-xs">
+                            <span>会员福利</span>
+                        </li>
+                               <li >
+                            <a href="{:url('qiandao')}" >
+                                <i class="fa fa-chain"></i>
+                                <b class="badge bg-primary pull-right" style="display:none">0</b>
+                                <span class="font-bold">签到活动</span>
+                            </a>
+                        </li>
+					
+                        <li >
+                            <a href="{:url('rmbList')}" >
+                                <i class="fa fa-window-restore"></i>
+                                <span class="font-bold">使用记录</span>
+                            </a>
+                        </li>
+						
+						
+						
+
+						
+						
+          
+                        <li class="hidden-folded padder text-muted text-xs">          
+                            <span>其他功能</span>
+                        </li>
+						{if condition="config('zz_chaoff') == 1"}
+							
+                        
+						{/if}
+						<li >
+                            <a href="{:url('help')}" >
+                                <i class="fa fa-exclamation-circle"></i>
+                                <span class="font-bold">使用帮助</span>
+                            </a>
+                        </li>
+                                              
+                    </ul>
+                </nav>
+          
+            </div>
+        </div>
+    </div>
+    <!-- 导航部分结束 -->
+	<script type="text/javascript">get_xiaoxi();</script>
+

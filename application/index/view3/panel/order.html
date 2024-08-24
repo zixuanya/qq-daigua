@@ -1,0 +1,203 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+				
+				 <div class="wrapper">
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2 text-center" role="main">
+                        <div class="panel panel-info">
+                                <div class="list-group-item bg-dark m-b-sm">
+                                      <div class="clear"><i class="fa fa-warning text-lt fa m-r-sm"></i> 下单说明！</div>
+                                </div>
+                                <div class="list-group-item"><p>1、全套代挂包含:电脑在线、手机在线、电脑管家、音乐加速、手游加速、勋章加速;除这些以外都需要单独下单</p>
+                                <hr/>
+<p>2、手游目前都无法加速,QQ钱包签到包含在手游里面,无需单独提交钱包签到</p>                        <hr/>
+                        <p>手机在线=设备锁,勋章加速=网页保护,钱包签到=绑定银行卡</p><hr/>
+                        <p>注意：如果手机开启设备锁,勋章开启网页保护,钱包签到未绑定银行卡都无法进行加速</p> 
+</div>
+                        </div>
+                    </div>
+
+				
+				
+
+ <div class="wrapper">
+     <div class="col-lg-8 col-md-12 col-lg-offset-2 text-left" role="main">
+      <div class="panel panel-info"> 
+      <div class="panel-heading font-bold">自助下单
+							<span class="pull-right">
+							<label class="label-checkbox inline">
+                                剩余金额：{$userInfo.point}
+                            </label>
+						</span>
+							
+							</div>
+                            <div class="panel-body padder-v">
+
+							
+						</span>
+            </div>
+
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+				<input type="hidden" name="mod" value="coin">
+				<div class="line line-dashed b-b line-md"></div>
+
+                      <div class="input-group">
+                        <span class="input-group-addon">下单QQ</span>
+                        <div class="col-md12">
+                            <select class="form-control" name="qid">
+                                {volist name="qqList" id="qq"}
+                                <option value="{$qq.qid}" {if condition="$qq.qid eq $aqid"}selected{/if}>{$qq.uin}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+					<div class="line line-dashed b-b line-md"></div>
+
+                     <div class="input-group">
+                        <span class="input-group-addon">代挂项目</span>
+                        <div class="col-md-12">
+                            <select class="form-control" name="tid" id="dgtid" onchange="getPoint();">
+                               {volist name="toolList" id="tool"}
+                                <option value="{$tool.tid}" price="{$tool.price}">{$tool.name}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+					<div class="line line-dashed b-b line-md"></div>
+
+                     <div class="input-group">
+                        <span class="input-group-addon">下单月数</span>
+						
+						
+						<div class="col-md-12">
+                            <select class="form-control" type="number" name="num" value="1" id="num" onchange="getPoint();">
+                                <option value="1" >1个月代挂</option>
+								 <option value="2" >2个月代挂</option>
+								  <option value="3" >3个月代挂</option>
+								 <option value="4" >4个月代挂</option>
+								  <option value="5" >5个月代挂</option>
+								 <option value="6" >6个月代挂</option>
+								  <option value="7" >7个月代挂</option>
+								 <option value="8" >8个月代挂</option>
+								  <option value="9" >9个月代挂</option>
+								 <option value="10" >10个月代挂</option>
+								 <option value="11" >11个月代挂</option>
+								 <option value="12" >12个月代挂</option>
+                            </select>
+						
+                       
+                        </div>
+                    </div>
+					
+
+
+
+					
+				<div class="line line-dashed b-b line-md"></div>
+					  <div class="input-group">
+                        <span class="input-group-addon">消耗金币</span>
+                        <div class="col-md-12">
+                            <div class="input-group" class="form-control">
+                                <input type="text" value="{$price_all}" class="form-control" id="need"
+                                       disabled>
+                                <div class="input-group-addon">个</div>
+                            </div>
+                        </div>
+                    </div>
+<div class="line line-dashed b-b line-md"></div>
+                    <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认开通</button>
+                                </div>
+                </form>
+            </div>
+        </div>
+
+                          <div class="panel panel-info">
+                           <div class="panel-heading font-bold">
+                卡密下单
+            </div>
+
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+				<input type="hidden" name="mod" value="kami">
+                     <div class="input-group">
+                        <span class="input-group-addon">下单QQ</span>
+                        <div class="col-md12">
+                            <select class="form-control" name="qid">
+                                {volist name="qqList" id="qq"}
+                                <option value="{$qq.qid}" {if condition="$qq.qid eq $aqid"}selected{/if}>{$qq.uin}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-md"></div>
+
+                     <div class="input-group">
+                        <span class="input-group-addon">代挂项目</span>
+                        <div class="col-md-12">
+                            <select class="form-control" name="tid" id="dgtid" onchange="getPoint();">
+                                {volist name="toolList" id="tool"}
+                                <option value="{$tool.tid}" price="{$tool.price}">{$tool.name}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+					
+					
+					
+  		                    <div class="line line-dashed b-b line-md"></div>
+
+							
+							
+							
+                       <div class="input-group">
+                        <span class="input-group-addon">代挂卡密</span>
+                       <div class="col-md-12">
+                            <div class="input-group">
+                                <input type="text" name="km" id="km" class="form-control"
+                                       placeholder="代挂卡密不是余额卡密，请仔细分辨！" required>
+                                <div class="input-group-addon"></div>
+                            </div>
+                        </div>
+                    </div>
+					
+					
+
+                   <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认开通</button>
+                                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="footJs"}
+<script type="text/javascript">
+    function getPoint() {
+        var value = $('#num').val();
+        var tid = $('#dgtid option:selected').val();
+        var price = {$price_dx};
+        if (tid == 1) {
+            price = {$price_all};
+        }
+        $('#need').val((value * price).toFixed(2));
+    }
+</script>
+{/block}

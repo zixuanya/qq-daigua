@@ -1,0 +1,99 @@
+{extend name="common/layout" /} {block name="title"}自助商城{/block} {block
+name="main"}
+<div class="row">
+	<div class="col-xs-6">
+		<div class="panel panel-warning panel-alt widget-today">
+			<div class="panel-heading text-center">
+				<i class="fa fa-thumbs-o-up"></i>
+			</div>
+			<div class="panel-body text-center">
+				<h3 class="today">挂机配额[1个/{:config('web_price_1peie')}元]</h3>
+				<h3 class="today">
+					<form action="{:url('shop',['payname'=>'1peie'])}">
+						<div class="tab-pane active">
+							<input type="number" name="num" class="form-control"
+								placeholder="请输入购买数量">
+						</div>
+
+						<button class="btn btn-primary" type="submit" style="width: 100%;">购买</button>
+					</form>
+				</h3>
+			</div>
+			<!-- panel-body -->
+		</div>
+		<!-- panel -->
+	</div>
+
+	<div class="col-xs-6">
+		<div class="panel panel-warning panel-alt widget-today">
+			<div class="panel-heading text-center">
+				<i class="fa fa-star-o"></i>
+			</div>
+			<div class="panel-body text-center">
+				<h3 class="today">VIP会员[1个月/{:config('web_price_1vip')}元]</h3>
+				<h3 class="today">
+					<form action="{:url('shop',['payname'=>'1vip'])}">
+						<div class="tab-pane active">
+							<input type="number" name="num" class="form-control"
+								placeholder="请输入购买数量">
+						</div>
+
+						<button class="btn btn-primary" type="submit" style="width: 100%;">购买</button>
+					</form>
+				</h3>
+			</div>
+			<!-- panel-body -->
+		</div>
+		<!-- panel -->
+	</div>
+
+
+</div>
+<div class="row {if condition="config('web_payapi') eq 0"}hide{/if}">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="panel-btns">
+					<a href="" class="panel-close">×</a> <a href="" class="minimize">−</a>
+				</div>
+				<h4 class="panel-title">在线充值</h4>
+			</div>
+			<div class="panel-body panel-body-nopadding">
+
+				<form class="form-horizontal form-bordered" method="post"
+					action="{:url('shop',['do'=>'pay'])}">
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">余额</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="money"
+								placeholder="请输入您的余额 1:1方式充值">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">付款方式</label>
+						<div class="col-sm-6">
+							<select class="form-control" name="type">
+						{for step="1" end="count($paytype)"}
+								<option value="{$paytype[$i]}">{$paytypename[$paytype[$i]]}</option> {/for}
+							</select>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">购买</button>
+							</div>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+			<!-- panel-body -->
+
+		</div>
+	</div>
+</div>
+{/block}

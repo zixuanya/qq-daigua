@@ -1,0 +1,87 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+                    <input type="hidden" name="action" value="add">
+                   <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">前台弹窗</span>
+                                         <select name="qttcoff" class="form-control">
+		                            <option value="0" {if condition="config('zz_qttcoff') eq 0"}selected{/if}>关闭</option>
+		                            <option value="1" {if condition="config('zz_qttcoff') eq 1"}selected{/if}>开启</option>
+		                            </select>
+                                    </div>
+									 <pre>开启后刷新页面显示内容设置!</pre>
+                                </div>
+								{if condition="config('zz_qttcoff') == 1"}
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">前台弹窗内容</span>
+                                         <textarea name="qttc" rows="3" class="form-control">{:getHtmlCode(config('zz_qttc'),true)}</textarea>
+                                    </div>
+                                </div>
+													{/if}
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">后台弹窗</span>
+                                      <select name="tcoff" class="form-control">
+		                            <option value="0" {if condition="config('zz_tcoff') eq 0"}selected{/if}>关闭</option>
+		                            <option value="1" {if condition="config('zz_tcoff') eq 1"}selected{/if}>开启</option>
+		                            </select>
+                                    </div>
+                                </div>
+								{if condition="config('zz_tcoff') == 1"}
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">后台弹窗内容</span>
+                                          <textarea name="fztc" rows="3" class="form-control">{:getHtmlCode(config('zz_fztc'),true)}</textarea>
+                                    </div>
+                                </div>
+						{/if}
+						
+
+                    
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button class="btn btn-success" type="submit">&lt;&lt;&lt;发送&gt;&gt;&gt;</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

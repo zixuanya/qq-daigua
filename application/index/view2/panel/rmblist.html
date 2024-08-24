@@ -1,0 +1,60 @@
+{extend name="panel/layout" /}
+{block name="main"}
+	<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				<div class="wrapper-md control">
+ <div class="wrapper">
+                                        
+                      
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2">
+                        <div class="panel panel-info" draggable="true">
+            <div class="list-group-item bg-dark m-b-sm" class="panel-heading">
+                收支明细
+                <span class="label label-danger pull-right">余额:{$userInfo.point}元</span>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+                            <th class="text-center">记录ID</th>
+                            <th class="text-center">类型</th>
+                            <th class="text-center">金额</th>
+                            <th class="text-center">详情</th>
+                            <th class="text-center">时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$points" id="point"}
+                        <tr>
+                            <td class="text-center">{$point.id}</td>
+                            <td class="text-center">{$point.action}</td>
+                            <td class="text-center">{$point.point}</td>
+                            <td>{$point.bz}</td>
+                            <td class="text-center">{$point.addtime}</td>
+                        </tr>
+                        {/volist}
+                        <tr class="text-center">
+                            <td colspan="10">{$pageList->showPage()}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

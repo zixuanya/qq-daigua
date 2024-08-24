@@ -1,0 +1,318 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+                            <form role="form" class="form-horizontal" method="post">
+                                <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">主站地址</span>
+                                        <input type="text" name="domain" class="form-control"
+                                           value="{:config('zz_domain')}">
+                                    </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">分站可选择域名</span>
+                                        <input type="text" name="domains" class="form-control"
+                                           value="{:config('zz_domains')}">
+                                    </div>
+									    <pre>多个域名用“,”隔开！</pre>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">主站长QQ</span>
+                                         <input type="test" size="11" name="qq" class="form-control" value="{:config('zz_qq')}">
+                                    </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">主站长邮箱</span>
+                                       <input type="text" name="zqq" class="form-control" value="{:config('zz_zqq')}">
+                                    </div>
+                                </div>
+							
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">绚丽彩虹首页播放器</span>
+                                      <select name="musicoff" class="form-control">
+		                            <option value="0" {if condition="config('zz_musicoff') eq 0"}selected{/if}>关闭</option>
+		                            <option value="1" {if condition="config('zz_musicoff') eq 1"}selected{/if}>开启</option>
+		                            </select>
+                                    </div>
+                                </div>
+								<div class="list-group-item">
+								 <div class="input-group">
+                                    <span class="input-group-addon">绚丽彩虹内页播放器</span>
+                                     <select name="nmusicoff" class="form-control">
+		                            <option value="0" {if condition="config('zz_nmusicoff') eq 0"}selected{/if}>关闭</option>
+		                            <option value="1" {if condition="config('zz_nmusicoff') eq 1"}selected{/if}>开启</option>
+		                            </select>
+                                </div>
+				 </div>
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">绚丽彩虹key</span>
+                                      <input type="test" size="11" name="musickey" class="form-control" value="{:config('zz_musickey')}">
+                                    </div>
+									<pre>可以设置歌单KEY，<a href="http://www.badapple.top/">点击设置</a></pre>
+                                </div>
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">QQ登录调用API地址</span>
+                                       <input type="text" name="login_api" class="form-control" value="{:config('zz_login_api')}">
+                                    </div>
+                                </div>
+								
+							
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">添加QQ模式</span>
+                                      <select name="addqq_mode" class="form-control">
+									<option value="0" {if condition="config('zz_addqq_mode') eq 0"}selected{/if}>登录并验证QQ密码</option>
+									<option value="1" {if condition="config('zz_addqq_mode') eq 1"}selected{/if}>无需验证QQ密码</option>
+									</select>
+                                    </div>
+                                </div>
+								
+								
+						
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">监控密匙</span>
+                                       <input type="text" name="cronkey" class="form-control" value="{:config('zz_cronkey')}" placeholder="不可留空">
+	 </div>								   
+<pre>
+自动执行签到，需要监控http://{$_SERVER['HTTP_HOST']}/cron/qd.php?key={:config('zz_cronkey')}      频率:10800s
+</br>自动执行更新，需要监控http://{$_SERVER['HTTP_HOST']}/cron/autoupdate.php?key={:config('zz_cronkey')}     频率:10800s								</br>自动补挂，需要监控http://{$_SERVER['HTTP_HOST']}/cron/checkfinish.php?key={:config('zz_cronkey')}      频率:10800s</pre>
+                                </div>
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">选择对接接口</span>
+                                  <select name="getway_api" class="form-control">
+		                            <option value="0" {if condition="config('zz_getway_api') eq 0"}selected{/if}>本地代挂接口（适合拥有代挂软件能够自己代挂用户选择）</option>
+                                    <option value="1" {if condition="config('zz_getway_api') eq 1"}selected{/if}>管家对接接口（一键对接）</option>
+		                            </select>
+                                    </div>
+									
+									  <pre><a href="{:url('admin/syskey')}">查看接口密钥</a></pre>
+
+                                </div>
+						
+									<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">一次性充值送分站金额</span>
+                                       <input type="text" name="price_sfz" class="form-control" value="{:config('zz_price_sfz')}">
+                                    </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">全套代挂提卡价格</span>
+                                     <input type="test" name="price_all" class="form-control"
+		                                   value="{:config('zz_price_all')}" placeholder="设置普通分站">
+										    <input type="test" name="price_all2" class="form-control"
+		                                   value="{:config('zz_price_all2')}" placeholder="设置二级主站以及超级主站">
+										    <input type="test" name="price_all3" class="form-control"
+		                                   value="{:config('zz_price_all3')}" placeholder="设置合作伙伴站">
+										    <input type="test" name="price_all4" class="form-control"
+		                                   value="{:config('zz_price_all4')}" placeholder="设置分销代理商">
+                                    </div>
+                                </div>
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">单项代挂提卡价格</span>
+                                      <input type="test" name="price_dx" class="form-control"
+		                                   value="{:config('zz_price_dx')}" placeholder="设置普通分站">
+										   <input type="test" name="price_dx2" class="form-control"
+		                                   value="{:config('zz_price_dx2')}" placeholder="设置二级主站以及超级主站">
+										     <input type="test" name="price_dx3" class="form-control"
+		                                   value="{:config('zz_price_dx3')}" placeholder="设置合作伙伴站">
+										    <input type="test" name="price_dx4" class="form-control"
+		                                   value="{:config('zz_price_dx4')}" placeholder="设置分销代理商">
+                                    </div>
+                                </div>
+						
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">开通各级别网站价格</span>
+										 <input type="test" name="price_ktfz" class="form-control"
+		                                   value="{:config('zz_price_ktfz')}" placeholder="设置普通分站" >
+										   <input type="test" name="price_ktfz_sec" class="form-control"
+		                                   value="{:config('zz_price_ktfz_sec')}" placeholder="设置二级主站"> 
+                                               <input type="test" name="price_ktfz_sup" class="form-control"
+		                                   value="{:config('zz_price_ktfz_sup')}" placeholder="设置超级主站">
+										   <input type="test" name="price_ktfz_cp" class="form-control"
+		                                   value="{:config('zz_price_ktfz_cp')}" placeholder="设置合作伙伴">
+										    <input type="test" name="price_ktfz_da" class="form-control"
+		                                   value="{:config('zz_price_ktfz_da')}" placeholder="设置分销代理">
+                                    </div>
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">申请提现余额比例</span>
+                                   <input type="test" name="tixian_rate" class="form-control"
+		                                   value="{:config('zz_tixian_rate')}" placeholder="填写百分数，例如90">
+                                    </div>
+                                </div>
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">申请提现最低余额</span>
+                                        <input type="test" name="tixian_min" class="form-control"
+		                                   value="{:config('zz_tixian_min')}">
+                                    </div>
+                                </div>
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">分站开分站提成比例(百分数)</span>
+                                        <input type="test" name="ktfz_rate" class="form-control"
+		                                   value="{:config('zz_ktfz_rate')}" placeholder="填写百分数，例如10">
+                                    </div>
+                                </div>
+			<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">被邀请人下单提成比例(百分数)</span>
+                                         <input type="test" name="invite_rate" class="form-control"
+		                                   value="{:config('zz_invite_rate')}" placeholder="填写百分数，例如10">
+                                    </div>
+                                </div>
+						
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">填写邀请码被邀请方获得奖励</span>
+                                        <input type="test" name="invite_rate" class="form-control"
+		                                   value="{:config('zz_invite_rate')}" placeholder="填写百分数，例如10">
+                                    </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">填写邀请码邀请方获得奖励</span>
+                                       <input type="test" name="point_invite1" class="form-control"
+		                                   value="{:config('zz_point_invite1')}">
+                                    </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">每天签到奖励人数</span>
+                                         <input type="test" name="qiandao_num" class="form-control" value="{:config('zz_qiandao_num')}" placeholder="0为无限制">
+                                    </div>
+                                </div>
+								
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">签到送余额规则</span>
+                                         <input type="text" name="qiandao_rule" class="form-control" value="{:config('zz_qiandao_rule')}">
+								   </div>
+								    <pre>1:10 代表连续签到1天送10金币，多条规则用1:10,3:20,5:30 代表连续签到第一天送10，第二天送10，第三天送20，第4天送20，第五天送30，以后都是送30。以此类推！</a></pre>
+                                </div>
+						
+						
+						 <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">前台弹窗</span>
+                                         <select name="qttcoff" class="form-control">
+		                            <option value="0" {if condition="config('zz_qttcoff') eq 0"}selected{/if}>关闭</option>
+		                            <option value="1" {if condition="config('zz_qttcoff') eq 1"}selected{/if}>开启</option>
+		                            </select>
+                                    </div>
+									 <pre>开启后刷新页面显示内容设置!</pre>
+                                </div>
+								{if condition="config('zz_qttcoff') == 1"}
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">前台弹窗内容</span>
+                                         <textarea name="qttc" rows="3" class="form-control">{:getHtmlCode(config('zz_qttc'),true)}</textarea>
+                                    </div>
+                                </div>
+													{/if}
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">后台弹窗</span>
+                                      <select name="tcoff" class="form-control">
+		                            <option value="0" {if condition="config('zz_tcoff') eq 0"}selected{/if}>关闭</option>
+		                            <option value="1" {if condition="config('zz_tcoff') eq 1"}selected{/if}>开启</option>
+		                            </select>
+                                    </div>
+                                </div>
+								{if condition="config('zz_tcoff') == 1"}
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">后台弹窗内容</span>
+                                          <textarea name="fztc" rows="3" class="form-control">{:getHtmlCode(config('zz_fztc'),true)}</textarea>
+                                    </div>
+                                </div>
+						{/if}
+						
+						
+						
+                                <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">分站后台公告</span>
+                                         <textarea name="gg_admin" rows="5" class="form-control">{:getHtmlCode(config('zz_gg_admin'),true)}</textarea>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                            </form>
+							<div class="alert alert-info">提示：所有价格单位均为RMB/元，可精确到小数点后两位；所有比例均为不大于100的正整数
+                    </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+var items = $("select[default]") || 0;
+for (i = 0; i < items.length; i++) {
+	$(items[i]).val($(items[i]).attr("default"));
+}
+
+</script>
+{/block}

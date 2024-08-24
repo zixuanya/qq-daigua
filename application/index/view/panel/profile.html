@@ -1,0 +1,108 @@
+{extend name="panel/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+ <div class="wrapper">
+    <div class="col-lg-8 col-md-12 col-lg-offset-2" role="main">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}
+							<span class="pull-right">
+							<label class="label-checkbox inline">
+                               
+                            </label>
+						</span>
+							
+							</div>
+                            <div class="panel-body padder-v">
+
+							
+						</span>
+            </div>
+                    <div class="panel-body">
+                        <form method="post" class="form-horizontal">
+                            		<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">UID</span>
+                                         <input type="text" class="form-control" value="{$userInfo.uid}" disabled>
+                                </div>
+                                </div>
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">用户名</span>
+                                         <input type="text" class="form-control" value="{$userInfo.user}" disabled>
+                                </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">账户余额</span>
+                                         <input type="text" class="form-control" value="{$userInfo.point}元" disabled>
+                                </div>
+                                </div>
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">账号配额</span>
+                                         <input type="text" class="form-control" value="{$userInfo.peie}元" disabled>
+                                </div>
+                                </div>
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">绑定QQ</span>
+                                        <input type="text" name="qq" class="form-control" value="{$userInfo.qq}">
+                                </div>
+                                </div>
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">更改密码</span>
+                                          <input type="text" name="pwd" class="form-control" placeholder="不修改则留空">
+                                </div>
+                                </div>
+							
+
+
+															{if condition="$userInfo.power eq 9"}
+								<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">提现支付宝账号</span>
+                                         <input type="text" name="pay_account" class="form-control" value="{$userInfo.pay_account}">
+									
+                                </div>
+                                </div>
+						<div class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">提现支付宝姓名</span>
+                                         <input type="text" name="pay_name" class="form-control" value="{$userInfo.pay_name}">
+                                </div>
+                                </div>
+									{/if}
+								
+								
+								
+						
+                            
+							
+                            
+
+                            <div class="list-group-item">
+                                    <button class="btn btn-info btn-block" type="submit">确认保存</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

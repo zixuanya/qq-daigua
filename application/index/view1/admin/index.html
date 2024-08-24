@@ -1,0 +1,160 @@
+{extend name="common/common" /}
+{block name="title"}后台中心{/block}
+{block name="main"}
+<div class="row">
+		<div class="col-sm-6 col-md-3">
+          <div class="panel panel-success panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-user.png" alt=""-->
+                    <i class='fa fa-star-o'></i>
+                  </div>
+                  <div class="col-xs-8">
+                  {php}
+                  if(ZID != 1){
+                  	$where = ['upzid'=>ZID];
+                  } else {
+                  	$where = '';
+                  }
+                  {/php}
+                    <small class="stat-label">下级分站</small>
+                    <h1>{:count(db('weblist')->field('zid')->where($where)->select())}</h1>
+                    <small class="stat-label">今日新增:{:count(db('weblist')->field('zid')->where($where)->where('`adddate`  = CURDATE()')->select())}</small>
+                  </div>
+                </div><!-- row -->
+					
+
+
+                <div class="mb15"></div>
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-danger panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-document.png" alt=""-->
+                    <i class='fa fa-thumbs-up'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">用户数量</small>
+                    <h1>{:count(db('users')->field('uid')->where(['zid'=>ZID])->select())}</h1>
+                    <small class="stat-label">今日新增:{:count(db('users')->field('uid')->where(['zid'=>ZID])->where('TO_DAYS(regtime)  = TO_DAYS(NOW())')->select())}</small>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+{php} if(ZID != 1){ {/php}
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-primary panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!--img src="/assets/Main/images/is-document.png" alt=""-->
+                    <i class='fa fa-qq'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">QQ总配额</small>
+                    <h1>{:count(db('qqs')->where(['zid'=>ZID])->select())}/{:config('web_peie')}</h1>
+                    <small class="stat-label">今日新增:{:count(db('qqs')->field('qid')->where(['zid'=>ZID])->where('TO_DAYS(addtime)  = CURDATE()')->select())}</small>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-dark panel-stat">
+            <div class="panel-heading">
+
+              <div class="stat">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <!-- img src="/assets/Main/images/is-money.png" alt=""-->
+                    <i class='fa fa-send-o'></i>
+                  </div>
+                  <div class="col-xs-8">
+                    <small class="stat-label">分站总配额</small>
+                    <h1>{:count(db('weblist')->where(['upzid'=>ZID])->select())}/{:config('web_fzpeie')}</h1>
+                    <small class="stat-label">今日新增:{:count(db('weblist')->field('zid')->where(['zid'=>ZID])->where('`adddate`  = CURDATE()')->select())}</small>
+                  </div>
+                </div><!-- row -->
+
+                <div class="mb15"></div>
+
+
+              </div><!-- stat -->
+
+            </div><!-- panel-heading -->
+          </div><!-- panel -->
+        </div><!-- col-sm-6 -->
+{php} } {/php}
+<div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-btns">
+                <a href="" class="panel-close">×</a>
+                <a href="" class="minimize">−</a>
+              </div>
+              <h4 class="panel-title">网站公告</h4>
+             </div><!-- panel-heading -->
+            <div class="panel-body">
+              {:stripslashes(config('web_gg'))}
+            </div>
+          </div><!-- panel -->
+        </div>
+</div>
+{php}
+if(ZID != 1){ {/php}
+<div class="row">
+<div class="col-md-12">	
+<div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-btns">
+            <a href="" class="panel-close">×</a>
+            <a href="" class="minimize">−</a>
+          </div>
+          <h4 class="panel-title">续费站点[当前到期时间:{:config('web_enddate')}]</h4>
+         </div>
+        <div class="panel-body panel-body-nopadding">
+          
+          <form class="form-horizontal form-bordered">
+          <div class="panel-footer">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+				  <button class="btn btn-primary" type="submit">续费请找总站长![QQ:{:config('zz_qq')}]</button>
+				</div>
+				</div>
+            </div>
+          </form>
+          
+        </div><!-- panel-body -->
+        
+      </div>   
+</div>
+</div>
+{php} } {/php}
+{/block}

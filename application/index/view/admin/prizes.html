@@ -1,0 +1,83 @@
+{extend name="admin/layout" /}
+{block name="main"}
+
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				
+
+
+
+
+
+
+<div class="wrapper">
+                    
+
+
+  <div class="wrapper">
+                                        
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="list-group-item bg-dark m-b-sm">{$webTitle}</div>
+            <div class="panel-body">
+                <form method="post">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的奖品名称！" name="s"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        <thead>
+                        <tr>
+							<th>名称</th>
+							<th>中奖概率</th>
+                            <th>类型</th>
+                            <th>面值</th>
+                            <th>添加时间</th>
+                            <th>操作</th>
+						</tr>
+                        </thead>
+                        <tbody>
+                        {volist name="$pList" id="res"}
+                        <tr>
+                          	<td>{$res['name']}</td> 
+							<td>{$res['p']}/{$allp}</td> 
+							<td>{if condition="$res.type eq 0"}无奖励{elseif condition="$res.type eq 1"}代挂卡密{elseif condition="$res.type eq 2"}余额{else/}需审核{/if}</td>
+							<td>{if condition="$res.type eq 0"}无{else/}{$res.value}{/if}</td>
+							<td>{$res['addtime']}</td>
+                          	<td><a href="{:url('',['act'=>'del','id'=>$res.id])}" class="btn-xs btn-warning" onclick="return confirm('确认删除？');">删除</a></td>
+                         </tr>
+                        {/volist}
+                        <tr class="text-center">
+                            <td colspan="7">{$pageList->showPage()}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

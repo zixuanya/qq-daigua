@@ -1,0 +1,129 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle}-{:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+                        <li><a href="{:url('qqadd')}" >添加代挂</a></li>
+                        <li>{$webTitle}-</li>
+                    </ul>
+                </div>
+                
+                <div class="wrapper">
+                                     
+
+<div class="col-md-12">
+        <div class="widget">
+           
+            <hr class="widget-separator">
+            <div class="widget-body">
+
+   
+                    
+                    <div class="col-sm-12">
+                        <div class="panel panel-info" draggable="true">
+                            <div class="list-group-item bg-dark m-b-sm">用户管理列表</div>
+                            <div class="row wrapper">
+                                <div class="col-sm-12">
+                                    <div class="btn-group dropdown m-l-xs" style="float:left;">
+                                      <button type="button" class="btn btn-info" data-toggle="dropdown" data-toggle="dropdown">
+                                        用户数量                                        <span class=""></span>
+                                      </button>
+                                    
+                                    </div>
+                                    <button class="btn btn-primary m-l-xs">{:count($userlist)}</button>
+                                    <a href="{:url('ktfz')}" class="btn btn-sm btn-dark m-l-xs" ><i class="fa fa-plus"></i> 开通分站</a>
+<div class="panel-body">
+                                   <form method="post">
+                    <input type="hidden" name="action" value="search">
+                    <div class="input-group xs-mb-15">
+                        <input type="text" placeholder="请输入要搜索的用户名或者QQ！" name="s"
+                               class="form-control text-center"
+                               required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">立即搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <hr class="widget-separator">
+            <div class="widget-body table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>UID</th>
+                        <th>用户名</th>
+                        <th>身份</th>
+                        <th>所属站点</th>
+                        <th>QQ</th>
+                        <th>余额</th>
+                        <th>充值余额</th>
+                        {if condition="ZID eq 1"}
+                        <th>扣除金额</th>
+                        {/if}
+                        <th>注册时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="$userList" id="user"}
+                    <tr>
+                        <td>{$user.uid}</td>
+                        <td>{$user.user}</td>
+                        <td>
+                            <form method="post">
+                                <input type="hidden" name="action" value="daili">
+                                <input type="hidden" name="uid" value="{$user.uid}">
+                                <select name="power">
+                                    <option value="0">普通用户</option>
+                                    {for start="1" end="6"}
+                                    <option value="{$i}" {if condition="$user.power eq $i" }selected{/if}>VIP{$i}</option>
+                                    {/for}
+                                </select>
+                                <button>修改</button>
+                            </form>
+                        </td>
+                        <td>{$user.zid}</td>
+                        <td>{$user.qq}</td>
+                        <td>{$user.point}</td>
+                        <td>
+                            <form method="post">
+                                <input type="hidden" name="action" value="cz">
+                                <input type="hidden" name="uid" value="{$user.uid}">
+                                <input type="text" name="point" value="1" style="width: 80px;;">
+                                <input type="submit" value="充值">
+                            </form>
+                        </td>
+                        {if condition="ZID eq 1"}
+                        <td>
+                            <form method="post">
+                                <input type="hidden" name="action" value="kc">
+                                <input type="hidden" name="uid" value="{$user.uid}">
+                                <input type="text" name="point" value="1" style="width: 80px;;">
+                                <input type="submit" value="扣除">
+                            </form>
+                        </td>
+                        {/if}
+                        <td>{$user.regtime}</td>
+                        <td>
+                            <a href="?action=del&uid={$user.uid}" class="btn-xs btn-warning"
+                               onclick="return confirm('确认删除？');">删除</a>
+                            <a href="{:url('userinfo',['uid'=>$user.uid])}" class="btn-xs btn-info">修改</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div class="text-center">{$pageList->showPage()}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

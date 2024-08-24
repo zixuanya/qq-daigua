@@ -1,0 +1,62 @@
+{extend name="admin/layout" /}
+{block name="main"}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/"> 首页</a></li>
+                <li><i class="fa fa-desktop"></i><a href="{:url('index')}"> 控制面板</a></li>
+                <li class="active">API管理</li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                API信息
+            </div>
+            <div class="panel-body">
+			{if condition="$isapi"}
+				<div class="list-group-item list-group-item-success text-center">APIID：<u>{$apirow.id}</u>&nbsp;&nbsp;APIKEY：<u>{$apirow.apikey}</u></form>
+                </div>
+			{else}
+				<div class="list-group-item list-group-item-success text-center">APIID：APIKEY：<form method="post"><input type="hidden" name="apply" value="1"><button class="btn btn-primary btn-block">点此申请</button></form>
+                </div>
+			{/if}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-warning table-responsive">
+            <div class="panel-heading">
+                API使用
+            </div>
+            <div class="panel-body">
+{if condition="$isapi"}
+<pre>添加QQ：
+http://{$_SERVER['HTTP_HOST']}{:url('index/api/addqq')}?apiid={$apirow.id}&apikey={$apirow.apikey}&uin={QQ}&pwd={QQ密码}&skey={SKEY}&pskey={P_SKEY}
+说明：添加QQ时系统会自动验证SKEY的有效性
+
+提交订单：
+http://{$_SERVER['HTTP_HOST']}{:url('index/api/order')}?apiid={$apirow.id}&apikey={$apirow.apikey}&uin={QQ}&tid={商品编号}&num={下单月数}
+说明：下单前请确保你的账户余额充足。
+商品编号：1.全套代挂;{volist name="webTools" id="webTool"}{$webTool.tid}.{$webTool.name};{/volist}
+
+
+修改订单：
+http://{$_SERVER['HTTP_HOST']}{:url('index/api/qqInfo')}?apiid={$apirow.id}&apikey={$apirow.apikey}&uin={QQ}&tid={商品编号}&action={操作代码}
+操作代码：bu:补挂;qxbu:取消补挂;off:关闭代挂;on:开启代挂
+
+获取QQ与订单列表：
+http://{$_SERVER['HTTP_HOST']}{:url('index/api/qqList')}?apiid={$apirow.id}&apikey={$apirow.apikey}&uins={QQ号，多个QQ之间用|隔开}
+</pre>
+{else}
+未申请APPKEY
+{/if}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

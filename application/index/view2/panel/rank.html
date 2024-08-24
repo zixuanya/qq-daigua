@@ -1,0 +1,80 @@
+{extend name="panel/layout" /}
+{block name="main"}
+		<div class="app-content">
+    <section id="ajaxshow"></section>
+    <section id="container">
+    
+	<script>document.title="{$webTitle} - {:config('web_name')}";</script>
+    <div class="app-content-body animated fadeInUp">
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <div class="col">  
+                <div class="bg-light lter b-b wrapper-sm ng-scope">
+                    <ul class="breadcrumb">
+					    <li><i class="fa fa-home"></i> <a href="/">{:config('web_name')}</a></li>
+
+                        <li>{$webTitle}</li>
+                    </ul>
+                </div>
+				<div class="wrapper-md control">
+
+ <div class="wrapper">
+                                        
+                      
+                    <div class="col-lg-8 col-md-12 col-lg-offset-2">
+                        <div class="panel panel-info" draggable="true">
+            <div class="list-group-item bg-dark m-b-sm" class="panel-heading">
+                {$webTitle}
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-12 table-responsive">
+                    <table class="table table-bordered table-condensed table-hover table-striped table-vertical-center">
+                        {if condition="$kind eq 'order'"}
+                        <thead>
+                        <tr>
+                            <th width="50">排名</th>
+                            <th class="text-center">站点ID</th>
+                            <th class="text-center">站点名称</th>
+                            <th class="text-center">订单数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="rankList" id="rank" key="i"}
+                        {if condition="$rank.count gt 0"}
+                        <tr>
+                            <td><span class="badge badge-danger bounceIn animation-delay2 m-left-xs">{$i}</span></td>
+                            <td class="text-center">{$rank.zid}</td>
+                            <td class="text-center">{$rank.name}</td>
+                            <td class="text-center">{$rank.count}</td>
+                        </tr>
+                        {/if}
+                        {/volist}
+                        {else}
+                        <thead>
+                        <tr>
+                            <th width="50">排名</th>
+                            <th class="text-center">UID</th>
+                            <th class="text-center">用户名</th>
+                            <th class="text-center">邀请人数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="rankList" id="rank" key="i"}
+                        {if condition="$rank.count gt 0"}
+                        <tr>
+                            <td><span class="badge badge-danger bounceIn animation-delay2 m-left-xs">{$i}</span></td>
+                            <td class="text-center">{$rank.uid}</td>
+                            <td class="text-center">{$rank.user}</td>
+                            <td class="text-center">{$rank.count}</td>
+                        </tr>
+                        {/if}
+                        {/volist}
+                        </tbody>
+                        {/if}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
